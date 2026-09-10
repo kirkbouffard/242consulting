@@ -3,15 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "prebuild": "npm run check:images && npm run check:dashes",
+    "dev": "node scripts/prepare-images.mjs && next dev",
+    "prebuild": "node scripts/prepare-images.mjs && npm run check:images && npm run check:dashes",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "prepare:images": "node scripts/prepare-images.mjs",
     "check:images": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/check-images.ts",
     "check:dashes": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/check-dashes.ts"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "next": "16.3.4",
     "react": "19.2.8",
     "react-dom": "19.2.8",

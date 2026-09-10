@@ -1,19 +1,20 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 
 import { site } from "@/content/copy";
 import "./globals.css";
 
-const display = Cormorant_Garamond({
-  variable: "--font-display",
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["300"],
+  variable: "--font-cormorant",
+  weight: ["300", "400"],
   display: "swap",
 });
 
-const body = Inter({
-  variable: "--font-body",
+const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -21,14 +22,14 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: site.title,
   description: site.description,
-  alternates: { canonical: site.url },
+  alternates: { canonical: `${site.url}/` },
   openGraph: {
     type: "website",
-    url: site.url,
+    url: `${site.url}/`,
     siteName: site.name,
     title: site.title,
     description: site.description,
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: site.description }],
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: site.name }],
   },
   twitter: {
     card: "summary_large_image",
@@ -39,14 +40,14 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#121110",
+  themeColor: "#0d100e",
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: site.name,
-  url: site.url,
+  url: `${site.url}/`,
   description: site.description,
   image: `${site.url}/og-image.jpg`,
   email: site.email,
@@ -59,13 +60,14 @@ const jsonLd = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable} h-full`}>
-      <body className="min-h-full">
+    <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
+      <body>
         {children}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <Analytics />
       </body>
     </html>
   );

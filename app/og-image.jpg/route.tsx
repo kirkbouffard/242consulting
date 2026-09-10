@@ -29,7 +29,7 @@ async function heroDataUri(): Promise<string | null> {
 // The mark is vector in the page and rasterized here, so both come from one file.
 async function markDataUri(): Promise<{ uri: string; height: number }> {
   const file = path.join(process.cwd(), "app", "_brand", "logotype.svg");
-  const svg = (await fs.readFile(file, "utf8")).replace(/currentColor/g, "#EDE6DA");
+  const svg = (await fs.readFile(file, "utf8")).replace(/currentColor/g, "#ece7db");
   const png = await sharp(Buffer.from(svg), { density: 600 })
     .resize({ width: MARK_WIDTH })
     .png()
@@ -49,7 +49,7 @@ export async function GET() {
           height: "100%",
           display: "flex",
           position: "relative",
-          backgroundColor: "#121110",
+          backgroundColor: "#0d100e",
         }}
       >
         {background ? (
@@ -70,7 +70,7 @@ export async function GET() {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundColor: "rgba(18,17,16,0.55)",
+            backgroundColor: "rgba(13,16,14,0.55)",
           }}
         />
         {/* eslint-disable-next-line @next/next/no-img-element */}

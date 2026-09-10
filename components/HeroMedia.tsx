@@ -1,56 +1,53 @@
 "use client";
 
-import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useCallback, useState, useSyncExternalStore } from "react";
 
-type HeroMediaProps = {
-  src: string;
-  alt: string;
-};
+import EditorialImage from "@/components/EditorialImage";
+import { hero } from "@/content/copy";
 
-/** Hero still with a parallax shift capped at 6% of the viewport height. */
-export default function HeroMedia({ src, alt }: HeroMediaProps) {
-  const ref = useRef<HTMLDivElement>(null);
+const QUERY = "(max-width: 767px), (prefers-reduced-motion: reduce)";
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (reduced.matches) return;
-
-    let frame = 0;
-    const update = () => {
-      frame = 0;
-      const limit = window.innerHeight * 0.06;
-      const offset = Math.min(window.scrollY * 0.18, limit);
-      el.style.transform = `translate3d(0, ${offset}px, 0)`;
-    };
-
-    const onScroll = () => {
-      if (frame) return;
-      frame = window.requestAnimationFrame(update);
-    };
-
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      if (frame) window.cancelAnimationFrame(frame);
-    };
+function useStillPreferred(): boolean {
+  const subscribe = useCallback((notify: () => void) => {
+    const media = window.matchMedia(QUERY);
+    media.addEventListener("change", notify);
+    return () => media.removeEventListener("change", notify);
   }, []);
 
-  return (
-    <div ref={ref} className="absolute inset-0 -z-10 will-change-transform">
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-      />
-      <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(18,17,16,0.92),rgba(18,17,16,0.45)_55%,rgba(18,17,16,0.6))]" />
-    </div>
+  return useSyncExternalStore(
+    subscribe,
+    () => window.matchMedia(QUERY).matches,
+    () => false,
   );
+}
+
+export default function HeroMedia({ hasVideo, hasImage }: { hasVideo: boolean; hasImage: boolean }) {
+  const stillPreferred = useStillPreferred();
+  const [videoFailed, setVideoFailed] = useState(false);
+
+  const showVideo = hasVideo && !stillPreferred && !videoFailed;
+
+  if (showVideo) {
+    return (
+      <video
+        className="editorial-image hero-video"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster={hasImage ? hero.poster : undefined}
+        aria-label={hero.alt}
+        onError={() => setVideoFailed(true)}
+      >
+        <source src={hero.video} type="video/mp4" />
+      </video>
+    );
+  }
+
+  if (hasImage) {
+    return <EditorialImage file="hero.webp" alt={hero.alt} priority sizes="100vw" />;
+  }
+
+  return null;
 }

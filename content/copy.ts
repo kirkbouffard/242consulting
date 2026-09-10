@@ -5,183 +5,188 @@ export const site = {
   name: "242 Consulting",
   email: "kirk@242consulting.com",
   url: "https://www.242consulting.com",
+  calendly: "https://calendly.com/kirk-242consulting/30min",
+  linkedin: "https://www.linkedin.com/in/kirk-bouffard-077a785",
   title: "242 Consulting | Operating leadership for hospitality and wellness",
   description:
-    "Fractional operator advisory for hospitality and wellness founders and owners. Retained advisory and the 242 Circle, led by Kirk Bouffard.",
+    "Fractional operator advisory for founders and owners building hospitality and wellness businesses. Kirk Bouffard. Three retained clients at a time. Based in Bali, available globally.",
   founder: "Kirk Bouffard",
-  // Set to the full profile URL to render the LinkedIn link in the contact line.
-  linkedin: "",
 };
 
 export const nav = {
   wordmark: site.name,
-  emailLabel: site.email,
+  links: [
+    { label: "About", href: "#about" },
+    { label: "Services", href: "#services" },
+    { label: "Venues", href: "#venues" },
+    { label: "Process", href: "#process" },
+    { label: "Contact", href: "#contact" },
+  ],
+  cta: "Book a Call",
 };
 
 export const hero = {
-  eyebrow: "Hospitality · Wellness",
-  heading: "Operating leadership for places people choose.",
-  sub: "Fractional operator advisory for founders and owners. Hands-on, not at arm's length.",
-  links: [
-    { label: "For owners: retained advisory", href: "#owners" },
-    { label: "For operators: 242 Circle", href: "#operators" },
-  ],
+  eyebrow: "Hospitality · Wellness · Development",
+  heading: "Turn ambitious venues into businesses that perform.",
+  sub: "Hands-on operating leadership for founders and owners building hospitality, wellness, and destination businesses. Clearer decisions, stronger teams, better guest experiences.",
+  cta: "Book a Call",
+  secondary: { label: "View the work", href: "#venues" },
   image: "/images/hero.webp",
+  poster: "/images/hero-poster.jpg",
   video: "/videos/hero.mp4",
-  alt: "",
+  alt: "Savaya Bali hospitality venue",
 };
 
-export const ways = {
-  eyebrow: "Engagement",
-  heading: "Two doors. Same operator.",
-  owners: {
-    id: "owners",
-    eyebrow: "For owners",
-    title: "242 Retained",
-    lead: "A standing seat at the table for founders and owners building the thing themselves.",
-    points: [
-      "Weekly working session",
-      "Direct access between sessions",
-      "Operations, commercial, and design review",
-      "Monthly priorities set and tracked",
-      "On-site work scoped separately",
-    ],
-    notes: ["Three clients at a time, no more.", "Retainer scoped on the intro call."],
-    cta: { label: "Enquire about 242 Retained", subject: "242 Retained" },
-  },
-  operators: {
-    id: "operators",
-    eyebrow: "For operators",
-    title: "242 Circle",
-    lead: "A small room for AGMs, GMs, and ops leads carrying the floor every day.",
-    tiers: [
-      {
-        name: "Circle",
-        price: "$500",
-        cadence: "per month",
-        seats: "",
-        points: [
-          "Group call every two weeks",
-          "WhatsApp access, 48 hour response",
-          "Session recordings",
-        ],
-      },
-      {
-        name: "Circle Plus",
-        price: "$1,000",
-        cadence: "per month",
-        seats: "5 seats",
-        points: [
-          "Weekly group call",
-          "WhatsApp access, 24 hour response",
-          "One 30 minute 1:1 each month",
-          "One document review each month",
-        ],
-      },
-    ],
-    notes: ["15 seats total. Waitlist when full."],
-    cta: { label: "Enquire about 242 Circle", subject: "242 Circle" },
-  },
+// Logos render only where a normalized mark exists in /public/images/logos.
+// Where it does not, the strip falls back to the venue name as a link.
+export const logoStrip = {
+  eyebrow: "Selected experience",
+  venues: [
+    { name: "Atlantis Paradise Island", file: "atlantis-mono.png", url: "https://www.atlantisbahamas.com/" },
+    { name: "CÉ LA VI", file: "celavi-mono.png", url: "https://celavi.com/" },
+    { name: "Savaya Bali", file: "savaya-mono.png", url: "https://www.savaya.com/" },
+    { name: "Desa Kitsuné", file: "kitsune-mono.png", url: "https://desakitsune.com/" },
+  ],
 };
 
 export const advisory = {
-  id: "advisory",
+  id: "services",
   eyebrow: "Advisory",
   heading: "The business behind the experience.",
-  lenses: [
+  entries: [
     {
       title: "Operations",
-      body: "Systems, staffing, and standards that hold when the founder is not in the room.",
+      body: "Reporting, cost structure, team, and the decisions that let a business run without its founder in every room.",
     },
     {
       title: "Design intent",
-      body: "Design decisions read through service flow, cost to operate, and how guests actually move.",
+      body: "Plans and spaces reviewed for how guests, staff, and service actually move. Good design gets photographed. Great design also works.",
     },
     {
       title: "Experience",
-      body: "The sequence a guest travels, from arrival to the reason they come back.",
+      body: "The guest or member journey from arrival to return, including programming, community, and standards.",
     },
     {
       title: "Network",
-      body: "Operators, chefs, and partners built over twenty years across three regions.",
+      body: "Twenty years of relationships across hospitality, wellness, and development, opened when they move your business forward.",
     },
   ],
-  closing: "Both tracks draw on the same four lenses.",
+  note: "Weekly leadership session. Direct access between sessions. Monthly priorities. On-site scoped separately.",
 };
 
-// Roles are left blank until confirmed. A tile renders its place alone when role is "".
-// A photograph joins a row only when the file exists in /public/images.
-// url points at the venue's own site so a reader can verify the record for
-// themselves. Leave it "" and the name renders as plain text.
+export const about = {
+  id: "about",
+  eyebrow: "About 242 Consulting",
+  heading: "An operator in the room when it matters.",
+  paragraphs: [
+    "Kirk Bouffard has spent more than two decades turning ambitious hospitality and wellness concepts into operating businesses across the Bahamas, Singapore, Indonesia, and beyond.",
+    "242 Consulting works with owners at the point where strategy needs to become standards, teams, reporting, and a guest experience people return for.",
+  ],
+  link: "Start a conversation",
+};
+
+export const process = {
+  id: "process",
+  eyebrow: "Process",
+  heading: "Clarity first. Momentum next.",
+  intro: "A focused operating rhythm that turns the biggest constraint into the next right decision.",
+  steps: [
+    {
+      number: "01",
+      title: "Diagnose",
+      body: "A direct read on the business, the guest journey, and the constraint holding growth back.",
+    },
+    {
+      number: "02",
+      title: "Prioritise",
+      body: "A short list of decisions, owners, and measures that the team can act on immediately.",
+    },
+    {
+      number: "03",
+      title: "Embed",
+      body: "Weekly leadership, practical standards, and accountability that stays useful after the engagement.",
+    },
+  ],
+};
+
+// A tile shows its photograph when the file exists in /public/images, and falls
+// back to a typographic entry when it does not. url points at the venue's own
+// site so a reader can verify the record.
 export const work = {
-  id: "work",
+  id: "venues",
   eyebrow: "Track record",
   heading: "Built by operating.",
   intro:
-    "Two decades inside the rooms, running resorts, restaurants, and beach clubs at scale.",
+    "More than two decades opening, operating, and developing hospitality and wellness businesses across five markets.",
   tiles: [
     {
-      place: "Atlantis",
-      role: "",
+      file: "atlantis.webp",
+      place: "Atlantis Paradise Island, Bahamas",
+      role: "Resort operations and hospitality foundations",
       url: "https://www.atlantisbahamas.com/",
-      image: "/images/atlantis.webp",
-      span: "wide",
+      ratio: "wide",
     },
     {
+      file: "aura.webp",
       place: "Aura Nightclub, Atlantis Bahamas",
-      role: "",
+      role: "General management and operating leadership",
       url: "https://www.atlantisbahamas.com/things-to-do/entertainment/aura-nightclub",
-      image: "/images/aura.webp",
-      span: "tall",
+      ratio: "portrait",
     },
     {
-      place: "CÉ LA VI",
-      role: "",
+      file: "celavi.webp",
+      place: "CÉ LA VI, Singapore",
+      role: "Venue development and guest experience",
       url: "https://celavi.com/",
-      image: "/images/celavi.webp",
-      span: "regular",
+      ratio: "portrait",
     },
     {
-      place: "Savaya",
-      role: "Head of Operations across the group's venue portfolio. Opened Zumana, Kuta, August 2026.",
+      file: "savaya.webp",
+      place: "Savaya Group, Bali",
+      role: "Head of Operations across a clifftop venue portfolio",
       url: "https://www.savaya.com/",
-      image: "/images/savaya.webp",
-      span: "regular",
+      ratio: "portrait",
     },
     {
+      file: "kitsune.webp",
+      place: "Desa Kitsuné, Bali",
+      role: "Lifestyle destination and hospitality development",
+      url: "https://desakitsune.com/",
+      ratio: "portrait",
+    },
+    {
+      file: "zumana.webp",
       place: "Zumana, Sunset Bay Kuta",
       role: "Savaya Group. Commissioning and opening, August 2026. 35,000 sq ft beachfront destination.",
       url: "https://zumanabali.com/",
-      image: "/images/zumana.webp",
-      span: "wide",
-    },
-    {
-      place: "Desa Kitsuné",
-      role: "",
-      url: "https://desakitsune.com/",
-      image: "/images/desa-kitsune.webp",
-      span: "wide",
+      ratio: "wide",
     },
   ],
   stats: [
-    { value: "20+", label: "years operating" },
+    { value: "20+", label: "Years operating" },
     { value: "$45M+", label: "P&L responsibility" },
-    { value: "50%+", label: "operating margins held over five years" },
+    { value: "5", label: "Markets shaped across hospitality, wellness, and development" },
   ],
-  // Leave empty to omit the testimonial block entirely.
-  testimonials: [] as { quote: string; attribution: string }[],
+};
+
+// Leave quote empty to omit the testimonial section entirely.
+export const testimonial = {
+  eyebrow: "What clients value",
+  quote:
+    "The difference was not another strategy deck. It was having someone who could see the operating reality and move the room.",
+  credit: "Founder · Southeast Asia hospitality platform",
 };
 
 export const contact = {
   id: "contact",
   eyebrow: "Contact",
   heading: "Building something people need to experience?",
-  sub: "A 30 minute intro call. No pitch. We map the constraint and whether 242 is the right fit.",
-  subjectLine: "Put Retained or Circle in the subject line.",
-  meta: ["Replies within 24 hours", "Based in Bali, available globally"],
+  sub: "A 30 minute intro call. No pitch. We map the constraint and whether 242 Consulting is the right fit.",
+  cta: "Book a 30 min intro call",
+  meta: "Replies within 24 hours · Based in Bali, available globally · ",
   linkedinLabel: "LinkedIn",
   image: "/images/contact.webp",
-  alt: "",
+  alt: "Savaya Bali cliffside venue architecture",
 };
 
 export const footer = {

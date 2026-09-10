@@ -1,34 +1,33 @@
 import HeroMedia from "@/components/HeroMedia";
-import { hero } from "@/content/copy";
+import Reveal from "@/components/Reveal";
+import { hero, site } from "@/content/copy";
 import { assetExists } from "@/lib/assets";
 
 export default function Hero() {
-  const hasImage = assetExists(hero.image);
-
   return (
-    <section
-      id="top"
-      className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden bg-[var(--color-surface)] pb-16 pt-32 md:pb-24"
-    >
-      {hasImage ? <HeroMedia src={hero.image} alt={hero.alt} /> : null}
-
-      <div className="container-content">
-        <p className="eyebrow">{hero.eyebrow}</p>
-        <h1 className="display t-h1 mt-6 max-w-[16ch] text-balance">{hero.heading}</h1>
-        <p className="mt-8 max-w-[46ch] text-[17px] text-pretty text-[var(--color-secondary)] md:text-[19px]">
-          {hero.sub}
-        </p>
-        <nav
-          aria-label="Engagement tracks"
-          className="mt-12 flex flex-col gap-4 text-[14px] tracking-[0.02em] sm:flex-row sm:gap-10"
-        >
-          {hero.links.map((link) => (
-            <a key={link.href} href={link.href} className="link-underline w-fit">
-              {link.label}
-            </a>
-          ))}
-        </nav>
+    <section className="hero-section">
+      <div className="hero-media">
+        <HeroMedia hasVideo={assetExists(hero.video)} hasImage={assetExists(hero.image)} />
       </div>
+      <div className="hero-overlay" />
+      <Reveal className="hero-copy content-width">
+        <p className="eyebrow">{hero.eyebrow}</p>
+        <h1>{hero.heading}</h1>
+        <p className="hero-sub">{hero.sub}</p>
+        <div className="hero-actions">
+          <a
+            className="button button-brass"
+            href={site.calendly}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {hero.cta}
+          </a>
+          <a className="text-link" href={hero.secondary.href}>
+            {hero.secondary.label} <span aria-hidden="true">↘</span>
+          </a>
+        </div>
+      </Reveal>
     </section>
   );
 }

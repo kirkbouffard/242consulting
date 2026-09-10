@@ -27,9 +27,9 @@ const height = BASE * 0.74;
 const lockup = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 ${top} ${total.toFixed(2)} ${height}" fill="currentColor" role="img" aria-label="242 Consulting"><path d="${num.d}"/><path d="${caps.d}"/></svg>`;
 fs.writeFileSync(`${SP}/logotype.svg`, lockup);
 
-// --- square icon, numerals only
-const ISIZE = 64;
-const box = 100;
+// --- square favicon: rounded tile, sage keyline, numerals from the same outlines
+const ISIZE = 30;
+const box = 64;
 const digits = run(font, "242", ISIZE, 0.015, 0, 0);
 const gx = (box - digits.width) / 2;
 // old style figures: the 4 descends, so centre on the ink, not the baseline
@@ -37,7 +37,7 @@ const inkTop = -ISIZE * 0.41;
 const inkBottom = ISIZE * 0.19;
 const gy = box / 2 - (inkTop + inkBottom) / 2;
 
-const icon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${box} ${box}"><rect width="${box}" height="${box}" fill="#121110"/><g transform="translate(${gx.toFixed(2)} ${gy.toFixed(2)})" fill="#EDE6DA"><path d="${digits.d}"/></g></svg>`;
+const icon = `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 ${box} ${box}"><rect width="${box}" height="${box}" rx="16" fill="#0d100e"/><rect x="1.5" y="1.5" width="61" height="61" rx="14.5" fill="none" stroke="#7ba088" stroke-width="1.5"/><g transform="translate(${gx.toFixed(2)} ${gy.toFixed(2)})" fill="#ece7db"><path d="${digits.d}"/></g></svg>`;
 fs.writeFileSync(`${SP}/icon.svg`, icon);
 
 for (const [name, svg] of [["logotype", lockup], ["icon", icon]]) {
