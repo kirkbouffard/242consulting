@@ -186,6 +186,7 @@ export const circle = {
       price: "$499",
       cadence: "per month",
       seats: "",
+      checkoutUrl: "https://buy.stripe.com/28EbJ33zwgG1fxW1my5sA0a",
       points: [
         "Group call every two weeks",
         "WhatsApp access, 48 hour response",
@@ -198,6 +199,8 @@ export const circle = {
       price: "$999",
       cadence: "per month",
       seats: "5 seats",
+      // No payment link yet. Falls back to the mailto enquiry.
+      checkoutUrl: "",
       points: [
         "Weekly group call",
         "WhatsApp access, 24 hour response",

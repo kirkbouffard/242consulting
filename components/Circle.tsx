@@ -32,18 +32,31 @@ export default function Circle() {
                     <li key={point}>{point}</li>
                   ))}
                 </ul>
+                <div className="circle-tier-cta">
+                  {tier.checkoutUrl ? (
+                    <a
+                      className="button button-brass"
+                      href={tier.checkoutUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {circle.cta.label}
+                    </a>
+                  ) : (
+                    <a
+                      className="button button-brass"
+                      href={mailto(circle.cta.subject)}
+                    >
+                      {circle.cta.label}
+                    </a>
+                  )}
+                </div>
               </div>
             ))}
           </div>
 
           <p className="advisory-note">{circle.note}</p>
-
-          <div className="circle-cta">
-            <a className="button button-brass" href={mailto(circle.cta.subject)}>
-              {circle.cta.label}
-            </a>
-            <p className="circle-cta-note">{circle.ctaNote}</p>
-          </div>
+          <p className="circle-cta-note">{circle.ctaNote}</p>
         </Reveal>
       </div>
     </section>
