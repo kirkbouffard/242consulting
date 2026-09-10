@@ -45,7 +45,18 @@ export default function Work() {
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <h3 className="display text-[clamp(30px,4vw,54px)] leading-[1.06] md:col-span-6">
-                    {row.place}
+                    {row.url ? (
+                      <a
+                        href={row.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="link-venue"
+                      >
+                        {row.place}
+                      </a>
+                    ) : (
+                      row.place
+                    )}
                   </h3>
                   {row.role ? (
                     <p className="max-w-[42ch] text-[15px] text-pretty text-[var(--color-secondary)] md:col-span-5">

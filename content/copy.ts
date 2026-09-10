@@ -110,7 +110,9 @@ export const advisory = {
 };
 
 // Roles are left blank until confirmed. A tile renders its place alone when role is "".
-// A tile is dropped from the grid when its image file is missing from /public/images.
+// A photograph joins a row only when the file exists in /public/images.
+// url points at the venue's own site so a reader can verify the record for
+// themselves. Leave it "" and the name renders as plain text.
 export const work = {
   id: "work",
   eyebrow: "Track record",
@@ -118,22 +120,48 @@ export const work = {
   intro:
     "Two decades inside the rooms, running resorts, restaurants, and beach clubs at scale.",
   tiles: [
-    { place: "Atlantis", role: "", image: "/images/atlantis.webp", span: "wide" },
-    { place: "Bahamas venue", role: "", image: "/images/bahamas.webp", span: "tall" },
-    { place: "CÉ LA VI", role: "", image: "/images/celavi.webp", span: "regular" },
+    {
+      place: "Atlantis",
+      role: "",
+      url: "https://www.atlantisbahamas.com/",
+      image: "/images/atlantis.webp",
+      span: "wide",
+    },
+    {
+      place: "Bahamas venue",
+      role: "",
+      url: "",
+      image: "/images/bahamas.webp",
+      span: "tall",
+    },
+    {
+      place: "CÉ LA VI",
+      role: "",
+      url: "https://celavi.com/",
+      image: "/images/celavi.webp",
+      span: "regular",
+    },
     {
       place: "Savaya",
       role: "Head of Operations across the group's venue portfolio. Opened Zumana, Kuta, August 2026.",
+      url: "https://www.savaya.com/",
       image: "/images/savaya.webp",
       span: "regular",
     },
     {
       place: "Zumana, Sunset Bay Kuta",
       role: "Savaya Group. Commissioning and opening, August 2026. 35,000 sq ft beachfront destination.",
+      url: "https://zumanabali.com/",
       image: "/images/zumana.webp",
       span: "wide",
     },
-    { place: "Desa Kitsuné", role: "", image: "/images/desa-kitsune.webp", span: "wide" },
+    {
+      place: "Desa Kitsuné",
+      role: "",
+      url: "https://desakitsune.com/",
+      image: "/images/desa-kitsune.webp",
+      span: "wide",
+    },
   ],
   stats: [
     { value: "20+", label: "years operating" },
