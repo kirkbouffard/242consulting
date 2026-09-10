@@ -3,6 +3,10 @@ import { circle } from "@/content/copy";
 import { mailto } from "@/lib/assets";
 
 export default function Circle() {
+  const tiers = circle.tiers.filter(
+    (tier) => tier.id !== "circle-plus" || circle.showCirclePlus,
+  );
+
   return (
     <section id={circle.id} className="section section-surface">
       <div className="content-width advisory-grid">
@@ -14,7 +18,7 @@ export default function Circle() {
 
         <Reveal>
           <div className="circle-tiers">
-            {circle.tiers.map((tier) => (
+            {tiers.map((tier) => (
               <div className="circle-tier" key={tier.name}>
                 <div className="circle-tier-head">
                   <h3>{tier.name}</h3>

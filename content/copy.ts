@@ -176,10 +176,14 @@ export const circle = {
   eyebrow: "For operators",
   heading: "242 Circle.",
   intro: "A small room for AGMs, GMs, and ops leads carrying the floor every day.",
+  // Set false to run the Circle as a single tier. Circle Plus then drops out of
+  // the section entirely.
+  showCirclePlus: true,
   tiers: [
     {
+      id: "circle",
       name: "Circle",
-      price: "$500",
+      price: "$499",
       cadence: "per month",
       seats: "",
       points: [
@@ -189,8 +193,9 @@ export const circle = {
       ],
     },
     {
+      id: "circle-plus",
       name: "Circle Plus",
-      price: "$1,000",
+      price: "$999",
       cadence: "per month",
       seats: "5 seats",
       points: [
