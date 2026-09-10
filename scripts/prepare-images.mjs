@@ -35,8 +35,15 @@ for (const [target, source] of Object.entries(sources)) {
   const sourcePath = path.join(imagesDir, source);
   const targetPath = path.join(imagesDir, target);
 
+  // A finished asset that is its own source is left alone. Re-encoding it on
+  // every build would compound generation loss and make builds nondeterministic.
+  if (path.resolve(sourcePath) === path.resolve(targetPath)) {
+    if (existsSync(targetPath)) built.push(target);
+    else skipped.push(`${target} (no ${source})`);
+    continue;
+  }
+
   if (!existsSync(sourcePath)) {
-    // A target that is already a finished asset stays as it is.
     if (existsSync(targetPath)) built.push(target);
     else skipped.push(`${target} (no ${source})`);
     continue;

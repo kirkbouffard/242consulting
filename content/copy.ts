@@ -169,6 +169,51 @@ export const work = {
   ],
 };
 
+// The operator side of the practice. Advisory covers owners; the Circle covers
+// the AGMs, GMs and ops leads carrying the floor.
+export const circle = {
+  id: "circle",
+  eyebrow: "For operators",
+  heading: "242 Circle.",
+  intro: "A small room for AGMs, GMs, and ops leads carrying the floor every day.",
+  tiers: [
+    {
+      name: "Circle",
+      price: "$500",
+      cadence: "per month",
+      seats: "",
+      points: [
+        "Group call every two weeks",
+        "WhatsApp access, 48 hour response",
+        "Session recordings",
+      ],
+    },
+    {
+      name: "Circle Plus",
+      price: "$1,000",
+      cadence: "per month",
+      seats: "5 seats",
+      points: [
+        "Weekly group call",
+        "WhatsApp access, 24 hour response",
+        "One 30 minute 1:1 each month",
+        "One document review each month",
+      ],
+    },
+  ],
+  note: "15 seats total. Waitlist when full.",
+  cta: { label: "Request a seat", subject: "242 Circle" },
+  ctaNote: "Seats confirmed by email. Monthly, cancel anytime.",
+};
+
+// Hidden confirmation page at /welcome. Not linked from the site, noindex.
+export const welcome = {
+  eyebrow: "242 Circle",
+  heading: "You're in.",
+  body: "Join the WhatsApp group below. The next call is [DATE]. Recordings and the question bank live in the group description.",
+  link: "Join the WhatsApp group",
+};
+
 // Leave quote empty to omit the testimonial section entirely.
 export const testimonial = {
   eyebrow: "What clients value",

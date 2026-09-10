@@ -414,6 +414,110 @@ body::before {
   font-size: 14px;
 }
 
+/* ---------- circle ---------- */
+
+.circle-intro {
+  margin-top: 18px;
+  max-width: 34ch;
+  color: var(--muted);
+}
+
+.circle-tiers {
+  display: grid;
+  gap: 0;
+}
+
+.circle-tier {
+  border-top: 1px solid var(--rule);
+  padding: 40px 0;
+}
+
+.circle-tier-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 16px;
+}
+
+.circle-tier h3 {
+  margin: 0;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.15;
+}
+
+.circle-price {
+  margin: 0;
+  font-size: 15px;
+  color: var(--bone);
+}
+
+.circle-price span {
+  color: var(--muted);
+}
+
+.circle-seats {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.circle-tier ul {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+}
+
+.circle-tier li {
+  margin-top: 6px;
+}
+
+.circle-cta {
+  margin-top: 32px;
+}
+
+.circle-cta-note {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ---------- welcome ---------- */
+
+.welcome-page {
+  display: grid;
+  place-items: center;
+  min-height: 100svh;
+  padding-block: 88px;
+}
+
+.welcome-copy {
+  width: min(100% - 40px, 560px);
+}
+
+.welcome-copy h2 {
+  margin: 16px 0 20px;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(30px, 3.6vw, 52px);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
+}
+
+.welcome-copy p {
+  margin: 0 0 28px;
+  color: var(--muted);
+}
+
+/* shown when WHATSAPP_INVITE_URL is unset, so the page never ships a dead link */
+.welcome-pending {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
 /* ---------- venues ---------- */
 
 .work-intro {

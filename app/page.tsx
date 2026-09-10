@@ -1,5 +1,6 @@
 import About from "@/components/About";
 import Advisory from "@/components/Advisory";
+import Circle from "@/components/Circle";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
@@ -19,6 +20,7 @@ export default function Page() {
         <Advisory />
         <About />
         <Process />
+        <Circle />
         <Work />
         <Testimonial />
         <Contact />
