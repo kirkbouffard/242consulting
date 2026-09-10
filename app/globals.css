@@ -26,6 +26,7 @@
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    hanging-punctuation: first last;
   }
 
   /* 3% grain overlay */
@@ -79,6 +80,12 @@
   .display {
     font-family: var(--font-display);
     font-weight: 300;
+    font-optical-sizing: auto;
+  }
+
+  .figures-oldstyle {
+    font-variant-numeric: oldstyle-nums;
+    font-feature-settings: "onum" 1;
   }
 
   .t-h1 {

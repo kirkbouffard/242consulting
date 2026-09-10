@@ -28,8 +28,8 @@ export default function Contact() {
       <div className="container-content relative">
         <Reveal>
           <p className="eyebrow">{contact.eyebrow}</p>
-          <h2 className="display t-h2 mt-6 max-w-[18ch]">{contact.heading}</h2>
-          <p className="mt-8 max-w-[48ch] text-[17px] text-[var(--color-secondary)]">
+          <h2 className="display t-h2 mt-6 max-w-[18ch] text-balance">{contact.heading}</h2>
+          <p className="mt-8 max-w-[48ch] text-[17px] text-pretty text-[var(--color-secondary)]">
             {contact.sub}
           </p>
 

@@ -4,12 +4,13 @@ import path from "node:path";
 import { ImageResponse } from "next/og";
 import sharp from "sharp";
 
-import { hero, nav } from "@/content/copy";
+import { hero } from "@/content/copy";
 
 export const dynamic = "force-static";
 
 const WIDTH = 1200;
 const HEIGHT = 630;
+const MARK_WIDTH = 420;
 
 async function heroDataUri(): Promise<string | null> {
   const file = path.join(process.cwd(), "public", hero.image.replace(/^\//, ""));
@@ -25,11 +26,20 @@ async function heroDataUri(): Promise<string | null> {
   }
 }
 
+// The mark is vector in the page and rasterized here, so both come from one file.
+async function markDataUri(): Promise<{ uri: string; height: number }> {
+  const file = path.join(process.cwd(), "app", "_brand", "logotype.svg");
+  const svg = (await fs.readFile(file, "utf8")).replace(/currentColor/g, "#EDE6DA");
+  const png = await sharp(Buffer.from(svg), { density: 600 })
+    .resize({ width: MARK_WIDTH })
+    .png()
+    .toBuffer();
+  const meta = await sharp(png).metadata();
+  return { uri: `data:image/png;base64,${png.toString("base64")}`, height: meta.height ?? 0 };
+}
+
 export async function GET() {
-  const [font, background] = await Promise.all([
-    fs.readFile(path.join(process.cwd(), "app", "_fonts", "CormorantGaramond-Light.woff")),
-    heroDataUri(),
-  ]);
+  const [background, mark] = await Promise.all([heroDataUri(), markDataUri()]);
 
   const image = new ImageResponse(
     (
@@ -63,27 +73,17 @@ export async function GET() {
             backgroundColor: "rgba(18,17,16,0.55)",
           }}
         />
-        <div
-          style={{
-            position: "absolute",
-            bottom: 64,
-            left: 72,
-            display: "flex",
-            fontFamily: "Cormorant Garamond",
-            fontSize: 64,
-            color: "#EDE6DA",
-            letterSpacing: "0.02em",
-          }}
-        >
-          {nav.wordmark}
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={mark.uri}
+          width={MARK_WIDTH}
+          height={mark.height}
+          style={{ position: "absolute", bottom: 68, left: 72 }}
+          alt=""
+        />
       </div>
     ),
-    {
-      width: WIDTH,
-      height: HEIGHT,
-      fonts: [{ name: "Cormorant Garamond", data: font, weight: 300, style: "normal" }],
-    },
+    { width: WIDTH, height: HEIGHT },
   );
 
   const png = Buffer.from(await image.arrayBuffer());

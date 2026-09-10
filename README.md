@@ -17,6 +17,13 @@ Project rules live in `CLAUDE.md`. Read that first.
 
 `prebuild` runs both gates, so `next build` cannot ship a bad asset.
 
+## The mark
+
+`app/_brand/logotype.svg` is the logotype: Cormorant Garamond outlines converted
+to paths and optically spaced, so the mark holds its shape whether or not the
+webfont loads. `components/Logotype.tsx` inlines it in the page and the open
+graph route rasterizes the same file. It is the only place the mark is defined.
+
 ## Copy
 
 All copy is canonical in `content/copy.ts`. Components render those strings
@@ -35,9 +42,9 @@ contact sections fall back to flat surface color. No stand-in art is generated.
 ## Open graph
 
 `/og-image.jpg` is generated at build time by `app/og-image.jpg/route.tsx`.
-It composites the hero still with the wordmark bottom left, renders through
-`next/og`, and converts to JPEG with sharp. The display face is self hosted at
-`app/_fonts/CormorantGaramond-Light.woff`.
+It composites the hero still with the mark bottom left, renders through
+`next/og`, and converts to JPEG with sharp. It carries no live text, so no font
+is loaded there.
 
 ## Before launch
 

@@ -1,16 +1,19 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ElementType, type ReactNode } from "react";
 
 type RevealProps = {
   children: ReactNode;
   className?: string;
   delay?: number;
+  /** Render as something other than a div, so list semantics stay intact. */
+  as?: Extract<ElementType, "div" | "li">;
 };
 
-export default function Reveal({ children, className = "", delay = 0 }: RevealProps) {
-  const ref = useRef<HTMLDivElement>(null);
+export default function Reveal({ children, className = "", delay = 0, as = "div" }: RevealProps) {
+  const ref = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
+  const Tag = as;
 
   useEffect(() => {
     const el = ref.current;
@@ -40,13 +43,13 @@ export default function Reveal({ children, className = "", delay = 0 }: RevealPr
   }, []);
 
   return (
-    <div
-      ref={ref}
+    <Tag
+      ref={ref as React.Ref<HTMLDivElement & HTMLLIElement>}
       className={`reveal ${className}`}
       data-visible={visible}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
     >
       {children}
-    </div>
+    </Tag>
   );
 }

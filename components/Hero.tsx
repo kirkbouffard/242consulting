@@ -14,8 +14,8 @@ export default function Hero() {
 
       <div className="container-content">
         <p className="eyebrow">{hero.eyebrow}</p>
-        <h1 className="display t-h1 mt-6 max-w-[16ch]">{hero.heading}</h1>
-        <p className="mt-8 max-w-[46ch] text-[17px] text-[var(--color-secondary)] md:text-[19px]">
+        <h1 className="display t-h1 mt-6 max-w-[16ch] text-balance">{hero.heading}</h1>
+        <p className="mt-8 max-w-[46ch] text-[17px] text-pretty text-[var(--color-secondary)] md:text-[19px]">
           {hero.sub}
         </p>
         <nav

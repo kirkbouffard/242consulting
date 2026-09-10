@@ -22,11 +22,12 @@ export default function Ways() {
       <div className="container-content">
         <Reveal>
           <p className="eyebrow">{ways.eyebrow}</p>
-          <h2 className="display t-h2 mt-6 max-w-[18ch]">{ways.heading}</h2>
+          <h2 className="display t-h2 mt-6 max-w-[18ch] text-balance">{ways.heading}</h2>
         </Reveal>
 
-        <div className="mt-20 grid gap-16 md:mt-28 md:grid-cols-2 md:gap-20">
-          <Reveal>
+        {/* Deliberately uneven: the retained track carries more weight than the circle. */}
+        <div className="mt-20 grid gap-16 md:mt-28 md:grid-cols-12 md:gap-x-16 md:gap-y-20">
+          <Reveal className="md:col-span-7">
             <div id={owners.id} className="rule scroll-mt-24 pt-8">
               <p className="eyebrow">{owners.eyebrow}</p>
               <h3 className="display t-h3 mt-5">{owners.title}</h3>
@@ -46,7 +47,7 @@ export default function Ways() {
             </div>
           </Reveal>
 
-          <Reveal delay={90}>
+          <Reveal delay={90} className="md:col-span-5 md:mt-24">
             <div id={operators.id} className="rule scroll-mt-24 pt-8">
               <p className="eyebrow">{operators.eyebrow}</p>
               <h3 className="display t-h3 mt-5">{operators.title}</h3>
