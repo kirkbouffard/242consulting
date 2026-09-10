@@ -46,6 +46,30 @@ It composites the hero still with the mark bottom left, renders through
 `next/og`, and converts to JPEG with sharp. It carries no live text, so no font
 is loaded there.
 
+## Deploying
+
+The site is a standalone Next.js app. Vercel auto-detects it, so there is no
+vercel.json.
+
+1. Create the project on Vercel from this repository. Framework preset is
+   Next.js, build command `npm run build`, output is the default.
+   `prebuild` runs the image pipeline and both gates before every build.
+2. Set `WHATSAPP_INVITE_URL` in project environment variables. See `.env.example`.
+   It is read at build time, so changing it later needs a redeploy.
+3. Check the preview URL before moving any domain. Confirm the venue links, the
+   Stripe checkout, and `/welcome`.
+4. Add `www.242consulting.com`, and redirect the apex to it. `metadataBase`,
+   the canonical tag and the JSON-LD already point at the www host, so nothing
+   in the code changes when the domain lands.
+5. Point the Stripe payment link's success URL at `/welcome`.
+
+Vercel Analytics starts reporting once deployed. Off Vercel its beacon 404s,
+which is the one console error in local builds.
+
+Images run through Next image optimization. The upstream spec disabled it
+because assets are pre-processed; if you would rather serve them as-is, set
+`images.unoptimized: true` in `next.config.ts` and drop the `qualities` entry.
+
 ## Before launch
 
 - Add the photographs listed above.
