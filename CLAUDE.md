@@ -15,41 +15,60 @@ Next.js 16 App Router, TypeScript, Tailwind v4, next/image, next/font (Cormorant
 - No AI-generated images for named venues. If a real photo is missing, the tile falls back to a typographic entry.
 - Venue logos render only where a normalized mark exists and the working relationship is verifiable. Until then the strip carries venue names.
 - Rendered images live in /public/images as WebP, under 350KB, 3:2. Source photography sits alongside them and is ignored by the gate. Enforced by /scripts/check-images.ts in prebuild.
+- The founder portrait is the one exception to 3:2. It is cropped 4:5 and graded warm by the portraits map in /scripts/prepare-images.mjs, so a neutral studio grey sits in the ivory palette rather than fighting it. Drop the untouched headshot at /public/images/kirk-source.jpg; the build crops, grades and generates its blur. It is outside the check-images gate by design.
 - No hotlinked assets.
 
 ## Palette
-ink #0d100e, surface #141916, bone #ece7db, muted #9ba295, rule #232a25, accent #7ba088,
-accent hover #a7c1af. The accent is sage, not gold. 3% CSS grain overlay on body.
+Warm ivory ground, not the former dark ink. ivory #f7f3eb, ivory-2 #efe9dd (tinted sections),
+espresso #2a211b (ink), espresso-2 #574a3f (muted body), rule #e0d7c7.
+Bronze is split by job: #9c7c4f for rules, borders and hovers, #7a5e32 for small text. The 11px
+uppercase eyebrows fail contrast on ivory at the lighter bronze, so text always takes the darker one.
+No grain overlay.
 
 ## Type scale
-h1 clamp(40px, 5.5vw, 84px) lh 1.04; h2 clamp(30px, 3.6vw, 52px) lh 1.08; advisory h3 24px;
-process h3 26px; stats 46px; body Inter 15px/1.6; eyebrow 11px 0.18em accent.
+h1 clamp(42px, 6vw, 88px) lh 1.02; section h2 clamp(30px, 3.6vw, 52px) lh 1.08; offer title
+clamp(30px, 3.4vw, 46px); circle price clamp(48px, 6vw, 72px); advisory h3 24px; stats 46px;
+body Inter 16px/1.65; eyebrow 11px 0.2em bronze-ink.
 
 ## Layout and motion
-Max content 1320px. Section padding 112px desktop, 88px mobile. Fixed light nav 72px over the dark
-page, with scroll-margin-top 84px on sections. Hero and contact are 100svh bookends. The advisory
-heading is sticky at top 120px while its entries scroll past. Fade-up on scroll 300ms 12px at
-threshold 0.12. Image hover scale 1.03. All motion disabled under prefers-reduced-motion.
-Rounded corners: 14px images, 999px pills, 8px form controls.
+Max content 1160px. Section padding 112px desktop, 80px mobile, separated by 1px rules with
+alternating ivory and ivory-2 grounds. Fixed ivory nav 76px, scroll-margin-top 88px on sections.
+Hero and contact are sized to their content, not 100svh. Offer sections are a 5fr 7fr grid that
+collapses to one column under 960px. Fade-up on scroll 350ms 10px at threshold 0.12, disabled under
+prefers-reduced-motion. Rounded corners: 4px images and cards, 999px pills.
+
+## Two offers
+The page turns on one decision and carries nothing that blurs it. Owners get bespoke advisory sold
+in conversation. Operators buy the Circle outright.
+
+Owners: label "For owners", title "Fractional Advisory". No price anywhere. Only action is a mailto,
+"Start a conversation".
+Operators: label "For operators", title "242 Circle". The monthly price leads the column and every
+"Join 242 Circle" button goes straight to the Stripe link. Never to the contact form, never behind a
+discovery call. The chooser card and the Circle section share that label, so they share the
+destination.
+
+Do not add process sections, testimonials, service grids or a third offer.
 
 ## Page order and copy
 Copy is canonical in /content/copy.ts. Do not paraphrase it. Sections:
-1. Nav: vector logotype left, About / Services / Venues / Process / Contact, "Book a Call" pill to Calendly.
-2. Hero: 100svh, video with still fallback on mobile and reduced motion. Eyebrow, h1, sub, "Book a Call" pill and "View the work".
-3. Logo strip: "Selected experience" plus four venue marks, or venue names where marks are absent.
-4. Services (#services): sticky "Advisory" heading, four entries (Operations, Design intent, Experience, Network), closing note.
-5. About (#about): two column, two paragraphs, mailto link.
-6. Process (#process): three cards, 01 Diagnose / 02 Prioritise / 03 Embed.
-7. Venues (#venues): 12 column grid, six tiles, each name linking to the venue's own site. Stats: 20+ years, $45M+ P&L, 5 markets.
-8. Testimonial: single pull quote, omitted when the quote is empty.
-9. Contact (#contact): 70svh, full bleed image with 82% overlay, Calendly pill and mailto, LinkedIn.
-10. Footer.
+1. Nav: vector logotype left, Owners / Operators / Venues / Contact, "Book a Call" pill to Calendly.
+2. Hero: eyebrow, h1, sub, "Book a Call" pill and "View the work".
+3. Choice (#choose): two cards, owners then operators. The operators card is the one that can be
+   bought, so it carries the bronze border and the solid button.
+4. Fractional Advisory (#advisory): four entries (Operations, Design intent, Experience,
+   Development), closing note, mailto. Founder portrait renders here when the asset exists.
+5. 242 Circle (#circle): price, five focus points, what is included, Stripe button.
+6. Venues (#venues): 12 column grid, six tiles, each name linking to the venue's own site.
+   Stats: 20+ years, $45M+ P&L, 5 markets.
+7. Contact (#contact): Calendly pill and mailto, LinkedIn.
+8. Footer.
 
 ## Metadata
 Title "242 Consulting | Operating leadership for hospitality and wellness". One description for all
 tags. Canonical https://www.242consulting.com/. og-image.jpg 1200x630 generated by
 app/og-image.jpg/route.tsx from the hero still with the mark bottom left. JSON-LD ProfessionalService,
-founder Person Kirk Bouffard, areaServed Worldwide. Theme-color #0d100e.
+founder Person Kirk Bouffard, areaServed Worldwide. Theme-color #f7f3eb.
 
 ## The mark
 app/_brand/logotype.svg and app/icon.svg are generated by scripts/generate-marks.mjs from Cormorant

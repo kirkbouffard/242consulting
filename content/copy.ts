@@ -91,7 +91,7 @@ export const advisory = {
   note: "Weekly leadership session. Direct access between sessions. Monthly priorities. On-site scoped separately.",
   // Renders only once the file exists in /public/images. Until then the column
   // stays typographic, the same way the venue tiles degrade.
-  portrait: { file: "kirk.jpg", alt: "Kirk Bouffard", caption: "Kirk Bouffard, founder" },
+  portrait: { file: "kirk.webp", alt: "Kirk Bouffard", caption: "Kirk Bouffard, founder" },
   // Bespoke and conversation-led. No retainer pricing on the page by design.
   cta: { label: "Start a conversation", subject: "Fractional advisory" },
 };

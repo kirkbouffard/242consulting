@@ -26,6 +26,15 @@ const sources = {
   "contact.webp": "savaya-cube-official.webp",
 };
 
+// Portraits are cropped 4:5 rather than 3:2, and graded warm so a neutral
+// studio grey sits in the ivory/espresso/bronze palette instead of fighting it.
+// Drop the untouched headshot in as the source; this does the rest.
+const portraits = {
+  "kirk.webp": "kirk-source.jpg",
+};
+
+const PORTRAIT_TINT = { r: 255, g: 241, b: 224 };
+
 await fs.mkdir(imagesDir, { recursive: true });
 
 const built = [];
@@ -58,6 +67,28 @@ for (const [target, source] of Object.entries(sources)) {
   built.push(target);
 }
 
+for (const [target, source] of Object.entries(portraits)) {
+  const sourcePath = path.join(imagesDir, source);
+  const targetPath = path.join(imagesDir, target);
+
+  if (!existsSync(sourcePath)) {
+    if (existsSync(targetPath)) built.push(target);
+    else skipped.push(`${target} (no ${source})`);
+    continue;
+  }
+
+  const temp = `${targetPath}.tmp`;
+  await sharp(sourcePath)
+    // attention keeps the face in frame rather than trusting the centre
+    .resize(1000, 1250, { fit: "cover", position: sharp.strategy.attention })
+    .modulate({ saturation: 0.5 })
+    .tint(PORTRAIT_TINT)
+    .webp({ quality: 82 })
+    .toFile(temp);
+  await fs.rename(temp, targetPath);
+  built.push(target);
+}
+
 // Poster for the hero video, only where a hero still exists.
 const heroPath = path.join(imagesDir, "hero.webp");
 if (existsSync(heroPath)) {
@@ -69,8 +100,13 @@ if (existsSync(heroPath)) {
 
 const blur = {};
 for (const target of built) {
-  const buffer = await sharp(path.join(imagesDir, target))
-    .resize(16, 10, { fit: "cover" })
+  const file = path.join(imagesDir, target);
+  // Match the placeholder to the asset's own shape; a 16x10 blur behind a 4:5
+  // portrait stretches into a smear.
+  const meta = await sharp(file).metadata();
+  const height = Math.max(1, Math.round((16 * (meta.height ?? 10)) / (meta.width ?? 16)));
+  const buffer = await sharp(file)
+    .resize(16, height, { fit: "cover" })
     .webp({ quality: 20 })
     .toBuffer();
   blur[target] = `data:image/webp;base64,${buffer.toString("base64")}`;
