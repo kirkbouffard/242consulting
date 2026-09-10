@@ -128,10 +128,10 @@ export const work = {
       span: "wide",
     },
     {
-      place: "Bahamas venue",
+      place: "Aura Nightclub, Atlantis Bahamas",
       role: "",
-      url: "",
-      image: "/images/bahamas.webp",
+      url: "https://www.atlantisbahamas.com/things-to-do/entertainment/aura-nightclub",
+      image: "/images/aura.webp",
       span: "tall",
     },
     {

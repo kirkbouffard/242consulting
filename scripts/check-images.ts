@@ -23,7 +23,7 @@ const RATIO_TOLERANCE = 0.02;
 const REQUIRED = ["hero.webp", "contact.webp"];
 const VENUE_TILES = [
   "atlantis.webp",
-  "bahamas.webp",
+  "aura.webp",
   "celavi.webp",
   "savaya.webp",
   "zumana.webp",
