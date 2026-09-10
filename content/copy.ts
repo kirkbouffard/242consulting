@@ -16,10 +16,9 @@ export const site = {
 export const nav = {
   wordmark: site.name,
   links: [
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
+    { label: "Owners", href: "#advisory" },
+    { label: "Operators", href: "#circle" },
     { label: "Venues", href: "#venues" },
-    { label: "Process", href: "#process" },
     { label: "Contact", href: "#contact" },
   ],
   cta: "Book a Call",
@@ -37,22 +36,40 @@ export const hero = {
   alt: "Savaya Bali hospitality venue",
 };
 
-// Logos render only where a normalized mark exists in /public/images/logos.
-// Where it does not, the strip falls back to the venue name as a link.
-export const logoStrip = {
-  eyebrow: "Selected experience",
-  venues: [
-    { name: "Atlantis Paradise Island", file: "atlantis-mono.png", url: "https://www.atlantisbahamas.com/" },
-    { name: "CÉ LA VI", file: "celavi-mono.png", url: "https://celavi.com/" },
-    { name: "Savaya Bali", file: "savaya-mono.png", url: "https://www.savaya.com/" },
-    { name: "Desa Kitsuné", file: "kitsune-mono.png", url: "https://desakitsune.com/" },
+// The fork the whole site turns on. Owners go to bespoke advisory; operators
+// buy the Circle. Each card carries its own route and nothing else.
+export const choice = {
+  id: "choose",
+  eyebrow: "Two ways to work together",
+  cards: [
+    {
+      id: "owners",
+      label: "For owners",
+      title: "Fractional Advisory",
+      body: "Senior advisory for founders, owners and developers across operations, design, guest experience and development.",
+      meta: "Bespoke scope, agreed in conversation.",
+      cta: "Start a conversation",
+      tone: "bespoke",
+    },
+    {
+      id: "operators",
+      label: "For operators",
+      title: "242 Circle",
+      body: "Ongoing practical support for GMs, AGMs and senior hospitality operators.",
+      meta: "$499 per month",
+      cta: "Join 242 Circle",
+      tone: "membership",
+    },
   ],
 };
 
 export const advisory = {
-  id: "services",
-  eyebrow: "Advisory",
-  heading: "The business behind the experience.",
+  id: "advisory",
+  label: "For owners",
+  eyebrow: "Fractional Advisory",
+  heading: "Senior advisory, scoped to the business.",
+  intro:
+    "Senior advisory for founders, owners and developers across operations, design, guest experience and development.",
   entries: [
     {
       title: "Operations",
@@ -67,51 +84,41 @@ export const advisory = {
       body: "The guest or member journey from arrival to return, including programming, community, and standards.",
     },
     {
-      title: "Network",
+      title: "Development",
       body: "Twenty years of relationships across hospitality, wellness, and development, opened when they move your business forward.",
     },
   ],
   note: "Weekly leadership session. Direct access between sessions. Monthly priorities. On-site scoped separately.",
+  // Renders only once the file exists in /public/images. Until then the column
+  // stays typographic, the same way the venue tiles degrade.
+  portrait: { file: "kirk.jpg", alt: "Kirk Bouffard", caption: "Kirk Bouffard, founder" },
+  // Bespoke and conversation-led. No retainer pricing on the page by design.
+  cta: { label: "Start a conversation", subject: "Fractional advisory" },
 };
 
-export const about = {
-  id: "about",
-  eyebrow: "About 242 Consulting",
-  heading: "An operator in the room when it matters.",
-  paragraphs: [
-    "Kirk Bouffard has spent more than two decades turning ambitious hospitality and wellness concepts into operating businesses across the Bahamas, Singapore, Indonesia, and beyond.",
-    "242 Consulting works with owners at the point where strategy needs to become standards, teams, reporting, and a guest experience people return for.",
+export const circle = {
+  id: "circle",
+  label: "For operators",
+  eyebrow: "242 Circle",
+  heading: "The room operators actually needed.",
+  intro: "Ongoing practical support for GMs, AGMs and senior hospitality operators.",
+  price: "$499",
+  cadence: "per month",
+  points: [
+    "Real operating problems, worked through with people carrying the same floor",
+    "Peer discussion with GMs, AGMs and senior operators",
+    "Practical hospitality insight you can use on the next shift",
+    "Direct access to experienced operators",
+    "Ongoing development, not a one-off course",
   ],
-  link: "Start a conversation",
+  included: "Group call every two weeks · WhatsApp access, 48 hour response · Session recordings",
+  // Buy now. This goes straight to Stripe, never to the contact form.
+  checkoutUrl: "https://buy.stripe.com/28EbJ33zwgG1fxW1my5sA0a",
+  cta: "Join 242 Circle",
+  note: "15 seats total. Waitlist when full.",
+  ctaNote: "Monthly, cancel anytime. Seats confirmed by email.",
 };
 
-export const process = {
-  id: "process",
-  eyebrow: "Process",
-  heading: "Clarity first. Momentum next.",
-  intro: "A focused operating rhythm that turns the biggest constraint into the next right decision.",
-  steps: [
-    {
-      number: "01",
-      title: "Diagnose",
-      body: "A direct read on the business, the guest journey, and the constraint holding growth back.",
-    },
-    {
-      number: "02",
-      title: "Prioritise",
-      body: "A short list of decisions, owners, and measures that the team can act on immediately.",
-    },
-    {
-      number: "03",
-      title: "Embed",
-      body: "Weekly leadership, practical standards, and accountability that stays useful after the engagement.",
-    },
-  ],
-};
-
-// A tile shows its photograph when the file exists in /public/images, and falls
-// back to a typographic entry when it does not. url points at the venue's own
-// site so a reader can verify the record.
 export const work = {
   id: "venues",
   eyebrow: "Track record",
@@ -169,65 +176,12 @@ export const work = {
   ],
 };
 
-// The operator side of the practice. Advisory covers owners; the Circle covers
-// the AGMs, GMs and ops leads carrying the floor.
-export const circle = {
-  id: "circle",
-  eyebrow: "For operators",
-  heading: "242 Circle.",
-  intro: "A small room for AGMs, GMs, and ops leads carrying the floor every day.",
-  // Set false to run the Circle as a single tier. Circle Plus then drops out of
-  // the section entirely.
-  showCirclePlus: false,
-  tiers: [
-    {
-      id: "circle",
-      name: "Circle",
-      price: "$499",
-      cadence: "per month",
-      seats: "",
-      checkoutUrl: "https://buy.stripe.com/28EbJ33zwgG1fxW1my5sA0a",
-      points: [
-        "Group call every two weeks",
-        "WhatsApp access, 48 hour response",
-        "Session recordings",
-      ],
-    },
-    {
-      id: "circle-plus",
-      name: "Circle Plus",
-      price: "$999",
-      cadence: "per month",
-      seats: "5 seats",
-      // No payment link yet. Falls back to the mailto enquiry.
-      checkoutUrl: "",
-      points: [
-        "Weekly group call",
-        "WhatsApp access, 24 hour response",
-        "One 30 minute 1:1 each month",
-        "One document review each month",
-      ],
-    },
-  ],
-  note: "15 seats total. Waitlist when full.",
-  cta: { label: "Request a seat", subject: "242 Circle" },
-  ctaNote: "Seats confirmed by email. Monthly, cancel anytime.",
-};
-
 // Hidden confirmation page at /welcome. Not linked from the site, noindex.
 export const welcome = {
   eyebrow: "242 Circle",
   heading: "You're in.",
   body: "Join the WhatsApp group below. The next call is [DATE]. Recordings and the question bank live in the group description.",
   link: "Join the WhatsApp group",
-};
-
-// Leave quote empty to omit the testimonial section entirely.
-export const testimonial = {
-  eyebrow: "What clients value",
-  quote:
-    "The difference was not another strategy deck. It was having someone who could see the operating reality and move the room.",
-  credit: "Founder · Southeast Asia hospitality platform",
 };
 
 export const contact = {

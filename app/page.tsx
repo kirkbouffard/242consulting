@@ -1,13 +1,10 @@
-import About from "@/components/About";
 import Advisory from "@/components/Advisory";
+import Choice from "@/components/Choice";
 import Circle from "@/components/Circle";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
-import LogoStrip from "@/components/LogoStrip";
 import Nav from "@/components/Nav";
-import Process from "@/components/Process";
-import Testimonial from "@/components/Testimonial";
 import Work from "@/components/Work";
 
 export default function Page() {
@@ -16,13 +13,10 @@ export default function Page() {
       <Nav />
       <main id="top">
         <Hero />
-        <LogoStrip />
+        <Choice />
         <Advisory />
-        <About />
-        <Process />
         <Circle />
         <Work />
-        <Testimonial />
         <Contact />
       </main>
       <Footer />
