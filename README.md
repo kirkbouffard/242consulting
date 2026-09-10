@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 242 Consulting
 
-## Getting Started
+Single page marketing site for Kirk Bouffard's fractional advisory practice.
+Next.js App Router, TypeScript, Tailwind v4, no component library, no CMS, no forms.
 
-First, run the development server:
+Project rules live in `CLAUDE.md`. Read that first.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Scripts
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Local dev server |
+| `npm run build` | Runs both gates, then `next build` |
+| `npm run check:images` | Image gate: WebP, under 350KB, 3:2, min 2400px wide |
+| `npm run check:dashes` | Fails on any em dash or en dash in source |
+| `npm run lint` | ESLint |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+`prebuild` runs both gates, so `next build` cannot ship a bad asset.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Copy
 
-## Learn More
+All copy is canonical in `content/copy.ts`. Components render those strings
+verbatim. Edit copy there, never in JSX.
 
-To learn more about Next.js, take a look at the following resources:
+## Images
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Drop WebP files in `public/images`. Expected names:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `hero.webp`, `contact.webp` (full bleed backgrounds)
+- `atlantis.webp`, `bahamas.webp`, `celavi.webp`, `savaya.webp`, `desa-kitsune.webp` (track record grid)
 
-## Deploy on Vercel
+A venue tile is dropped from the grid when its file is absent. The hero and
+contact sections fall back to flat surface color. No stand-in art is generated.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Open graph
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`/og-image.jpg` is generated at build time by `app/og-image.jpg/route.tsx`.
+It composites the hero still with the wordmark bottom left, renders through
+`next/og`, and converts to JPEG with sharp. The display face is self hosted at
+`app/_fonts/CormorantGaramond-Light.woff`.
+
+## Before launch
+
+- Add the photographs listed above.
+- Fill in `role` for each tile in `content/copy.ts`, or leave blank to show place only.
+- Set `site.linkedin` in `content/copy.ts` to render the LinkedIn link.
