@@ -178,7 +178,7 @@ export const circle = {
   intro: "A small room for AGMs, GMs, and ops leads carrying the floor every day.",
   // Set false to run the Circle as a single tier. Circle Plus then drops out of
   // the section entirely.
-  showCirclePlus: true,
+  showCirclePlus: false,
   tiers: [
     {
       id: "circle",
