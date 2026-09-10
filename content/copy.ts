@@ -121,7 +121,18 @@ export const work = {
     { place: "Atlantis", role: "", image: "/images/atlantis.webp", span: "wide" },
     { place: "Bahamas venue", role: "", image: "/images/bahamas.webp", span: "tall" },
     { place: "CÉ LA VI", role: "", image: "/images/celavi.webp", span: "regular" },
-    { place: "Savaya", role: "", image: "/images/savaya.webp", span: "regular" },
+    {
+      place: "Savaya",
+      role: "Head of Operations across the group's venue portfolio. Opened Zumana, Kuta, August 2026.",
+      image: "/images/savaya.webp",
+      span: "regular",
+    },
+    {
+      place: "Zumana, Sunset Bay Kuta",
+      role: "Savaya Group. Commissioning and opening, August 2026. 35,000 sq ft beachfront destination.",
+      image: "/images/zumana.webp",
+      span: "wide",
+    },
     { place: "Desa Kitsuné", role: "", image: "/images/desa-kitsune.webp", span: "wide" },
   ],
   stats: [
