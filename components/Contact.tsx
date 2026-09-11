@@ -5,7 +5,7 @@ import { mailto } from "@/lib/assets";
 
 export default function Contact() {
   return (
-    <section id={contact.id} className="section contact-section">
+    <section id={contact.id} className="section section-ivory-3 contact-section">
       <Reveal className="content-width contact-copy">
         <p className="eyebrow">{contact.eyebrow}</p>
         <h2>{contact.heading}</h2>

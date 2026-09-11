@@ -10,7 +10,7 @@ export default function Advisory() {
   const hasAnchor = assetExists(`/images/${advisory.anchor.file}`);
 
   return (
-    <section id={advisory.id} className="section">
+    <section id={advisory.id} className="section section-ivory-3">
       <div className="content-width offer-grid">
         <Reveal className="offer-heading">
           {hasAnchor ? (

@@ -4,11 +4,14 @@
   /* warm ivory ground, deep espresso ink, muted bronze accent */
   --ivory: #f7f3eb;
   --ivory-2: #efe9dd;
+  --ivory-3: #ede6d8;
   --espresso: #2a211b;
   --espresso-2: #574a3f;
   --bronze: #9c7c4f;
   --bronze-ink: #7a5e32;
-  --rule: #e0d7c7;
+  --rule: #cfc2ab;
+  /* the section rule has to keep reading once the ground darkens */
+  --rule-deep: #c2b393;
 }
 
 @layer base {
@@ -85,6 +88,30 @@ h3 {
   background: var(--ivory);
   color: var(--espresso);
   border-bottom: 1px solid var(--rule);
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+:root[data-scrolled="true"] .site-nav {
+  background: rgb(42 33 27 / 0.96);
+  color: var(--ivory);
+  border-bottom-color: rgb(247 243 235 / 0.18);
+}
+
+:root[data-scrolled="true"] .nav-links a {
+  color: var(--ivory);
+}
+
+:root[data-scrolled="true"] .nav-links a:hover {
+  color: var(--bronze-soft, #c9ad84);
+}
+
+:root[data-scrolled="true"] .nav-cta {
+  background: var(--ivory);
+  color: var(--espresso);
+}
+
+:root[data-scrolled="true"] .nav-cta:hover {
+  background: var(--bronze-soft, #c9ad84);
 }
 
 .nav-mark {
@@ -189,6 +216,7 @@ h3 {
 /* ---------- hero ---------- */
 
 .hero-section {
+  background: var(--ivory);
   padding-block: 168px 108px;
 }
 
@@ -220,8 +248,17 @@ h3 {
   border-top: 1px solid var(--rule);
 }
 
-.section-tint {
+.section-ivory {
+  background: var(--ivory);
+}
+
+.section-ivory-2 {
   background: var(--ivory-2);
+}
+
+.section-ivory-3 {
+  background: var(--ivory-3);
+  border-top-color: var(--rule-deep);
 }
 
 /* ---------- owners / operators fork ---------- */
@@ -239,14 +276,10 @@ h3 {
   flex-direction: column;
   gap: 12px;
   padding: 40px;
-  background: var(--ivory);
+  /* one step darker than the section it sits on, no shadow */
+  background: var(--ivory-3);
   border: 1px solid var(--rule);
   border-radius: 4px;
-}
-
-/* the membership side is the one you can buy, so it carries the accent */
-.choice-membership {
-  border-color: var(--bronze);
 }
 
 .choice-label {
@@ -563,10 +596,6 @@ h3 {
 
 /* ---------- contact ---------- */
 
-.contact-section {
-  background: var(--ivory-2);
-}
-
 .contact-copy h2 {
   margin: 16px 0 18px;
   max-width: 18ch;
@@ -601,8 +630,25 @@ h3 {
 .site-footer {
   border-top: 1px solid var(--rule);
   padding-block: 24px;
-  color: var(--espresso-2);
+  background: var(--espresso);
+  color: var(--ivory);
   font-size: 13px;
+}
+
+.footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+}
+
+.footer-row a {
+  border-bottom: 1px solid rgb(247 243 235 / 0.4);
+}
+
+.footer-row a:hover {
+  border-bottom-color: var(--ivory);
 }
 
 /* ---------- welcome ---------- */
@@ -909,10 +955,10 @@ h3 {
   align-items: center;
   justify-content: center;
   gap: 0;
-  background: rgb(18 17 16 / 0.94);
+  background: rgb(42 33 27 / 0.96);
   backdrop-filter: blur(10px);
-  border-top: 1px solid rgb(236 231 219 / 0.16);
-  color: #ece7db;
+  border-top: 1px solid rgb(247 243 235 / 0.18);
+  color: var(--ivory);
   font-family: var(--font-inter), sans-serif;
   font-size: 14px;
   transform: translateY(100%);
@@ -927,13 +973,13 @@ h3 {
 
 .sticky-bar a {
   padding: 0 22px;
-  color: #ece7db;
+  color: var(--ivory);
 }
 
 .sticky-rule {
   width: 1px;
   height: 18px;
-  background: rgb(236 231 219 / 0.28);
+  background: rgb(247 243 235 / 0.3);
 }
 
 @media (max-width: 767px) {
@@ -968,4 +1014,71 @@ h3 {
   .doors-portrait {
     max-width: 260px;
   }
+}
+
+/* ---------- circle checkout ---------- */
+
+.offer-cta-stacked {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.circle-seats-note {
+  margin-top: 28px;
+}
+
+.terms-link {
+  border-bottom: 1px solid var(--bronze);
+}
+
+.terms-link:hover {
+  color: var(--bronze-ink);
+}
+
+/* ---------- terms page ---------- */
+
+.terms-page {
+  display: grid;
+  place-items: start center;
+  min-height: 100svh;
+  padding-block: 148px 96px;
+  background: var(--ivory);
+}
+
+.terms-copy {
+  width: min(100% - 48px, 680px);
+}
+
+.terms-copy h1 {
+  margin: 16px 0 18px;
+  font-size: clamp(34px, 4vw, 56px);
+  line-height: 1.06;
+}
+
+.terms-intro {
+  margin: 0 0 40px;
+  max-width: 56ch;
+  color: var(--espresso-2);
+}
+
+.terms-list {
+  margin: 0 0 40px;
+}
+
+.terms-item {
+  border-top: 1px solid var(--rule);
+  padding: 22px 0;
+}
+
+.terms-item dt {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+.terms-item dd {
+  margin: 8px 0 0;
+  max-width: 62ch;
+  color: var(--espresso-2);
 }

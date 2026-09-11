@@ -10,7 +10,7 @@ export default function Work() {
   }));
 
   return (
-    <section id={work.id} className="section section-surface">
+    <section id={work.id} className="section section-ivory">
       <div className="content-width">
         <Reveal className="work-intro">
           <p className="eyebrow">{work.eyebrow}</p>

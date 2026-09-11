@@ -126,6 +126,8 @@ export const circle = {
   anchor: { file: "door-operators.webp", alt: "242 Circle" },
   heading: "The room operators actually needed.",
   intro: "Ongoing practical support for GMs, AGMs and senior hospitality operators.",
+  // Checkout is open. The CTA goes straight to Stripe with nothing in the way.
+  buyNow: true,
   price: "$499",
   cadence: "per month",
   points: [
@@ -141,7 +143,8 @@ export const circle = {
   checkoutUrl: "https://buy.stripe.com/28EbJ33zwgG1fxW1my5sA0a",
   cta: "Join 242 Circle",
   note: "15 seats total. Waitlist when full.",
-  ctaNote: "Replies within 24 hours · Payments via Stripe",
+  ctaNote: "Secure checkout via Stripe. Monthly, cancel anytime. Seats confirmed in order of payment.",
+  termsLabel: "Terms",
   crossLink: { text: "Own the venue? See Retained.", href: "#owners" },
   faq: [
     {
@@ -150,7 +153,7 @@ export const circle = {
     },
     {
       q: "What happens on the call?",
-      a: "You bring the situation, we work it live. Recorded, so you can go back to it.",
+      a: "You bring the situation, the group works it live. Recorded for members only.",
     },
     {
       q: "How do I cancel?",
@@ -159,12 +162,47 @@ export const circle = {
   ],
 };
 
-// Restored and moved under the Retained accordion. Leave quote empty to omit.
+// Restored and moved under the Retained accordion. The slot and its styling
+// stay; set showTestimonial true once the quote carries a named attribution.
+// An anonymous quote on a page with no price is worth less than no quote.
 export const testimonial = {
+  showTestimonial: false,
   eyebrow: "What clients value",
   quote:
     "The difference was not another strategy deck. It was having someone who could see the operating reality and move the room.",
   credit: "Founder · Southeast Asia hospitality platform",
+};
+
+// Plain language Circle terms. Linked from the Circle block and the footer,
+// kept out of search.
+export const terms = {
+  id: "terms",
+  eyebrow: "242 Circle",
+  heading: "Terms.",
+  intro: "What you are agreeing to when you join. No small print anywhere else.",
+  points: [
+    {
+      title: "Billing",
+      body: "$499 per month, charged monthly through Stripe from the date you join.",
+    },
+    {
+      title: "Cancelling",
+      body: "Cancel yourself from the Stripe customer portal, any time. No notice period and no exit fee.",
+    },
+    {
+      title: "When access ends",
+      body: "At the close of the month you have paid for. Nothing is prorated and nothing is clawed back.",
+    },
+    {
+      title: "Recordings",
+      body: "Calls are recorded for members only and deleted after 30 days.",
+    },
+    {
+      title: "Keeping the room closed",
+      body: "Recordings and anything shared in the group stay in the group. No redistribution, inside your company or outside it.",
+    },
+  ],
+  back: "Back to 242 Consulting",
 };
 
 // Fixed bottom bar under 768px, after the hero scrolls away.
@@ -254,4 +292,5 @@ export const contact = {
 
 export const footer = {
   line: "242 Consulting · © 2026 · Hospitality and wellness operator advisory",
+  termsLabel: "Terms",
 };

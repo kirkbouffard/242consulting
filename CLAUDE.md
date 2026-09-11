@@ -21,8 +21,20 @@ Next.js 16 App Router, TypeScript, Tailwind v4, next/image, next/font (Cormorant
 - No hotlinked assets.
 
 ## Palette
-Warm ivory ground, not the former dark ink. ivory #f7f3eb, ivory-2 #efe9dd (tinted sections),
-espresso #2a211b (ink), espresso-2 #574a3f (muted body), rule #e0d7c7.
+Warm ivory ground, not the former dark ink. ivory #f7f3eb, ivory-2 #efe9dd, ivory-3 #ede6d8,
+espresso #2a211b (ink), espresso-2 #574a3f (muted body), rule #cfc2ab, rule-deep #c2b393 on ivory-3.
+
+Sections alternate: hero and #venues on ivory, #choose and #operators on ivory-2, #owners and
+#contact on ivory-3. Footer is espresso with ivory text. The nav takes the same espresso at 96
+percent once the page scrolls, driven by a data-scrolled flag that ScrollState sets on the root, so
+Nav can stay a server component and keep reading the logotype off disk.
+
+Two doors cards sit on ivory-3, one step darker than their ivory-2 section, 1px rule border, no
+shadow. The buyable side is now marked by its solid button and the price, not by a bronze border.
+
+Every text pair clears 4.5:1, the tightest being bronze-ink on ivory-3 at 4.87:1. The section rules
+do NOT clear 3:1 and are not meant to: they are decorative dividers, not UI boundaries. Reaching
+3:1 would need roughly #9c8767, dark enough to band the page.
 Bronze is split by job: #9c7c4f for rules, borders and hovers, #7a5e32 for small text. The 11px
 uppercase eyebrows fail contrast on ivory at the lighter bronze, so text always takes the darker one.
 No grain overlay.
@@ -45,9 +57,10 @@ in conversation. Operators buy the Circle outright.
 
 The two offers are called the doors. Owners: label "For owners", title "Retained", anchored at
 #owners. No price anywhere. Only action is a mailto, "Start a conversation".
-Operators: label "For operators", title "242 Circle", anchored at #operators. The monthly price leads
-the column and every "Join 242 Circle" button goes straight to the Stripe link. Never to the contact
-form, never behind a discovery call. The chooser card and the Circle section share that label, so
+Operators: label "For operators", title "242 Circle", anchored at #operators. circle.buyNow is true:
+the monthly price leads the column and every "Join 242 Circle" button goes straight to the Stripe
+link in a new tab. Never to the contact form, never behind a discovery call. The seat cap sits above
+the CTA, the checkout note and Terms link below it. The chooser card and the Circle section share that label, so
 they share the destination.
 
 Each door carries, in order: an optional 16:9 anchor image, heading, list, accordion, CTA with its
@@ -70,7 +83,17 @@ Copy is canonical in /content/copy.ts. Do not paraphrase it. Sections:
 6. Venues (#venues): 12 column grid, six tiles, each name linking to the venue's own site.
    Stats: 20+ years, $45M+ P&L, 5 markets.
 7. Contact (#contact): Calendly pill and mailto, LinkedIn.
-8. Footer.
+8. Footer: line plus a Terms link.
+
+/terms is a noindex route carrying the Circle terms in plain language. Linked from the Circle block
+and the footer.
+
+The testimonial is gated behind testimonial.showTestimonial, default false. The slot and styling
+stay. Turn it on when the quote carries a named attribution: anonymous praise on a page with no
+price does less than nothing.
+
+The page claims 15 seats and checkout is open, so the cap is only real if the Stripe payment link
+carries a purchase limit of 15. That is a manual step on the Stripe side, recorded in README.md.
 
 ## Accordion and sticky bar
 One accordion per door, after the list and before the CTA. The trigger is a real button inside an h4,

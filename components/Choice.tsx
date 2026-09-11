@@ -10,7 +10,7 @@ export default function Choice() {
   const hasPortrait = assetExists(`/images/${choice.portrait.file}`);
 
   return (
-    <section id={choice.id} className="section section-tint">
+    <section id={choice.id} className="section section-ivory-2">
       <div className="content-width">
         <Reveal className="doors-head">
           {hasPortrait ? (

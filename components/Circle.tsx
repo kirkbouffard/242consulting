@@ -11,7 +11,7 @@ export default function Circle() {
   const hasAnchor = assetExists(`/images/${circle.anchor.file}`);
 
   return (
-    <section id={circle.id} className="section section-tint">
+    <section id={circle.id} className="section section-ivory-2">
       <div className="content-width offer-grid">
         <Reveal className="offer-heading">
           {hasAnchor ? (
@@ -46,7 +46,9 @@ export default function Circle() {
 
           <Accordion items={circle.faq} />
 
-          <div className="offer-cta">
+          <p className="offer-note circle-seats-note">{circle.note}</p>
+
+          <div className="offer-cta offer-cta-stacked">
             <TrackedLink
               className="button button-solid"
               href={circle.checkoutUrl}
@@ -55,13 +57,16 @@ export default function Circle() {
             >
               {circle.cta}
             </TrackedLink>
-            <p className="cta-note">{circle.ctaNote}</p>
+            <p className="cta-note">
+              {circle.ctaNote}{" "}
+              <a className="terms-link" href="/terms">
+                {circle.termsLabel}
+              </a>
+            </p>
           </div>
           <p className="cross-link">
             <a href={circle.crossLink.href}>{circle.crossLink.text}</a>
           </p>
-
-          <p className="offer-note">{circle.note}</p>
         </Reveal>
       </div>
     </section>

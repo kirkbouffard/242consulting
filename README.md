@@ -17,6 +17,17 @@ Project rules live in `CLAUDE.md`. Read that first.
 
 `prebuild` runs both gates, so `next build` cannot ship a bad asset.
 
+## Manual steps, not enforced by code
+
+**Cap the Circle payment link at 15 purchases.** The page advertises 15 seats and
+checkout is open, so nothing in this repo stops a sixteenth person paying. Set the
+limit on the Stripe side: Stripe Dashboard, Payment links, the 242 Circle link,
+then set "Limit the number of payments" to 15. Until that is set, the seat cap on
+the page is a claim the checkout will not honour.
+
+Set the same limit again if the payment link is ever recreated. The link lives in
+`content/copy.ts` as `circle.checkoutUrl`.
+
 ## The mark
 
 `app/_brand/logotype.svg` is the logotype: Cormorant Garamond outlines converted
