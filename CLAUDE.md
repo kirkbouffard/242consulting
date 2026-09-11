@@ -92,8 +92,9 @@ The testimonial is gated behind testimonial.showTestimonial, default false. The 
 stay. Turn it on when the quote carries a named attribution: anonymous praise on a page with no
 price does less than nothing.
 
-The page claims 15 seats and checkout is open, so the cap is only real if the Stripe payment link
-carries a purchase limit of 15. That is a manual step on the Stripe side, recorded in README.md.
+The page says 15 seats and the Stripe link is deliberately uncapped, so the cap is a statement of
+intent rather than something the checkout enforces. Do not "fix" this in code. See README.md for how
+to close it on the Stripe side once members approach 15.
 
 ## Accordion and sticky bar
 One accordion per door, after the list and before the CTA. The trigger is a real button inside an h4,
