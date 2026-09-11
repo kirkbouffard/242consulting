@@ -17,7 +17,8 @@ Next.js 16 App Router, TypeScript, Tailwind v4, next/image, next/font (Cormorant
 - Rendered images live in /public/images as WebP, under 350KB, 3:2. Source photography sits alongside them and is ignored by the gate. Enforced by /scripts/check-images.ts in prebuild.
 - The founder portrait and the door anchors are the exceptions to 3:2. Portrait is 4:5, anchors 16:9.
   The portrait takes the same treatment as the venue tiles, which is none. Crop only.
-- The founder portrait is the one exception to 3:2. It is cropped 4:5 by the portraits map in /scripts/prepare-images.mjs. Drop the untouched headshot at /public/images/kirk-source.jpg; the build crops, grades and generates its blur. It is outside the check-images gate by design.
+  Drop the untouched headshot at /public/images/kirk-source.jpg; the build crops it and generates its
+  blur. Both sit outside the check-images gate by design.
 - No hotlinked assets.
 
 ## Palette
@@ -45,8 +46,9 @@ clamp(30px, 3.4vw, 46px); circle price clamp(48px, 6vw, 72px); advisory h3 24px;
 body Inter 16px/1.65; eyebrow 11px 0.2em bronze-ink.
 
 ## Layout and motion
-Max content 1160px. Section padding 112px desktop, 80px mobile, separated by 1px rules with
-alternating ivory and ivory-2 grounds. Fixed ivory nav 76px, scroll-margin-top 88px on sections.
+Max content 1160px. Section padding 112px desktop, 80px mobile, separated by 1px rules with the
+three alternating grounds set out under Palette. Fixed ivory nav 76px, espresso once scrolled,
+scroll-margin-top 88px on sections.
 Hero and contact are sized to their content, not 100svh. Offer sections are a 5fr 7fr grid that
 collapses to one column under 960px. Fade-up on scroll 350ms 10px at threshold 0.12, disabled under
 prefers-reduced-motion. Rounded corners: 4px images and cards, 999px pills.
@@ -60,8 +62,8 @@ The two offers are called the doors. Owners: label "For owners", title "Retained
 Operators: label "For operators", title "242 Circle", anchored at #operators. circle.buyNow is true:
 the monthly price leads the column and every "Join 242 Circle" button goes straight to the Stripe
 link in a new tab. Never to the contact form, never behind a discovery call. The seat cap sits above
-the CTA, the checkout note and Terms link below it. The chooser card and the Circle section share that label, so
-they share the destination.
+the CTA, the checkout note and Terms link below it. The chooser card and the Circle section share
+that label, so they share the destination.
 
 Each door carries, in order: an optional 16:9 anchor image, heading, list, accordion, CTA with its
 note, then a cross link to the other door. The Retained door also carries the testimonial, directly
@@ -75,9 +77,9 @@ Copy is canonical in /content/copy.ts. Do not paraphrase it. Sections:
 2. Hero: eyebrow, h1, sub, "Book a Call" pill and "View the work".
 3. Two doors (#choose): h2 with the founder portrait to its left on desktop and above it on mobile,
    then two cards, owners then operators. The operators card is the one that can be bought, so it
-   carries the bronze border and the solid button.
+   carries the solid button and the price.
 4. Retained (#owners): four entries (Operations, Design intent, Experience, Development), closing
-   note, accordion, testimonial, mailto, cross link to #operators.
+   note, accordion, testimonial slot (off by default, see below), mailto, cross link to #operators.
 5. 242 Circle (#operators): price, five focus points, what is included, "Cancel anytime. No
    contract.", accordion, Stripe button, cross link to #owners.
 6. Venues (#venues): 12 column grid, six tiles, each name linking to the venue's own site.
@@ -101,10 +103,11 @@ One accordion per door, after the list and before the CTA. The trigger is a real
 so Enter, Space and tab order come from the platform. aria-expanded and aria-controls are set, one
 panel open at a time, no chevron. Serif question 20px, Inter answer 15px secondary, 1px rules.
 
-Under 768px a 52px bar is fixed to the bottom: #121110 at 94 percent with blur, 1px top rule, Inter
-14px bone, "Owners" and "Operators" centred either side of a vertical rule. It appears once the hero
+Under 768px a 52px bar is fixed to the bottom: espresso at 96 percent with blur, 1px top rule, Inter
+14px ivory, "Owners" and "Operators" centred either side of a vertical rule. It appears once the hero
 leaves the viewport and hides again while contact is in view, where both routes are already on
-screen. It is the one place the old dark palette still appears, as deliberate contrast against ivory.
+screen. It shares its treatment with the scrolled nav and the footer, so the dark surfaces on the
+page read as one family rather than three accidents.
 
 ## Analytics
 Vercel Analytics. track() fires door_owners_click, door_operators_click, cta_retained_email,
