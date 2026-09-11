@@ -26,14 +26,12 @@ const sources = {
   "contact.webp": "savaya-cube-official.webp",
 };
 
-// Portraits are cropped 4:5 rather than 3:2, and graded warm so a neutral
-// studio grey sits in the ivory/espresso/bronze palette instead of fighting it.
+// Portraits are cropped 4:5 rather than 3:2. Treatment matches the venue
+// tiles, which carry none, so the crop is the only change made here.
 // Drop the untouched headshot in as the source; this does the rest.
 const portraits = {
   "kirk.webp": "kirk-source.jpg",
 };
-
-const PORTRAIT_TINT = { r: 255, g: 241, b: 224 };
 
 await fs.mkdir(imagesDir, { recursive: true });
 
@@ -81,8 +79,6 @@ for (const [target, source] of Object.entries(portraits)) {
   await sharp(sourcePath)
     // attention keeps the face in frame rather than trusting the centre
     .resize(1000, 1250, { fit: "cover", position: sharp.strategy.attention })
-    .modulate({ saturation: 0.5 })
-    .tint(PORTRAIT_TINT)
     .webp({ quality: 82 })
     .toFile(temp);
   await fs.rename(temp, targetPath);

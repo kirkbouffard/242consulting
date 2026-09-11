@@ -16,7 +16,8 @@ Next.js 16 App Router, TypeScript, Tailwind v4, next/image, next/font (Cormorant
 - Venue logos render only where a normalized mark exists and the working relationship is verifiable. Until then the strip carries venue names.
 - Rendered images live in /public/images as WebP, under 350KB, 3:2. Source photography sits alongside them and is ignored by the gate. Enforced by /scripts/check-images.ts in prebuild.
 - The founder portrait and the door anchors are the exceptions to 3:2. Portrait is 4:5, anchors 16:9.
-- The founder portrait is the one exception to 3:2. It is cropped 4:5 and graded warm by the portraits map in /scripts/prepare-images.mjs, so a neutral studio grey sits in the ivory palette rather than fighting it. Drop the untouched headshot at /public/images/kirk-source.jpg; the build crops, grades and generates its blur. It is outside the check-images gate by design.
+  The portrait takes the same treatment as the venue tiles, which is none. Crop only.
+- The founder portrait is the one exception to 3:2. It is cropped 4:5 by the portraits map in /scripts/prepare-images.mjs. Drop the untouched headshot at /public/images/kirk-source.jpg; the build crops, grades and generates its blur. It is outside the check-images gate by design.
 - No hotlinked assets.
 
 ## Palette
