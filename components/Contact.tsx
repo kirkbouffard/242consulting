@@ -1,4 +1,5 @@
 import Reveal from "@/components/Reveal";
+import TrackedLink from "@/components/TrackedLink";
 import { contact, site } from "@/content/copy";
 import { mailto } from "@/lib/assets";
 
@@ -18,9 +19,9 @@ export default function Contact() {
           >
             {contact.cta}
           </a>
-          <a className="email-link" href={mailto()}>
+          <TrackedLink className="email-link" href={mailto()} event="cta_contact_email">
             {site.email}
-          </a>
+          </TrackedLink>
         </div>
         <small>
           {contact.meta}

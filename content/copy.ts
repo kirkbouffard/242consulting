@@ -16,8 +16,8 @@ export const site = {
 export const nav = {
   wordmark: site.name,
   links: [
-    { label: "Owners", href: "#advisory" },
-    { label: "Operators", href: "#circle" },
+    { label: "Owners", href: "#owners" },
+    { label: "Operators", href: "#operators" },
     { label: "Venues", href: "#venues" },
     { label: "Contact", href: "#contact" },
   ],
@@ -41,15 +41,19 @@ export const hero = {
 export const choice = {
   id: "choose",
   eyebrow: "Two ways to work together",
+  heading: "Two doors.",
+  portrait: { file: "kirk.webp", alt: "Kirk Bouffard", caption: "Kirk Bouffard" },
   cards: [
     {
       id: "owners",
       label: "For owners",
-      title: "Fractional Advisory",
+      title: "Retained",
       body: "Senior advisory for founders, owners and developers across operations, design, guest experience and development.",
       meta: "Bespoke scope, agreed in conversation.",
       cta: "Start a conversation",
       tone: "bespoke",
+      href: "#owners",
+      event: "door_owners_click",
     },
     {
       id: "operators",
@@ -59,14 +63,18 @@ export const choice = {
       meta: "$499 per month",
       cta: "Join 242 Circle",
       tone: "membership",
+      href: "#operators",
+      event: "door_operators_click",
     },
   ],
 };
 
 export const advisory = {
-  id: "advisory",
+  id: "owners",
   label: "For owners",
-  eyebrow: "Fractional Advisory",
+  eyebrow: "Retained",
+  // 16:9 anchor above the heading. Omitted until the file exists.
+  anchor: { file: "door-owners.webp", alt: "Retained advisory" },
   heading: "Senior advisory, scoped to the business.",
   intro:
     "Senior advisory for founders, owners and developers across operations, design, guest experience and development.",
@@ -91,15 +99,31 @@ export const advisory = {
   note: "Weekly leadership session. Direct access between sessions. Monthly priorities. On-site scoped separately.",
   // Renders only once the file exists in /public/images. Until then the column
   // stays typographic, the same way the venue tiles degrade.
-  portrait: { file: "kirk.webp", alt: "Kirk Bouffard", caption: "Kirk Bouffard, founder" },
   // Bespoke and conversation-led. No retainer pricing on the page by design.
-  cta: { label: "Start a conversation", subject: "Fractional advisory" },
+  cta: { label: "Start a conversation", subject: "Retained advisory" },
+  ctaNote: "Replies within 24 hours",
+  crossLink: { text: "Have an AGM who should be in the room? See Circle.", href: "#operators" },
+  faq: [
+    {
+      q: "How does it start?",
+      a: "A 30-minute intro call, then a written scope within 48 hours. We start the following Monday.",
+    },
+    {
+      q: "What does a typical week look like?",
+      a: "One 60-minute session on your calendar. Between sessions, you message and get a reply within 24 hours.",
+    },
+    {
+      q: "What if it isn't working?",
+      a: "Month to month, 30 days notice either side. No exit fee.",
+    },
+  ],
 };
 
 export const circle = {
-  id: "circle",
+  id: "operators",
   label: "For operators",
   eyebrow: "242 Circle",
+  anchor: { file: "door-operators.webp", alt: "242 Circle" },
   heading: "The room operators actually needed.",
   intro: "Ongoing practical support for GMs, AGMs and senior hospitality operators.",
   price: "$499",
@@ -112,11 +136,43 @@ export const circle = {
     "Ongoing development, not a one-off course",
   ],
   included: "Group call every two weeks · WhatsApp access, 48 hour response · Session recordings",
+  terms: "Cancel anytime. No contract.",
   // Buy now. This goes straight to Stripe, never to the contact form.
   checkoutUrl: "https://buy.stripe.com/28EbJ33zwgG1fxW1my5sA0a",
   cta: "Join 242 Circle",
   note: "15 seats total. Waitlist when full.",
-  ctaNote: "Monthly, cancel anytime. Seats confirmed by email.",
+  ctaNote: "Replies within 24 hours · Payments via Stripe",
+  crossLink: { text: "Own the venue? See Retained.", href: "#owners" },
+  faq: [
+    {
+      q: "Who is it for?",
+      a: "AGMs, GMs and operations leads in hospitality and wellness who want senior counsel without it going through their boss.",
+    },
+    {
+      q: "What happens on the call?",
+      a: "You bring the situation, we work it live. Recorded, so you can go back to it.",
+    },
+    {
+      q: "How do I cancel?",
+      a: "From your Stripe customer portal, any time. Access ends at the close of the paid month.",
+    },
+  ],
+};
+
+// Restored and moved under the Retained accordion. Leave quote empty to omit.
+export const testimonial = {
+  eyebrow: "What clients value",
+  quote:
+    "The difference was not another strategy deck. It was having someone who could see the operating reality and move the room.",
+  credit: "Founder · Southeast Asia hospitality platform",
+};
+
+// Fixed bottom bar under 768px, after the hero scrolls away.
+export const sticky = {
+  links: [
+    { label: "Owners", href: "#owners", event: "sticky_owners_click" },
+    { label: "Operators", href: "#operators", event: "sticky_operators_click" },
+  ],
 };
 
 export const work = {

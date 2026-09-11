@@ -758,3 +758,214 @@ h3 {
   color: var(--espresso-2);
   font-size: 13px;
 }
+
+/* ---------- two doors head ---------- */
+
+.doors-head {
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  gap: 40px;
+  align-items: end;
+  margin-bottom: 40px;
+}
+
+.doors-portrait {
+  margin: 0;
+}
+
+.doors-portrait .image-placeholder {
+  aspect-ratio: 4 / 5;
+}
+
+.doors-portrait figcaption {
+  margin-top: 12px;
+  color: var(--espresso-2);
+  font-size: 13px;
+}
+
+.doors-title h2 {
+  margin: 16px 0 0;
+  font-size: clamp(30px, 3.6vw, 52px);
+  line-height: 1.08;
+}
+
+.choice-card h3 {
+  margin: 0;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1.1;
+}
+
+/* ---------- door anchor image ---------- */
+
+.door-anchor {
+  margin-bottom: 24px;
+}
+
+.door-anchor .image-placeholder {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+}
+
+/* ---------- accordion ---------- */
+
+.accordion {
+  margin-top: 32px;
+  border-top: 1px solid var(--rule);
+}
+
+.accordion-item {
+  border-bottom: 1px solid var(--rule);
+}
+
+.accordion-heading {
+  margin: 0;
+}
+
+.accordion-trigger {
+  display: block;
+  width: 100%;
+  padding: 20px 0;
+  border: 0;
+  background: none;
+  color: var(--espresso);
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.3;
+  text-align: left;
+  cursor: pointer;
+}
+
+.accordion-trigger:hover {
+  color: var(--bronze-ink);
+}
+
+.accordion-panel p {
+  margin: 0;
+  padding: 0 0 20px;
+  max-width: 62ch;
+  color: var(--espresso-2);
+  font-size: 15px;
+}
+
+/* ---------- testimonial ---------- */
+
+.testimonial {
+  margin-top: 36px;
+  border-left: 1px solid var(--bronze);
+  padding-left: 24px;
+}
+
+.testimonial blockquote {
+  max-width: 52ch;
+  margin: 14px 0 12px;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 300;
+  line-height: 1.18;
+}
+
+.testimonial-credit {
+  margin: 0;
+  color: var(--espresso-2);
+  font-size: 13px;
+}
+
+/* ---------- cta notes and cross links ---------- */
+
+.cta-note,
+.cross-link {
+  margin: 0;
+  color: var(--espresso-2);
+  font-size: 13px;
+}
+
+.cross-link {
+  margin-top: 16px;
+}
+
+.cross-link a {
+  border-bottom: 1px solid var(--bronze);
+}
+
+.cross-link a:hover {
+  color: var(--bronze-ink);
+}
+
+.circle-terms {
+  margin: 10px 0 0;
+  color: var(--espresso-2);
+  font-size: 14px;
+}
+
+/* ---------- mobile sticky bar ---------- */
+
+.sticky-bar {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 40;
+  display: none;
+  height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: rgb(18 17 16 / 0.94);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgb(236 231 219 / 0.16);
+  color: #ece7db;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 14px;
+  transform: translateY(100%);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  opacity: 0;
+}
+
+.sticky-bar span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.sticky-bar a {
+  padding: 0 22px;
+  color: #ece7db;
+}
+
+.sticky-rule {
+  width: 1px;
+  height: 18px;
+  background: rgb(236 231 219 / 0.28);
+}
+
+@media (max-width: 767px) {
+  .sticky-bar {
+    display: flex;
+  }
+
+  .sticky-bar[data-shown="true"] {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* keep the footer clear of the bar */
+  .site-footer {
+    padding-bottom: 76px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sticky-bar {
+    transition: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .doors-head {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .doors-portrait {
+    max-width: 260px;
+  }
+}

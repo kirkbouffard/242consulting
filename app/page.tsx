@@ -5,6 +5,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Nav from "@/components/Nav";
+import StickyBar from "@/components/StickyBar";
 import Work from "@/components/Work";
 
 export default function Page() {
@@ -20,6 +21,7 @@ export default function Page() {
         <Contact />
       </main>
       <Footer />
+      <StickyBar />
     </>
   );
 }
