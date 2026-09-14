@@ -708,9 +708,16 @@ h3 {
   border-right: 0;
 }
 
+/* The right column is type alone until hero.webp lands, so the numbers carry
+   it against an 86px headline. 46px is the ceiling, not a preference: the
+   middle cell has 118px of clear width and "$45M+" measures 159px at 64px, so
+   anything past 47px runs the number through the divider and into "3". Going
+   bigger needs the column widened or the three cells sized to their content,
+   which is a layout decision, not a type one. Back down when the photograph
+   returns. */
 .stats strong {
   font-family: var(--font-cormorant), Georgia, serif;
-  font-size: 38px;
+  font-size: 46px;
   font-weight: 300;
   line-height: 1;
 }

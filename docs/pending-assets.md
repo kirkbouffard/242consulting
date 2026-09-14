@@ -57,15 +57,29 @@ cmp public/images/hero.webp public/images/savaya.webp && echo "IDENTICAL, ask Ki
 
 Raise it with Kirk rather than shipping it.
 
+## What the page does without them
+
+The site shipped to production without any of these. Two things were changed to make that read as a
+choice rather than as a page waiting on assets, and both change back when the files land.
+
+**The logo strip is unmounted.** With no marks it rendered as a labelled empty band, and its
+typographic fallback would have repeated the same four venue names the track record lists 3,000px
+further down. `components/LogoStrip.tsx` and its CSS are still in the tree, untouched and unused.
+Restoring it is two lines in `app/page.tsx`: the import, and `<LogoStrip />` between `<Hero />` and
+`<Choice />`. Do that when all four `-mono.png` files exist, not before: the strip is all or nothing
+by design and three of four falls back to names.
+
+**The hero stats were scaled up** from 38px to 46px to carry the right column alone. 46px is the
+ceiling at the current layout, not a preference. The middle cell has 118px of clear width and
+"$45M+" measures 159px at 64px, so anything past 47px runs the number through the divider and into
+"3". When `hero.webp` lands it takes the top of that column and the numbers go back down.
+
 ## What each one does on arrival
 
 `hero.webp` fills the hero's right column above the stats. It is the only image on the page that
 carries `priority`, so it is the LCP candidate: check LCP stays under 2.5s once it lands.
 
 The four mono marks restore the logo strip below the hero, under the label "Selected experience".
-The strip is all or nothing by design, in `components/LogoStrip.tsx`: it renders marks only when
-every one of them exists, and otherwise carries the venue names as type. Three of four leaves the
-names in place.
 
 The venue photographs attach by filename through `assetExists` in `lib/assets.ts`. Nothing needs
 wiring. `components/Work.tsx` reads `files` off each entry in `content/copy.ts`, filters to the

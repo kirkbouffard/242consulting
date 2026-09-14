@@ -5,7 +5,6 @@ import Circle from "@/components/Circle";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
-import LogoStrip from "@/components/LogoStrip";
 import Nav from "@/components/Nav";
 import ScrollState from "@/components/ScrollState";
 import StickyBar from "@/components/StickyBar";
@@ -17,7 +16,6 @@ export default function Page() {
       <Nav />
       <main id="top">
         <Hero />
-        <LogoStrip />
         <Choice />
         <Advisory />
         <Circle />

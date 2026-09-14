@@ -45,7 +45,8 @@ No grain overlay.
 
 ## Type scale
 h1 clamp(46px, 6vw, 88px) lh 1.02; section h2 clamp(30px, 3.6vw, 52px) lh 1.08; offer title
-clamp(30px, 3.4vw, 46px); circle price clamp(48px, 6vw, 72px); advisory h3 24px; stats 46px;
+clamp(30px, 3.4vw, 46px); circle price clamp(48px, 6vw, 72px); advisory h3 24px;
+stats 46px, which is the ceiling: "$45M+" fills the middle cell's 118px at that size;
 body Inter 16px/1.65; eyebrow 11px 0.2em bronze-ink.
 
 ## Layout and motion
@@ -77,6 +78,8 @@ Do not add process sections, service grids or a third offer.
 ## Page order and copy
 Copy is canonical in /content/copy.ts. Do not paraphrase it. Sections:
 1. Nav: vector logotype left, Owners / Operators / Venues / Contact, "Book a Call" pill to Calendly.
+   The logo strip that used to sit between the hero and the doors is unmounted while the four mono
+   marks are missing. Component and CSS stay in the tree. See docs/pending-assets.md.
 2. Hero: two columns. Left is eyebrow, h1, one-sentence sub, "Book a Call" pill and "View the
    work". Right is hero.webp above the three stats: 20+ years operating, $45M+ P&L responsibility,
    3 markets. The stat labels stay to one line. The number 3 tracks the markets the page actually
