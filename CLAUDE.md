@@ -101,8 +101,10 @@ Copy is canonical in /content/copy.ts. Do not paraphrase it. Sections:
    marks are missing. Component and CSS stay in the tree. See docs/pending-assets.md.
 2. Hero: two columns. Left is eyebrow, h1, one-sentence sub, "Book a Call" pill and "View the
    work". Right is hero.webp above the three stats: 20+ years operating, $45M+ P&L responsibility,
-   3 markets. The stat labels stay to one line. The number 3 tracks the markets the page actually
-   evidences, which are the Bahamas, Singapore and Indonesia. Raise it only when #about names more.
+   5 markets. The stat labels stay to one line. The number tracks the markets the page actually
+   names: #about lists the Bahamas, Las Vegas, St Tropez, Singapore and Bali, and the track record
+   intro sorts the same five into the ones that set the standard and the ones where it had to be
+   built. Move the number only when that list moves.
    The hero is not wrapped in Reveal: it is the LCP and must not fade in.
 3. Two doors (#choose): eyebrow, h2, then two cards, owners then operators, at the normal section
    start across the full content width. The operators card is the one that can be bought, so it

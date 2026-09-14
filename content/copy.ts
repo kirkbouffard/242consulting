@@ -236,7 +236,7 @@ export const about = {
   heading: "An operator in the room when it matters.",
   portrait: { file: "kirk.webp", alt: "Kirk Bouffard" },
   paragraphs: [
-    "Kirk Bouffard turns ambitious hospitality and wellness concepts into operating businesses across the Bahamas, Singapore, Indonesia, and beyond.",
+    "Kirk Bouffard turns ambitious hospitality and wellness concepts into operating businesses across the Bahamas, Las Vegas, St Tropez, Singapore and Bali.",
     "242 Consulting works with owners at the point where strategy needs to become standards, teams, reporting, and a guest experience people return for.",
   ],
   link: "Start a conversation",
@@ -247,7 +247,7 @@ export const work = {
   eyebrow: "Track record",
   heading: "Built by operating.",
   intro:
-    "Two decades operating in difficult environments. The Bahamas and Bali run on the same constraints: thin supply, imported inputs, permits and weather on their own schedule.",
+    "Two decades across markets that set the standard and markets where it had to be built. Las Vegas, St Tropez, Singapore. The Bahamas, Bali. The job is holding the first to the conditions of the second.",
   // One flat list, one label. Every entry here was operated by Kirk, so there
   // is no distinction left to draw and no titles to list. The label is
   // "Operated" rather than "Venues operated" because the Nassau entry is an
@@ -296,7 +296,7 @@ export const work = {
   stats: [
     { value: "20+", label: "Years operating" },
     { value: "$45M+", label: "P&L responsibility" },
-    { value: "3", label: "Markets" },
+    { value: "5", label: "Markets" },
   ],
 };
 
