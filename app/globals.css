@@ -886,16 +886,12 @@ h3 {
 .reveal > *:nth-child(5) {
   --reveal-i: 4;
 }
-.reveal > *:nth-child(6) {
-  --reveal-i: 5;
-}
-.reveal > *:nth-child(7) {
-  --reveal-i: 6;
-}
-/* Past the seventh the wait stops growing: another 70ms per row reads as a
-   delay rather than as a cadence. */
-.reveal > *:nth-child(n + 8) {
-  --reveal-i: 7;
+/* Past the fifth the wait stops growing. Seven beats was 420ms from the card
+   label to its button, and a choice card draws its border on the first frame,
+   so the outline sat complete around a half built card for a third of a
+   second. Five beats puts the button at 280ms, inside the card's own border. */
+.reveal > *:nth-child(n + 6) {
+  --reveal-i: 4;
 }
 
 /* Display type travels further and settles slower than the copy around it.

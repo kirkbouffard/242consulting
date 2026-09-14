@@ -82,7 +82,10 @@ collapses to one column under 960px. Rounded corners: 4px images and cards, 999p
 Motion. The observer still fires on .reveal at threshold 0.12, but the block is only the trigger:
 its direct children are what move, each one 70ms behind the last, so a section assembles rather
 than switching on. The index is a --reveal-i custom property set by :nth-child and multiplied once,
-not a rule per element, and it stops growing after the seventh child.
+not a rule per element, and it stops growing after the FIFTH child. Seven beats put 420ms between
+a choice card's label and its button, and a card draws its border on the first frame, so the
+outline sat complete around a half built card for a third of a second. At five the button lands at
+280ms and the bottom of the card arrives as one move rather than three.
 Body copy travels 10px over 350ms ease-out. Display type, h1 and h2 inside a reveal, travels 18px
 over 640ms on cubic-bezier(0.16, 1, 0.3, 1), so a heading is still settling when the copy under it
 has arrived. The h1 lives in the hero, which is not a reveal, so nothing matches that half of the
