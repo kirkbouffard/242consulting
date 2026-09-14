@@ -26,6 +26,9 @@ Next.js 16 App Router, TypeScript, Tailwind v4, next/image, next/font (Cormorant
   next/image as explicit width and height, so CLS stays 0 with no CSS aspect-ratio and the box
   sizes to the photograph. There is no max-width: the container is narrower than any rendered
   asset, so a cap never engaged.
+  An upright frame is capped at 560 by .frame-upright, which EditorialImage applies from the
+  recorded dimensions: at the full 1160 column a portrait photograph is a 1500px tall block and a
+  2x upscale.
   Pass a shape ONLY where a crop is genuinely wanted AND the source ratio is known. One caller
   qualifies: the founder portrait, shape="portrait", because 4:5 is a hard rule for that slot and
   prepare-images renders kirk.webp at exactly 1000x1250, so the box holds the slot and crops

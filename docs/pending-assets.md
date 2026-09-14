@@ -98,16 +98,20 @@ paving cannot be removed completely without cutting his feet.
 
 Two crops were rendered from it, both `sharp(...).extract(...).webp({quality: 82})`:
 
-| | crop | result | ratio | weight |
-| --- | --- | --- | --- | --- |
-| A | `{left: 0, top: 94, width: 1125, height: 1406}` | 1125x1406 | 4:5 | 89KB |
-| B | `{left: 0, top: 0, width: 1125, height: 1500}` | 1125x1500 | 3:4 | 90KB |
+| | crop | result | ratio | weight | |
+| --- | --- | --- | --- | --- | --- |
+| A | `{left: 0, top: 94, width: 1125, height: 1406}` | 1125x1406 | 4:5 | 89KB | not used |
+| B | `{left: 0, top: 0, width: 1125, height: 1500}` | 1125x1500 | 3:4 | 90KB | shipped |
 
-B is a bottom crop only. A cannot be: 4:5 at height 1500 needs a 1200px wide frame and the original
-is 1125, so A also trims 94px of sky off the top.
+B is a bottom crop only. A could not be: 4:5 at the height needed to keep his feet, 1500, wants a
+1200px wide frame and the original is 1125, so A also had to trim 94px of sky off the top.
 
-Either renders at 560 CSS px in the `.frame-upright` box, which is 1120 device pixels at DPR 2
-against a 1125px file, so neither is ever upscaled.
+B is in scripts/prepare-images.mjs under `crops`, so it rebuilds from the source rather than living
+as a file nobody can reproduce. Delete public/images/zumana.webp and the next build recreates it
+byte for byte.
+
+It renders at 560 CSS px in the `.frame-upright` box, which is 1120 device pixels at DPR 2 against a
+1125px file, so it is never upscaled.
 
 ## Pipeline
 

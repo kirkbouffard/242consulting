@@ -22,7 +22,6 @@ const sources = {
   "celavi.webp": "celavi-source.jpg",
   "savaya.webp": "savaya-official.jpg",
   "kitsune.webp": "kitsune-source.jpg",
-  "zumana.webp": "zumana.webp",
 };
 
 // Portraits are cropped 4:5 rather than 3:2. Treatment matches the venue
@@ -30,6 +29,19 @@ const sources = {
 // Drop the untouched headshot in as the source; this does the rest.
 const portraits = {
   "kirk.webp": "kirk-source.jpg",
+};
+
+// Fixed-region crops. Where sources resizes to fill a shape and portraits lets
+// sharp choose the interesting part, these name the exact rectangle, because
+// the rectangle is the decision. zumana-source.jpg is a 1125x2000 frame: the
+// arch starts at y=560, Kirk runs y=1221 to 1485, and the plaza paving starts
+// at y=1420, so he is standing on it and it cannot come off entirely. 1500
+// rows keeps all of him and drops 500 rows of paving, at 3:4.
+const crops = {
+  "zumana.webp": {
+    source: "zumana-source.jpg",
+    region: { left: 0, top: 0, width: 1125, height: 1500 },
+  },
 };
 
 await fs.mkdir(imagesDir, { recursive: true });
@@ -60,6 +72,22 @@ for (const [target, source] of Object.entries(sources)) {
     .resize(2400, 1600, { fit: "cover", withoutEnlargement: true })
     .webp({ quality: 72 })
     .toFile(temp);
+  await fs.rename(temp, targetPath);
+  built.push(target);
+}
+
+for (const [target, { source, region }] of Object.entries(crops)) {
+  const sourcePath = path.join(imagesDir, source);
+  const targetPath = path.join(imagesDir, target);
+
+  if (!existsSync(sourcePath)) {
+    if (existsSync(targetPath)) built.push(target);
+    else skipped.push(`${target} (no ${source})`);
+    continue;
+  }
+
+  const temp = `${targetPath}.tmp`;
+  await sharp(sourcePath).extract(region).webp({ quality: 82 }).toFile(temp);
   await fs.rename(temp, targetPath);
   built.push(target);
 }
