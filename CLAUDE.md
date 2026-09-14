@@ -77,10 +77,15 @@ Do not add process sections, service grids or a third offer.
 ## Page order and copy
 Copy is canonical in /content/copy.ts. Do not paraphrase it. Sections:
 1. Nav: vector logotype left, Owners / Operators / Venues / Contact, "Book a Call" pill to Calendly.
-2. Hero: eyebrow, h1, sub, "Book a Call" pill and "View the work".
-3. Two doors (#choose): h2 with the founder portrait to its left on desktop and above it on mobile,
-   then two cards, owners then operators. The operators card is the one that can be bought, so it
-   carries the solid button and the price.
+2. Hero: two columns. Left is eyebrow, h1, one-sentence sub, "Book a Call" pill and "View the
+   work". Right is hero.webp above the three stats: 20+ years operating, $45M+ P&L responsibility,
+   3 markets. The stat labels stay to one line. The number 3 tracks the markets the page actually
+   evidences, which are the Bahamas, Singapore and Indonesia. Raise it only when #about names more.
+   The hero is not wrapped in Reveal: it is the LCP and must not fade in.
+3. Two doors (#choose): eyebrow, h2, then two cards, owners then operators, at the normal section
+   start across the full content width. The operators card is the one that can be bought, so it
+   carries the solid button and the price. Nothing else goes in this section. Its one job is making
+   a reader pick a door, so no portrait, no image, no third element.
 4. Retained (#owners): four entries (Operations, Design intent, Experience, Development), closing
    note, accordion, testimonial slot (off by default, see below), mailto, cross link to #operators.
 5. 242 Circle (#operators): price, five focus points, what is included, "Cancel anytime. No
@@ -96,6 +101,11 @@ Copy is canonical in /content/copy.ts. Do not paraphrase it. Sections:
    events engagement, not a venue, and it is the only entry where 242 Consulting delivered under
    its own name. Entity names link to the venue's own site where one exists; the 242 Consulting
    entry has no link by design, because its clients are not named. The stats live in the hero.
+   #about sits immediately above it, so the two read as one proof block: who this is, then what he
+   has run. #about is the founder portrait in the left column, 4:5, with eyebrow, h2, both
+   paragraphs and the mailto sharing its top edge in the right. No figcaption: his name opens the
+   first paragraph. Mobile stacks the portrait first. Neither section repeats the other's duration
+   claim; "Two decades" belongs to the track record intro only.
 7. Contact (#contact): Calendly pill and mailto, LinkedIn.
 8. Footer: line plus a Terms link.
 
