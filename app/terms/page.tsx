@@ -12,9 +12,18 @@ export const metadata: Metadata = {
   // points at the homepage, and an indexed page whose canonical names a
   // different URL is a page that does not get indexed.
   alternates: { canonical: `${site.url}/terms` },
-  // Same mechanism as the canonical: without this the route inherits the
-  // layout's og:url, which names the homepage.
-  openGraph: { url: `${site.url}/terms` },
+  // Declaring openGraph here REPLACES the layout's rather than merging into it,
+  // so every field the card needs has to be restated. The image is the one that
+  // cannot be: it comes from the opengraph-image file convention, which only
+  // attaches to its own segment. app/terms/opengraph-image.tsx re-exports the
+  // homepage card for exactly that reason.
+  openGraph: {
+    type: "website",
+    url: `${site.url}/terms`,
+    siteName: site.name,
+    title: "242 Circle terms",
+    description: site.description,
+  },
 };
 
 export default function TermsPage() {

@@ -224,6 +224,12 @@ redirects is a canonical pointing at a redirect. site.url in content/copy.ts is 
 host is written. metadataBase, every canonical, og:url, both sitemap entries, the robots Host and
 Sitemap lines and every JSON-LD url and @id are built from it. Routes below the root need their own
 alternates.canonical and openGraph.url, or they inherit the homepage's: /terms carries both.
+Two traps there, both found on the live page rather than in the build. alternates merges, but
+openGraph does NOT: declaring it on a route replaces the layout's object, so type, siteName, title
+and description all have to be restated or they vanish. And og:image cannot be restated at all,
+because it comes from the opengraph-image file convention, which attaches only to the segment it
+sits in. app/terms/opengraph-image.tsx re-exports app/opengraph-image.tsx so the route emits its own
+generated card. Any future route that declares openGraph needs the same pair.
 The card is generated, not shipped: app/opengraph-image.tsx, 1200x630 PNG at /opengraph-image, ivory
 ground, espresso wordmark off app/_brand/logotype.svg, hero.heading in Cormorant beneath it,
 optically centred. Next's file convention emits og:image and twitter:image from it, so neither is
