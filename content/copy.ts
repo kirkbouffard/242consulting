@@ -88,8 +88,6 @@ export const advisory = {
   id: "owners",
   label: "For owners",
   eyebrow: "Retained",
-  // 16:9 anchor above the heading. Omitted until the file exists.
-  anchor: { file: "door-owners.webp", alt: "Retained advisory" },
   heading: "Senior advisory, scoped to the business.",
   intro:
     "Operations, design intent, guest experience and development. Scoped to the constraint that is actually holding the business back, not to a fixed menu.",
@@ -138,7 +136,6 @@ export const circle = {
   id: "operators",
   label: "For operators",
   eyebrow: "242 Circle",
-  anchor: { file: "door-operators.webp", alt: "242 Circle" },
   heading: "The room operators actually needed.",
   intro: "Ongoing practical support for GMs, AGMs and senior hospitality operators.",
   // Checkout is open. The CTA goes straight to Stripe with nothing in the way.

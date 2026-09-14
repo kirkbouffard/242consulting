@@ -1,28 +1,15 @@
 import Accordion from "@/components/Accordion";
-import EditorialImage from "@/components/EditorialImage";
 import Reveal from "@/components/Reveal";
 import TrackedLink from "@/components/TrackedLink";
 import { circle } from "@/content/copy";
-import { assetExists } from "@/lib/assets";
 
 // The purchase. The primary action goes straight to Stripe: no contact form,
 // no discovery call in the way.
 export default function Circle() {
-  const hasAnchor = assetExists(`/images/${circle.anchor.file}`);
-
   return (
     <section id={circle.id} className="section section-ivory-2">
       <div className="content-width offer-grid">
         <Reveal className="offer-heading">
-          {hasAnchor ? (
-            <div className="door-anchor">
-              <EditorialImage
-                file={circle.anchor.file}
-                alt={circle.anchor.alt}
-                sizes="(max-width: 960px) 100vw, 40vw"
-              />
-            </div>
-          ) : null}
           <p className="eyebrow">{circle.label}</p>
           <h2 className="offer-title">{circle.eyebrow}</h2>
           <p className="offer-lede">{circle.heading}</p>

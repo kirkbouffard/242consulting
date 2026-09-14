@@ -34,8 +34,8 @@ Next.js 16 App Router, TypeScript, Tailwind v4, next/image, next/font (Cormorant
   prepare-images renders kirk.webp at exactly 1000x1250, so the box holds the slot and crops
   nothing. Everything in the sources map is rendered 2400x1600, so any shape over one of those
   files is a crop by accident.
-- The founder portrait and the door anchors are the exceptions to 3:2. Portrait is 4:5, anchors 16:9.
-  The portrait takes the same treatment as the venue tiles, which is none. Crop only.
+- The founder portrait is the one cropped slot on the page, 4:5. It takes the same treatment as the
+  venue tiles, which is none. Crop only.
   Drop the untouched headshot at /public/images/kirk-source.jpg; the build crops it and generates its
   blur. Both sit outside the check-images gate by design.
 - No hotlinked assets.
@@ -88,9 +88,15 @@ link in a new tab. Never to the contact form, never behind a discovery call. The
 the CTA, the checkout note and Terms link below it. The chooser card and the Circle section share
 that label, so they share the destination.
 
-Each door carries, in order: an optional 16:9 anchor image, heading, list, accordion, CTA with its
-note, then a cross link to the other door. The Retained door also carries the testimonial, directly
-under its accordion.
+Each door carries, in order: heading, list, accordion, CTA with its note, then a cross link to the
+other door. The Retained door also carries the testimonial, directly under its accordion.
+
+The doors take no image. There used to be a 16:9 anchor slot above each heading, .door-anchor,
+waiting on door-owners.webp and door-operators.webp. Those files were never in prepare-images, never
+in the image gate and never in docs/pending-assets.md, so nothing was coming and nothing could have
+validated them if it had. The slot, the CSS and the copy entries are deleted. Do not re-add a frame
+for files that are not on their way: if the doors ever want art, add the asset to the pipeline and
+the gate first, then the slot.
 
 Do not add process sections, service grids or a third offer.
 

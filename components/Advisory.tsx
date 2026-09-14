@@ -1,27 +1,15 @@
 import Accordion from "@/components/Accordion";
-import EditorialImage from "@/components/EditorialImage";
 import Reveal from "@/components/Reveal";
 import Testimonial from "@/components/Testimonial";
 import TrackedLink from "@/components/TrackedLink";
 import { advisory } from "@/content/copy";
-import { assetExists, mailto } from "@/lib/assets";
+import { mailto } from "@/lib/assets";
 
 export default function Advisory() {
-  const hasAnchor = assetExists(`/images/${advisory.anchor.file}`);
-
   return (
     <section id={advisory.id} className="section section-ivory-3">
       <div className="content-width offer-grid">
         <Reveal className="offer-heading">
-          {hasAnchor ? (
-            <div className="door-anchor">
-              <EditorialImage
-                file={advisory.anchor.file}
-                alt={advisory.anchor.alt}
-                sizes="(max-width: 960px) 100vw, 40vw"
-              />
-            </div>
-          ) : null}
           <p className="eyebrow">{advisory.label}</p>
           <h2 className="offer-title">{advisory.eyebrow}</h2>
           <p className="offer-lede">{advisory.heading}</p>
