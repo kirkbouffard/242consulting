@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   // points at the homepage, and an indexed page whose canonical names a
   // different URL is a page that does not get indexed.
   alternates: { canonical: `${site.url}/terms` },
+  // Same mechanism as the canonical: without this the route inherits the
+  // layout's og:url, which names the homepage.
+  openGraph: { url: `${site.url}/terms` },
 };
 
 export default function TermsPage() {

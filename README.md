@@ -84,9 +84,13 @@ vercel.json.
    It is read at build time, so changing it later needs a redeploy.
 3. Check the preview URL before moving any domain. Confirm the venue links, the
    Stripe checkout, and `/welcome`.
-4. Add `www.242consulting.com`, and redirect the apex to it. `metadataBase`,
-   the canonical tag and the JSON-LD already point at the www host, so nothing
-   in the code changes when the domain lands.
+4. Add `242consulting.com` as the primary domain and redirect `www` to it.
+   That is the direction the site actually answers in, and `site.url` in
+   `content/copy.ts` names the apex. Everything outward facing is built from
+   that one string: `metadataBase`, every canonical, `og:url`, both sitemap
+   entries, the robots `Host` and `Sitemap` lines, and every JSON-LD `url` and
+   `@id`. If the primary domain ever moves, change that string and nothing
+   else.
 5. Point the Stripe payment link's success URL at `/welcome`.
 
 Vercel Analytics starts reporting once deployed. Off Vercel its beacon 404s,

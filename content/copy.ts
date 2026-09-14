@@ -4,7 +4,9 @@
 export const site = {
   name: "242 Consulting",
   email: "kirk@242consulting.com",
-  url: "https://www.242consulting.com",
+  // The apex, not www: www 307s here, so every canonical, og:url, sitemap loc
+  // and JSON-LD @id built off this string has to name the host that answers.
+  url: "https://242consulting.com",
   calendly: "https://calendly.com/kirk-242consulting/30min",
   linkedin: "https://www.linkedin.com/in/kirk-bouffard-077a785",
   title: "242 Consulting | Operating leadership for hospitality and wellness",

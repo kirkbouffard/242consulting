@@ -3,7 +3,7 @@
 Single page marketing site for Kirk Bouffard's fractional advisory practice. Premium, editorial,
 image-led. Register: luxury hotel group brand site, not a consultancy brochure.
 
-This file tracks the live site at www.242consulting.com. Where the two disagree, the live site wins.
+This file tracks the live site at 242consulting.com. Where the two disagree, the live site wins.
 
 ## Stack
 Next.js 16 App Router, TypeScript, Tailwind v4, next/image, next/font (Cormorant Garamond 300 and
@@ -218,8 +218,12 @@ is the name for the Circle purchase button, which goes to Stripe rather than to 
 
 ## Metadata
 Title "242 Consulting | Operating leadership for hospitality and wellness". One description for all
-tags. Canonical https://www.242consulting.com/, and og:url is the same string: the site answers on
-both the apex and www, and www is the one it claims.
+tags. Canonical https://242consulting.com/, and og:url is the same string. The site answers on both
+hosts and www 307s to the APEX, so the apex is the one it claims: a canonical naming a host that
+redirects is a canonical pointing at a redirect. site.url in content/copy.ts is the only place the
+host is written. metadataBase, every canonical, og:url, both sitemap entries, the robots Host and
+Sitemap lines and every JSON-LD url and @id are built from it. Routes below the root need their own
+alternates.canonical and openGraph.url, or they inherit the homepage's: /terms carries both.
 The card is generated, not shipped: app/opengraph-image.tsx, 1200x630 PNG at /opengraph-image, ivory
 ground, espresso wordmark off app/_brand/logotype.svg, hero.heading in Cormorant beneath it,
 optically centred. Next's file convention emits og:image and twitter:image from it, so neither is
