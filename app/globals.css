@@ -375,8 +375,25 @@ h3 {
   color: var(--espresso-2);
 }
 
+/* Format, cadence and cap, so the card answers everything a buyer needs before
+   the detail section below it. */
+.choice-format {
+  margin: 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  max-width: 42ch;
+  color: var(--espresso-2);
+  font-size: 14px;
+}
+
+.choice-cap {
+  margin: 0;
+  color: var(--espresso-2);
+  font-size: 14px;
+}
+
 .choice-meta {
-  margin: 0 0 8px;
+  margin: 6px 0 8px;
   color: var(--espresso);
   font-size: 15px;
 }

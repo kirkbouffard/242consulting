@@ -35,6 +35,8 @@ export default function Choice() {
               <p className="choice-label">{card.label}</p>
               <h3>{card.title}</h3>
               <p className="choice-body">{card.body}</p>
+              <p className="choice-format">{card.format}</p>
+              <p className="choice-cap">{card.cap}</p>
               <p className="choice-meta">{card.meta}</p>
               <TrackedLink
                 className={

@@ -61,6 +61,8 @@ export const choice = {
       label: "For owners",
       title: "Retained",
       body: "Senior advisory for founders, owners and developers across operations, design, guest experience and development.",
+      format: "Weekly leadership session. Direct access between sessions. Monthly priorities. On-site scoped separately.",
+      cap: "Three retained clients at a time.",
       meta: "Bespoke scope, agreed in conversation.",
       cta: "Start a conversation",
       tone: "bespoke",
@@ -72,6 +74,8 @@ export const choice = {
       label: "For operators",
       title: "242 Circle",
       body: "Ongoing practical support for GMs, AGMs and senior hospitality operators.",
+      format: "Group call every two weeks · WhatsApp access, members answered within 24 hours · Session recordings",
+      cap: "15 seats total. Waitlist when full.",
       meta: "$499 per month",
       cta: "Join 242 Circle",
       tone: "membership",
@@ -89,7 +93,7 @@ export const advisory = {
   anchor: { file: "door-owners.webp", alt: "Retained advisory" },
   heading: "Senior advisory, scoped to the business.",
   intro:
-    "Senior advisory for founders, owners and developers across operations, design, guest experience and development.",
+    "Operations, design intent, guest experience and development. Scoped to the constraint that is actually holding the business back, not to a fixed menu.",
   entries: [
     {
       title: "Operations",
@@ -105,7 +109,7 @@ export const advisory = {
     },
     {
       title: "Development",
-      body: "Twenty years of relationships across hospitality, wellness, and development, opened when they move your business forward.",
+      body: "Two decades of relationships across hospitality, wellness, and development, opened when they move your business forward.",
     },
   ],
   note: "Weekly leadership session. Direct access between sessions. Monthly priorities. On-site scoped separately.",
@@ -113,7 +117,7 @@ export const advisory = {
   // stays typographic, the same way the venue tiles degrade.
   // Bespoke and conversation-led. No retainer pricing on the page by design.
   cta: { label: "Start a conversation", subject: "Retained advisory" },
-  ctaNote: "Replies within 24 hours",
+  ctaNote: "Enquiries answered within 24 hours",
   crossLink: { text: "Have an AGM who should be in the room? See Circle.", href: "#operators" },
   faq: [
     {
@@ -149,7 +153,7 @@ export const circle = {
     "Direct access to experienced operators",
     "Ongoing development, not a one-off course",
   ],
-  included: "Group call every two weeks · WhatsApp access, 48 hour response · Session recordings",
+  included: "Group call every two weeks · WhatsApp access, members answered within 24 hours · Session recordings",
   terms: "Cancel anytime. No contract.",
   // Buy now. This goes straight to Stripe, never to the contact form.
   checkoutUrl: "https://buy.stripe.com/28EbJ33zwgG1fxW1my5sA0a",
@@ -165,7 +169,7 @@ export const circle = {
     },
     {
       q: "What happens on the call?",
-      a: "You bring the situation, the group works it live. Recorded for members only.",
+      a: "You bring the situation, the group works it live. Recorded so you can return to it, and seen by nobody outside the room.",
     },
     {
       q: "How do I cancel?",
@@ -313,9 +317,9 @@ export const contact = {
   id: "contact",
   eyebrow: "Contact",
   heading: "Building something people need to experience?",
-  sub: "A 30 minute intro call. No pitch. We map the constraint and whether 242 Consulting is the right fit.",
-  cta: "Book a 30 min intro call",
-  meta: "Replies within 24 hours · Based in Bali, available globally · ",
+  sub: "A 30-minute intro call. No pitch. We map the constraint and whether 242 Consulting is the right fit.",
+  cta: "Book a 30-minute intro call",
+  meta: "Enquiries answered within 24 hours · Based in Bali, available globally · ",
   linkedinLabel: "LinkedIn",
   image: "/images/contact.webp",
   alt: "Savaya Bali cliffside venue architecture",
