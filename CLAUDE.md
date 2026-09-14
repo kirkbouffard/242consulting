@@ -67,14 +67,35 @@ h1 clamp(46px, 6vw, 88px) lh 1.02; section h2 clamp(30px, 3.6vw, 52px) lh 1.08; 
 clamp(30px, 3.4vw, 46px); circle price clamp(48px, 6vw, 72px); advisory h3 24px;
 stats 46px, which is the ceiling: "$45M+" fills the middle cell's 118px at that size;
 body Inter 16px/1.65; eyebrow 11px 0.2em bronze-ink.
+Headings take text-wrap: balance, body copy takes text-wrap: pretty off the body element.
+Cormorant Garamond renders OLDSTYLE figures by default, which is why the stats read 20+ with the 2
+at x-height and $45M+ with the 4 and 5 descending. That is the intended register. The lnum feature
+is in the served font if lining figures are ever wanted: font-variant-numeric: lining-nums.
 
 ## Layout and motion
 Max content 1160px, inline gutter 24px at every width. Section padding 112px desktop, 80px mobile,
 separated by 1px rules with the three alternating grounds set out under Palette. Fixed ivory nav
 76px, espresso once scrolled, scroll-margin-top 88px on sections.
 Hero and contact are sized to their content, not 100svh. Offer sections are a 5fr 7fr grid that
-collapses to one column under 960px. Fade-up on scroll 350ms 10px at threshold 0.12, disabled under
-prefers-reduced-motion. Rounded corners: 4px images and cards, 999px pills.
+collapses to one column under 960px. Rounded corners: 4px images and cards, 999px pills.
+
+Motion. The observer still fires on .reveal at threshold 0.12, but the block is only the trigger:
+its direct children are what move, each one 70ms behind the last, so a section assembles rather
+than switching on. The index is a --reveal-i custom property set by :nth-child and multiplied once,
+not a rule per element, and it stops growing after the seventh child.
+Body copy travels 10px over 350ms ease-out. Display type, h1 and h2 inside a reveal, travels 18px
+over 640ms on cubic-bezier(0.16, 1, 0.3, 1), so a heading is still settling when the copy under it
+has arrived. The h1 lives in the hero, which is not a reveal, so nothing matches that half of the
+rule today; it is there for any h1 that later sits inside one.
+Rules draw rather than fade. Section top borders and the .advisory-entry hairlines are ::before
+elements at scaleX(0) with a left origin, 700ms on cubic-bezier(0.22, 1, 0.36, 1). The border stays
+in the box as transparent so the geometry is unchanged, and a section takes its cue from the first
+.reveal inside it going visible, via :has().
+Underlines draw left to right on hover rather than fading a border-color: a linear-gradient sized
+0 to 100% over 260ms, box-decoration-break: clone so a link that wraps is underlined on both lines.
+Applies to .venue-link, .email-link and .cross-link. Resting borders are untouched.
+prefers-reduced-motion: reduce resolves all of it to the finished state and sets every transition
+to none. Anything added here goes in that block too.
 
 ## Two offers
 The page turns on one decision and carries nothing that blurs it. Owners get bespoke advisory sold

@@ -36,6 +36,9 @@
     font-family: var(--font-inter), sans-serif;
     font-size: 16px;
     line-height: 1.65;
+    /* Headings set text-wrap: balance below, which wins on them. This is for
+       the paragraphs: no single-word last line. */
+    text-wrap: pretty;
   }
 
   a {
@@ -211,11 +214,6 @@ h3 {
 .email-link {
   width: fit-content;
   border-bottom: 1px solid var(--bronze);
-  transition: color 0.2s ease;
-}
-
-.email-link:hover {
-  color: var(--bronze-ink);
 }
 
 /* ---------- hero ---------- */
@@ -321,9 +319,31 @@ h3 {
 /* ---------- sections ---------- */
 
 .section {
+  position: relative;
   padding-block: 112px;
   scroll-margin-top: 88px;
-  border-top: 1px solid var(--rule);
+  /* The border stays in the box so nothing moves; the line itself is drawn by
+     the pseudo element, which can be scaled and a border cannot. */
+  border-top: 1px solid transparent;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--rule);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* The section is not itself a reveal, so it takes its cue from the first block
+   inside it that is. */
+.section:has(.reveal.is-visible)::before {
+  transform: scaleX(1);
 }
 
 .section-ivory {
@@ -472,13 +492,37 @@ h3 {
 }
 
 .advisory-entry {
-  border-top: 1px solid var(--rule);
+  position: relative;
+  border-top: 1px solid transparent;
   padding: 30px 0;
+}
+
+.advisory-entry::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--rule);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  /* draws on the same beat its entry arrives on */
+  transition-delay: calc(var(--reveal-i, 0) * 70ms);
+}
+
+.reveal.is-visible .advisory-entry::before {
+  transform: scaleX(1);
 }
 
 .advisory-entry:first-child {
   border-top: 0;
   padding-top: 0;
+}
+
+.advisory-entry:first-child::before {
+  content: none;
 }
 
 .advisory-entry h3 {
@@ -662,13 +706,8 @@ h3 {
 }
 
 .work-entry a.venue-link {
+  /* transparent rather than absent, so the hover costs no layout */
   border-bottom: 1px solid transparent;
-  transition: color 0.2s ease, border-color 0.2s ease;
-}
-
-.work-entry a.venue-link:hover {
-  color: var(--bronze-ink);
-  border-bottom-color: var(--bronze);
 }
 
 .image-placeholder {
@@ -822,15 +861,81 @@ h3 {
 
 /* ---------- reveal ---------- */
 
-.reveal {
+/* The block is the trigger; its children are what move, each one a beat behind
+   the last, so a section assembles rather than switching on. The index is a
+   custom property set once by position, so the delay is one line of maths
+   rather than a rule per element. */
+.reveal > * {
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+  transition:
+    opacity 350ms ease-out,
+    transform 350ms ease-out;
+  transition-delay: calc(var(--reveal-i, 0) * 70ms);
 }
 
-.reveal.is-visible {
+.reveal > *:nth-child(2) {
+  --reveal-i: 1;
+}
+.reveal > *:nth-child(3) {
+  --reveal-i: 2;
+}
+.reveal > *:nth-child(4) {
+  --reveal-i: 3;
+}
+.reveal > *:nth-child(5) {
+  --reveal-i: 4;
+}
+.reveal > *:nth-child(6) {
+  --reveal-i: 5;
+}
+.reveal > *:nth-child(7) {
+  --reveal-i: 6;
+}
+/* Past the seventh the wait stops growing: another 70ms per row reads as a
+   delay rather than as a cadence. */
+.reveal > *:nth-child(n + 8) {
+  --reveal-i: 7;
+}
+
+/* Display type travels further and settles slower than the copy around it.
+   Longhands, so the shorthand above keeps supplying the staggered delay. */
+.reveal > h1,
+.reveal > h2 {
+  transform: translateY(18px);
+  transition-duration: 640ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible > * {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ---------- drawn underlines ---------- */
+
+/* A gradient rather than the border, because the border can only fade and this
+   has to draw. background-size carries it left to right, and clone repeats it
+   per line box so a link that wraps is underlined on both lines. */
+.work-entry a.venue-link,
+.email-link,
+.cross-link a {
+  background-image: linear-gradient(var(--bronze-ink), var(--bronze-ink));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0 1px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition:
+    color 200ms ease,
+    background-size 260ms ease-out;
+}
+
+.work-entry a.venue-link:hover,
+.email-link:hover,
+.cross-link a:hover {
+  color: var(--bronze-ink);
+  background-size: 100% 1px;
 }
 
 /* ---------- responsive ---------- */
@@ -938,9 +1043,21 @@ h3 {
     scroll-behavior: auto;
   }
 
-  .reveal {
+  .reveal > * {
     opacity: 1;
     transform: none;
+    transition: none;
+  }
+
+  .section::before,
+  .advisory-entry::before {
+    transform: scaleX(1);
+    transition: none;
+  }
+
+  .work-entry a.venue-link,
+  .email-link,
+  .cross-link a {
     transition: none;
   }
 }
@@ -1046,10 +1163,6 @@ h3 {
 
 .cross-link a {
   border-bottom: 1px solid var(--bronze);
-}
-
-.cross-link a:hover {
-  color: var(--bronze-ink);
 }
 
 .circle-terms {
