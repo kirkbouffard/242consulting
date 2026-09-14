@@ -3,12 +3,74 @@ import Reveal from "@/components/Reveal";
 import { work } from "@/content/copy";
 import { assetExists } from "@/lib/assets";
 
-export default function Work() {
-  const tiles = work.tiles.map((tile) => ({
-    ...tile,
-    hasImage: assetExists(`/images/${tile.file}`),
-  }));
+type Entry = {
+  id: string;
+  entity: string;
+  role: string;
+  venues?: string;
+  note?: string;
+  url: string;
+  files: string[];
+  featured?: boolean;
+};
 
+// The entity is a link only where there is a venue site to point at. The 242
+// Consulting entry has none by design: its clients are not named.
+function Entity({ entry }: { entry: Entry }) {
+  if (!entry.url) return <>{entry.entity}</>;
+  return (
+    <a className="venue-link" href={entry.url} target="_blank" rel="noopener noreferrer">
+      {entry.entity}
+    </a>
+  );
+}
+
+function WorkEntry({ entry }: { entry: Entry }) {
+  // assetExists decides what renders. Drop a file in and the entry gains an
+  // image with no edit here.
+  const images = entry.files.filter((file) => assetExists(`/images/${file}`));
+  const featured = entry.featured && images.length > 1;
+
+  return (
+    <Reveal className={`work-entry${featured ? " work-entry-featured" : ""}${images.length ? "" : " no-image"}`}>
+      {images.length ? (
+        <div className={featured ? "work-media work-media-featured" : "work-media"}>
+          <div className="image-placeholder wide">
+            <EditorialImage
+              file={images[0]}
+              alt={entry.entity}
+              sizes={featured ? "(max-width: 760px) 100vw, 1160px" : "(max-width: 760px) 100vw, 760px"}
+            />
+          </div>
+          {images.length > 1 ? (
+            <div className="work-media-row">
+              {images.slice(1).map((file) => (
+                <div className="image-placeholder portrait" key={file}>
+                  <EditorialImage
+                    file={file}
+                    alt={entry.entity}
+                    sizes="(max-width: 760px) 50vw, 380px"
+                  />
+                </div>
+              ))}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+
+      <div className="work-copy">
+        <h4 className="work-entity">
+          <Entity entry={entry} />
+        </h4>
+        <p className="work-role">{entry.role}</p>
+        {entry.venues ? <p className="work-venues">Venues: {entry.venues}</p> : null}
+        {entry.note ? <p className="work-note">{entry.note}</p> : null}
+      </div>
+    </Reveal>
+  );
+}
+
+export default function Work() {
   return (
     <section id={work.id} className="section section-ivory">
       <div className="content-width">
@@ -18,49 +80,16 @@ export default function Work() {
           <p>{work.intro}</p>
         </Reveal>
 
-        <div className="work-grid">
-          {tiles.map((tile, index) => (
-            <Reveal
-              key={tile.file}
-              className={`work-item work-${index + 1} ${tile.ratio} ${
-                tile.hasImage ? "" : "no-image"
-              }`}
-            >
-              {tile.hasImage ? (
-                <>
-                  <EditorialImage file={tile.file} alt={tile.place} />
-                  <p>
-                    <span>
-                      <a
-                        className="venue-link"
-                        href={tile.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {tile.place}
-                      </a>
-                    </span>{" "}
-                    <b>·</b> {tile.role}
-                  </p>
-                </>
-              ) : (
-                <>
-                  <p className="venue-name">
-                    <a
-                      className="venue-link"
-                      href={tile.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {tile.place}
-                    </a>
-                  </p>
-                  <p>{tile.role}</p>
-                </>
-              )}
+        {work.groups.map((group) => (
+          <div className="work-group" key={group.label}>
+            <Reveal>
+              <h3 className="work-group-label">{group.label}</h3>
             </Reveal>
-          ))}
-        </div>
+            {group.entries.map((entry) => (
+              <WorkEntry entry={entry as Entry} key={entry.id} />
+            ))}
+          </div>
+        ))}
 
         <Reveal className="stats">
           {work.stats.map((stat) => (

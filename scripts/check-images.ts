@@ -26,7 +26,7 @@ const RATIO_TOLERANCE = 0.02;
 const BACKGROUNDS = ["hero.webp", "contact.webp"];
 const VENUE_TILES = [
   "atlantis.webp",
-  "aura.webp",
+  "bahamas-venue.webp",
   "celavi.webp",
   "savaya.webp",
   "kitsune.webp",

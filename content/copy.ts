@@ -231,49 +231,57 @@ export const work = {
   eyebrow: "Track record",
   heading: "Built by operating.",
   intro:
-    "More than two decades opening, operating, and developing hospitality and wellness businesses across five markets.",
-  tiles: [
+    "Two decades operating in difficult environments. The Bahamas and Bali run on the same constraints: thin supply, imported inputs, permits and weather on their own schedule.",
+  // Grouped because an owner reads for the distinction. An undifferentiated
+  // list of venues reads as a CV. Operated is what Kirk ran; Worked with is
+  // what he contributed to. Entries carry files, not tiles: assetExists
+  // decides which images render, so a missing file degrades the entry to
+  // typographic without touching this data.
+  groups: [
     {
-      file: "atlantis.webp",
-      place: "Atlantis Paradise Island, Bahamas",
-      role: "Resort operations and hospitality foundations",
-      url: "https://www.atlantisbahamas.com/",
-      ratio: "wide",
+      label: "Operated",
+      entries: [
+        {
+          id: "savaya",
+          entity: "Savaya Group · Bali",
+          role: "Head of Operations across the portfolio.",
+          venues: "Savaya, Desa Kitsuné, Zumana",
+          note: "Zumana: commissioning and opening, August 2026. 35,000 sq ft beachfront destination.",
+          url: "https://www.savaya.com/",
+          files: ["zumana.webp", "savaya.webp", "kitsune.webp"],
+          featured: true,
+        },
+        {
+          // Kirk's own entity delivered this, so the name sits in the entity
+          // slot rather than reading as a job he held. The clients are never
+          // named: the entry is about the operating environment.
+          id: "242",
+          entity: "242 Consulting · Nassau, Bahamas",
+          role: "Large-format events, up to 3,000 guests, repeatedly. The constraint was never the show. It was crew, power, permits and weather converging on a fixed date that could not move.",
+          url: "",
+          files: ["bahamas-venue.webp"],
+        },
+        {
+          // One engagement, not two tiles.
+          id: "atlantis",
+          entity: "Atlantis Paradise Island / Aura Nightclub · Bahamas",
+          role: "General management and operating leadership",
+          url: "https://www.atlantisbahamas.com/",
+          files: ["atlantis.webp"],
+        },
+      ],
     },
     {
-      file: "aura.webp",
-      place: "Aura Nightclub, Atlantis Bahamas",
-      role: "General management and operating leadership",
-      url: "https://www.atlantisbahamas.com/things-to-do/entertainment/aura-nightclub",
-      ratio: "portrait",
-    },
-    {
-      file: "celavi.webp",
-      place: "CÉ LA VI, Singapore",
-      role: "Venue development and guest experience",
-      url: "https://celavi.com/",
-      ratio: "portrait",
-    },
-    {
-      file: "savaya.webp",
-      place: "Savaya Group, Bali",
-      role: "Head of Operations across a clifftop venue portfolio",
-      url: "https://www.savaya.com/",
-      ratio: "portrait",
-    },
-    {
-      file: "kitsune.webp",
-      place: "Desa Kitsuné, Bali",
-      role: "Lifestyle destination and hospitality development",
-      url: "https://desakitsune.com/",
-      ratio: "portrait",
-    },
-    {
-      file: "zumana.webp",
-      place: "Zumana, Sunset Bay Kuta",
-      role: "Savaya Group. Commissioning and opening, August 2026. 35,000 sq ft beachfront destination.",
-      url: "https://zumanabali.com/",
-      ratio: "wide",
+      label: "Worked with",
+      entries: [
+        {
+          id: "celavi",
+          entity: "CÉ LA VI · Singapore",
+          role: "Venue development and guest experience",
+          url: "https://celavi.com/",
+          files: ["celavi.webp"],
+        },
+      ],
     },
   ],
   stats: [

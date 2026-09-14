@@ -526,56 +526,85 @@ h3 {
   color: var(--espresso-2);
 }
 
-.work-grid {
+.work-group + .work-group {
+  margin-top: 64px;
+}
+
+/* Operated and Worked with. The distinction is the point of the section, so
+   the label gets its own rule rather than sitting inside an entry. */
+.work-group-label {
+  margin: 0;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--bronze-ink);
+}
+
+.work-entry {
+  border-bottom: 1px solid var(--rule);
+  padding: 32px 0;
+}
+
+/* Height comes from content. A missing photograph leaves a typographic entry,
+   not a reserved hole, which is what the old fixed min-height produced. */
+.work-entry.no-image {
+  padding: 26px 0;
+}
+
+.work-media {
+  margin-bottom: 22px;
+}
+
+.work-media .image-placeholder + .work-media-row {
+  margin-top: 16px;
+}
+
+.work-media-row {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 44px 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
 }
 
-.work-item p {
-  margin-top: 12px;
-  color: var(--espresso-2);
-  font-size: 13px;
-  line-height: 1.45;
-}
-
-.work-item p span {
+.work-entity {
+  margin: 0;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(24px, 2.4vw, 32px);
+  font-weight: 300;
+  line-height: 1.12;
   color: var(--espresso);
 }
 
-.work-item p b {
-  color: var(--bronze-ink);
-  font-weight: 400;
+.work-role {
+  margin: 10px 0 0;
+  max-width: 62ch;
+  color: var(--espresso-2);
 }
 
-.work-item a.venue-link {
+.work-venues,
+.work-note {
+  margin: 8px 0 0;
+  max-width: 62ch;
+  color: var(--espresso-2);
+  font-size: 14px;
+}
+
+.work-note {
+  color: var(--espresso);
+}
+
+.work-entry a.venue-link {
   border-bottom: 1px solid transparent;
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.work-item a.venue-link:hover {
+.work-entry a.venue-link:hover {
   color: var(--bronze-ink);
   border-bottom-color: var(--bronze);
 }
 
-.work-1 {
-  grid-column: span 8;
-}
-
-.work-2,
-.work-3,
-.work-4,
-.work-5 {
-  grid-column: span 4;
-}
-
-.work-6 {
-  grid-column: span 12;
-}
-
 .image-placeholder {
   position: relative;
-  min-height: 100%;
   overflow: hidden;
   background: var(--ivory-2);
   border-radius: 4px;
@@ -585,36 +614,13 @@ h3 {
   object-fit: cover;
 }
 
-.wide .image-placeholder {
+/* Aspect boxes are what keep CLS at zero once photography lands. */
+.wide {
   aspect-ratio: 16 / 10;
 }
 
-.portrait .image-placeholder {
+.portrait {
   aspect-ratio: 4 / 5;
-}
-
-.work-item .image-placeholder {
-  display: block;
-  width: 100%;
-}
-
-/* venue rows with no photograph fall back to a typographic entry */
-.work-item.no-image {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  min-height: 170px;
-  border-top: 1px solid var(--rule);
-  padding-top: 22px;
-}
-
-.work-item.no-image .venue-name {
-  margin: 0;
-  font-family: var(--font-cormorant), Georgia, serif;
-  font-size: clamp(24px, 2.4vw, 32px);
-  font-weight: 300;
-  line-height: 1.12;
-  color: var(--espresso);
 }
 
 .stats {
@@ -807,17 +813,14 @@ h3 {
     padding: 30px;
   }
 
-  .work-grid {
-    display: block;
+  /* Two portraits stay side by side rather than stacking, so the featured
+     entry keeps reading as one group on a phone. */
+  .work-media-row {
+    gap: 12px;
   }
 
-  .work-item {
-    margin-bottom: 32px;
-  }
-
-  .wide .image-placeholder,
-  .portrait .image-placeholder {
-    aspect-ratio: 16 / 10;
+  .work-group + .work-group {
+    margin-top: 48px;
   }
 
   .stats {
