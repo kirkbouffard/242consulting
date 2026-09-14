@@ -1,4 +1,12 @@
 {
-  "zumana.webp": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADwAQCdASoQAAsABUB8JQBOgCBSQGM8uAAA/tb/MEC1SLUmX7ELfNA9mQWNC5qtA3r0cd+9UGCcVYX6giJOm4wHBYrCPPS/kcbsAA==",
-  "kirk.webp": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAABwAwCdASoQABQAPzmGuVOvKSWisAgB4CcJZQDDNBUqneeZWAAA/R+YKJOmH5d69kBS5KM11oxHgTXW4H4XKX0wdSUeV4QXvpHo1XgEAAA="
+  "zumana.webp": {
+    "width": 1450,
+    "height": 967,
+    "blur": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADwAQCdASoQAAsABUB8JQBOgCBSQGM8uAAA/tb/MEC1SLUmX7ELfNA9mQWNC5qtA3r0cd+9UGCcVYX6giJOm4wHBYrCPPS/kcbsAA=="
+  },
+  "kirk.webp": {
+    "width": 1000,
+    "height": 1250,
+    "blur": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAABwAwCdASoQABQAPzmGuVOvKSWisAgB4CcJZQDDNBUqneeZWAAA/R+YKJOmH5d69kBS5KM11oxHgTXW4H4XKX0wdSUeV4QXvpHo1XgEAAA="
+  }
 }

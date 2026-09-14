@@ -93,22 +93,31 @@ if (existsSync(heroPath)) {
     .toFile(path.join(imagesDir, "hero-poster.jpg"));
 }
 
-const blur = {};
+// Records each asset's own dimensions alongside its placeholder. The page uses
+// them to give next/image explicit width and height, so a photograph is laid
+// out at its native ratio and never scaled past its own pixels.
+const manifest = {};
 for (const target of built) {
   const file = path.join(imagesDir, target);
+  const meta = await sharp(file).metadata();
+  const width = meta.width ?? 0;
+  const height = meta.height ?? 0;
   // Match the placeholder to the asset's own shape; a 16x10 blur behind a 4:5
   // portrait stretches into a smear.
-  const meta = await sharp(file).metadata();
-  const height = Math.max(1, Math.round((16 * (meta.height ?? 10)) / (meta.width ?? 16)));
+  const blurHeight = Math.max(1, Math.round((16 * (height || 10)) / (width || 16)));
   const buffer = await sharp(file)
-    .resize(16, height, { fit: "cover" })
+    .resize(16, blurHeight, { fit: "cover" })
     .webp({ quality: 20 })
     .toBuffer();
-  blur[target] = `data:image/webp;base64,${buffer.toString("base64")}`;
+  manifest[target] = {
+    width,
+    height,
+    blur: `data:image/webp;base64,${buffer.toString("base64")}`,
+  };
 }
 await fs.writeFile(
   path.join(root, "image-blur-data.json"),
-  `${JSON.stringify(blur, null, 2)}\n`,
+  `${JSON.stringify(manifest, null, 2)}\n`,
 );
 
 for (const line of skipped) console.warn(`warn  prepare-images: skipped ${line}`);

@@ -37,7 +37,6 @@ function WorkEntry({ entry }: { entry: Entry }) {
           <EditorialImage
             file={images[0]}
             alt={entry.entity}
-            shape="wide"
             sizes={featured ? "(max-width: 760px) 100vw, 1160px" : "(max-width: 760px) 100vw, 760px"}
           />
           {images.length > 1 ? (
