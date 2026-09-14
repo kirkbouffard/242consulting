@@ -36,6 +36,19 @@ export const hero = {
   alt: "Savaya Bali hospitality venue",
 };
 
+// Marks render only where a normalized mark exists. Until then the strip
+// carries the venue names, which needs nobody's trademark. The label is what
+// makes these a record of roles rather than a client roster.
+export const logoStrip = {
+  eyebrow: "Selected experience",
+  venues: [
+    { name: "Atlantis Paradise Island", file: "atlantis-mono.png", url: "https://www.atlantisbahamas.com/" },
+    { name: "CÉ LA VI", file: "celavi-mono.png", url: "https://celavi.com/" },
+    { name: "Savaya Bali", file: "savaya-mono.png", url: "https://www.savaya.com/" },
+    { name: "Desa Kitsuné", file: "kitsune-mono.png", url: "https://desakitsune.com/" },
+  ],
+};
+
 // The fork the whole site turns on. Owners go to bespoke advisory; operators
 // buy the Circle. Each card carries its own route and nothing else.
 export const choice = {
