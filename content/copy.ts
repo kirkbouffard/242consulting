@@ -207,7 +207,7 @@ export const terms = {
     },
     {
       title: "Recordings",
-      body: "Calls are recorded for members only and deleted after 30 days.",
+      body: "Calls are recorded for members only.",
     },
     {
       title: "Keeping the room closed",

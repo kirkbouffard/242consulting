@@ -954,19 +954,6 @@ h3 {
   transform: translateY(0);
 }
 
-/* ---------- section intros ---------- */
-
-/* The paragraph that opens a section, not body copy. Cormorant italic at the
-   size it already had, so the intro reads as a lead-in rather than as the
-   first line of the section's prose. The 16px body elsewhere is untouched. */
-.work-intro p:last-child,
-.offer-intro,
-.about-copy p:not(.eyebrow) {
-  font-family: var(--font-cormorant), Georgia, serif;
-  font-style: italic;
-  font-weight: 400;
-}
-
 /* ---------- drawn underlines ---------- */
 
 /* A gradient rather than the border, because the border can only fade and this

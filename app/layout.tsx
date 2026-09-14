@@ -6,13 +6,13 @@ import { site } from "@/content/copy";
 import { jsonLd } from "@/content/schema";
 import "./globals.css";
 
-// italic is not a synthesised slant here: the section intros use the real
-// Cormorant italic, which has to be requested or next/font never serves it.
+// 300 and 400 only. Both point at the same variable file, so the second weight
+// is free. No italic: one face for three paragraphs was 39,304B of preloaded
+// woff2 for the least visible change on the page.
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   variable: "--font-cormorant",
   weight: ["300", "400"],
-  style: ["normal", "italic"],
   display: "swap",
 });
 

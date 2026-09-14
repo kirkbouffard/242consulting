@@ -3,10 +3,11 @@ import Link from "next/link";
 
 import { terms } from "@/content/copy";
 
-// Linked from the Circle block and the footer, kept out of search.
+// Linked from the Circle block and the footer, and indexed. This is not
+// boilerplate: cancel any time, no notice period, no exit fee is exactly what a
+// hesitant buyer searches for before paying. It is in the sitemap.
 export const metadata: Metadata = {
   title: "242 Circle terms",
-  robots: { index: false, follow: false },
 };
 
 export default function TermsPage() {
