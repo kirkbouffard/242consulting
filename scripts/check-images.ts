@@ -18,9 +18,11 @@ import path from "node:path";
 import sharp from "sharp";
 
 const MAX_BYTES = 350 * 1024;
-const MIN_WIDTH = 2400;
-const TARGET_RATIO = 3 / 2;
-const RATIO_TOLERANCE = 0.02;
+// A landscape frame runs the full 1160 column, so it needs pixels for DPR 2.
+// An upright frame is capped at 560 by .frame-upright, so 1120 is already 1:1
+// there and 2400 would be asking for four times the bytes for nothing.
+const MIN_WIDTH_LANDSCAPE = 2400;
+const MIN_WIDTH_UPRIGHT = 1120;
 
 // Mirrors the files referenced in /content/copy.ts.
 const BACKGROUNDS = ["hero.webp"];
@@ -76,14 +78,11 @@ async function main(): Promise<void> {
       continue;
     }
 
-    if (width < MIN_WIDTH) {
-      warnings.push(`${name}: ${width}px wide, below the ${MIN_WIDTH}px standard`);
+    const floor = height > width ? MIN_WIDTH_UPRIGHT : MIN_WIDTH_LANDSCAPE;
+    if (width < floor) {
+      warnings.push(`${name}: ${width}px wide, below the ${floor}px standard`);
     }
 
-    const ratio = height > 0 ? width / height : 0;
-    if (Math.abs(ratio - TARGET_RATIO) > RATIO_TOLERANCE) {
-      errors.push(`${name}: ${width}x${height} is not 3:2`);
-    }
   }
 
   for (const line of warnings) console.warn(`warn  public/images/${line}`);

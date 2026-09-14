@@ -14,7 +14,12 @@ Next.js 16 App Router, TypeScript, Tailwind v4, next/image, next/font (Cormorant
 - Sentence case for all headings. Uppercase only for 11px eyebrow labels and pill buttons.
 - No AI-generated images for named venues. If a real photo is missing, the tile falls back to a typographic entry.
 - Venue logos render only where a normalized mark exists and the working relationship is verifiable. Until then the strip carries venue names.
-- Rendered images live in /public/images as WebP, under 350KB, 3:2. Source photography sits alongside them and is ignored by the gate. Enforced by /scripts/check-images.ts in prebuild.
+- Rendered images live in /public/images as WebP, under 350KB. No required ratio: nothing crops
+  them any more, so the gate no longer demands 3:2. It wants WebP, under 350KB, and enough pixels
+  for DPR 2 at the size the frame actually renders: 2400px wide for a landscape frame at the full
+  1160 column, 1120px for an upright one, which .frame-upright caps at 560. Source photography sits
+  alongside the rendered files and is ignored by the gate. Enforced by /scripts/check-images.ts in
+  prebuild.
 - Photographs render uncropped at their own ratio. That is the default and it applies to the hero
   image and every track record entry. EditorialImage takes no shape for them: it reads the
   dimensions scripts/prepare-images.mjs records in image-blur-data.json and passes them to

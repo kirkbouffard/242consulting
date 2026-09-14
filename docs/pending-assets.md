@@ -86,6 +86,29 @@ wiring. `components/Work.tsx` reads `files` off each entry in `content/copy.ts`,
 ones that exist on disk, and gives the entry its images. The Savaya entry lists three files and
 takes the larger featured treatment only once more than one of them is present.
 
+## The Zumana frame
+
+`public/images/zumana.webp` shipped as a tight landscape crop of a 9:16 portrait photograph, with
+Kirk cropped out of it. That is why the featured track record entry never showed him. The original
+is committed as `public/images/zumana-source.jpg`, 1125x2000.
+
+Measured on the original: the green arch and the dome behind it start at y=560, the figure runs
+y=1221 to y=1485, and the plaza paving starts at y=1420. So the figure stands on the paving and the
+paving cannot be removed completely without cutting his feet.
+
+Two crops were rendered from it, both `sharp(...).extract(...).webp({quality: 82})`:
+
+| | crop | result | ratio | weight |
+| --- | --- | --- | --- | --- |
+| A | `{left: 0, top: 94, width: 1125, height: 1406}` | 1125x1406 | 4:5 | 89KB |
+| B | `{left: 0, top: 0, width: 1125, height: 1500}` | 1125x1500 | 3:4 | 90KB |
+
+B is a bottom crop only. A cannot be: 4:5 at height 1500 needs a 1200px wide frame and the original
+is 1125, so A also trims 94px of sky off the top.
+
+Either renders at 560 CSS px in the `.frame-upright` box, which is 1120 device pixels at DPR 2
+against a 1125px file, so neither is ever upscaled.
+
 ## Pipeline
 
 Drop the rendered `.webp` files in directly. `scripts/prepare-images.mjs` leaves a target alone when

@@ -51,8 +51,10 @@ export default function EditorialImage({
 
   // Uncropped: explicit width and height, so the browser reserves the right
   // box before the bytes arrive and CLS stays at zero without a CSS ratio.
+  const upright = asset.height > asset.width;
+
   return (
-    <div className="image-placeholder">
+    <div className={`image-placeholder${upright ? " frame-upright" : ""}`}>
       <Image
         {...common}
         alt={alt}
