@@ -9,7 +9,7 @@ export const site = {
   linkedin: "https://www.linkedin.com/in/kirk-bouffard-077a785",
   title: "242 Consulting | Operating leadership for hospitality and wellness",
   description:
-    "Operating leadership for owners building hospitality, wellness and destination businesses, and for the operators running them. Kirk Bouffard. Based in Bali, available globally.",
+    "Hands-on operating leadership for hospitality and wellness owners, and the people running their venues. Kirk Bouffard. Based in Bali, available globally.",
   founder: "Kirk Bouffard",
 };
 
