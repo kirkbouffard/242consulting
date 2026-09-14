@@ -57,10 +57,20 @@ takes no image by design: heading, line, CTA, email, nothing else.
 
 ## Open graph
 
-`/og-image.jpg` is generated at build time by `app/og-image.jpg/route.tsx`.
-It composites the hero still with the mark bottom left, renders through
-`next/og`, and converts to JPEG with sharp. It carries no live text, so no font
-is loaded there.
+`app/opengraph-image.tsx` generates the card at build time through `next/og`,
+1200x630 PNG, served at `/opengraph-image`. Next's file convention emits
+`og:image` and `twitter:image` from it, so neither is hand written in
+`app/layout.tsx` and there is only one place to change the card.
+
+It is ivory ground, the espresso wordmark read off `app/_brand/logotype.svg`,
+and `hero.heading` in Cormorant Garamond beneath it. Both colours are the
+palette's own hex values and the type is the page's own face, so the card
+cannot drift from the site the way the old static jpeg did.
+
+Satori takes ttf, otf or woff, not the woff2 `next/font` serves, so the card
+carries `app/_brand/cormorant-300.ttf`: the variable original instanced at
+weight 300 and subset to latin, 29KB. Regenerate it only if the display face
+changes.
 
 ## Deploying
 

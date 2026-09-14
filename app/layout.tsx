@@ -29,13 +29,11 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: site.title,
     description: site.description,
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: site.name }],
   },
   twitter: {
     card: "summary_large_image",
     title: site.title,
     description: site.description,
-    images: ["/og-image.jpg"],
   },
 };
 
@@ -49,7 +47,7 @@ const jsonLd = {
   name: site.name,
   url: `${site.url}/`,
   description: site.description,
-  image: `${site.url}/og-image.jpg`,
+  image: `${site.url}/opengraph-image`,
   email: site.email,
   areaServed: "Worldwide",
   founder: {
