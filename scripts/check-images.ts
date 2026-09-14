@@ -23,7 +23,7 @@ const TARGET_RATIO = 3 / 2;
 const RATIO_TOLERANCE = 0.02;
 
 // Mirrors the files referenced in /content/copy.ts.
-const BACKGROUNDS = ["hero.webp", "contact.webp"];
+const BACKGROUNDS = ["hero.webp"];
 const VENUE_TILES = [
   "atlantis.webp",
   "bahamas-venue.webp",

@@ -23,7 +23,6 @@ const sources = {
   "savaya.webp": "savaya-official.jpg",
   "kitsune.webp": "kitsune-source.jpg",
   "zumana.webp": "zumana.webp",
-  "contact.webp": "savaya-cube-official.webp",
 };
 
 // Portraits are cropped 4:5 rather than 3:2. Treatment matches the venue

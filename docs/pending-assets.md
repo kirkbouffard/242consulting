@@ -1,11 +1,15 @@
 # Pending assets
 
-Eleven photographs and marks exist on production at www.242consulting.com but have never been
+Ten photographs and marks exist on production at www.242consulting.com but have never been
 committed to this repository or to `kirkbouffard/test`, on any branch. The site is built to degrade
 without them: every slot falls back to a typographic entry, so the branch is complete and shippable
 as it stands. It is not finished.
 
-Do not try to fetch them from a Claude Code sandbox. The egress proxy denies
+Every status code and byte count below is measured, not reported. Each file was confirmed with a
+HEAD request against production; the sizes are the `content-length` those requests returned. Treat
+them as fact and do not re-probe.
+
+Do not try to fetch the files themselves from a Claude Code sandbox. The egress proxy denies
 `242consulting.com`, `www.242consulting.com` and `*.vercel.app` with a 403 at the CONNECT stage.
 That is organization network policy, it applies on both sandboxes, and there is no route around it.
 The Vercel MCP tool can reach the host and confirm a file exists, but it returns response bodies
@@ -14,7 +18,7 @@ uploads these by hand.
 
 ## What to place where
 
-Seven photographs into `public/images/`:
+Six photographs into `public/images/`:
 
 | file | bytes |
 | --- | --- |
@@ -24,7 +28,6 @@ Seven photographs into `public/images/`:
 | `celavi.webp` | 132,218 |
 | `savaya.webp` | 294,258 |
 | `kitsune.webp` | 200,134 |
-| `contact.webp` | 75,890 |
 
 Four marks into `public/images/logos/`:
 
@@ -35,8 +38,11 @@ Four marks into `public/images/logos/`:
 | `savaya-mono.png` | 102,875 |
 | `kitsune-mono.png` | 18,047 |
 
-All eleven return HTTP 200 on production and all eleven are under the 350KB gate in
-`scripts/check-images.ts`.
+All ten return HTTP 200 and all ten are under the 350KB gate in `scripts/check-images.ts`.
+
+`contact.webp` is on production too, at 75,890 bytes, and is deliberately not on this list. The
+contact section is heading, line, CTA, email, and takes no art. Its reference was removed from
+`content/copy.ts` and from the image gate. Do not add it back because the file exists.
 
 ## Check hero.webp against savaya.webp before shipping
 
@@ -65,9 +71,6 @@ The venue photographs attach by filename through `assetExists` in `lib/assets.ts
 wiring. `components/Work.tsx` reads `files` off each entry in `content/copy.ts`, filters to the
 ones that exist on disk, and gives the entry its images. The Savaya entry lists three files and
 takes the larger featured treatment only once more than one of them is present.
-
-`contact.webp` is referenced by `content/copy.ts` but no component renders it today. Decide whether
-the contact section wants art before adding it, rather than adding it because the file arrived.
 
 ## Pipeline
 

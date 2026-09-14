@@ -316,8 +316,6 @@ export const contact = {
   cta: "Book a 30-minute intro call",
   meta: "Enquiries answered within 24 hours · Based in Bali, available globally · ",
   linkedinLabel: "LinkedIn",
-  image: "/images/contact.webp",
-  alt: "Savaya Bali cliffside venue architecture",
 };
 
 export const footer = {

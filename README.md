@@ -47,11 +47,13 @@ verbatim. Edit copy there, never in JSX.
 
 Drop WebP files in `public/images`. Expected names:
 
-- `hero.webp`, `contact.webp` (full bleed backgrounds)
-- `atlantis.webp`, `bahamas.webp`, `celavi.webp`, `savaya.webp`, `desa-kitsune.webp` (track record grid)
+- `hero.webp` (hero right column, above the stats)
+- `atlantis.webp`, `bahamas-venue.webp`, `celavi.webp`, `savaya.webp`, `kitsune.webp`,
+  `zumana.webp` (track record entries)
 
-A venue tile is dropped from the grid when its file is absent. The hero and
-contact sections fall back to flat surface color. No stand-in art is generated.
+An entry renders typographically when its file is absent, and the hero column
+carries the stats alone. No stand-in art is generated. The contact section
+takes no image by design: heading, line, CTA, email, nothing else.
 
 ## Open graph
 
