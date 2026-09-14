@@ -73,10 +73,13 @@ h3 {
   text-wrap: balance;
 }
 
+/* 500 rather than the body's 400. Inter is served as a variable face, so the
+   weight costs nothing to download. */
 .eyebrow {
   margin: 0;
   color: var(--bronze-ink);
   font-size: 11px;
+  font-weight: 500;
   letter-spacing: 0.2em;
   line-height: 1.3;
   text-transform: uppercase;
@@ -358,6 +361,15 @@ h3 {
   background: var(--ivory-3);
 }
 
+/* The page ends on one dark block: contact and the footer share this ground.
+   Every colour below is a palette token; nothing new was added for the dark.
+   bronze-ink, the eyebrow's colour everywhere else, is 2.61:1 here, so the
+   brass on this ground is --rule at 6.77:1. */
+.section-espresso {
+  background: var(--espresso);
+  color: var(--ivory);
+}
+
 /* ---------- owners / operators fork ---------- */
 
 .choice-grid {
@@ -383,6 +395,7 @@ h3 {
   margin: 0;
   color: var(--bronze-ink);
   font-size: 11px;
+  font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
@@ -442,12 +455,15 @@ h3 {
   align-items: start;
 }
 
+/* 400 against the 300 every other display line takes, so the two offer titles
+   carry more weight than the section headings around them. Cormorant is
+   already served at both weights, from the same file. */
 .offer-title {
   margin: 14px 0 0;
   letter-spacing: -0.01em;
   font-family: var(--font-cormorant), Georgia, serif;
   font-size: clamp(30px, 3.4vw, 46px);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.1;
 }
 
@@ -651,6 +667,7 @@ h3 {
   border-bottom: 1px solid var(--rule);
   color: var(--espresso-2);
   font-size: 11px;
+  font-weight: 500;
   letter-spacing: 2.2px;
   line-height: 1.3;
   text-transform: uppercase;
@@ -784,7 +801,33 @@ h3 {
 .contact-copy > p {
   margin: 0 0 30px;
   max-width: 56ch;
-  color: var(--espresso-2);
+  color: var(--ivory-3);
+}
+
+.contact-copy .eyebrow {
+  color: var(--rule);
+}
+
+/* Inverted: the fill and the ink swap, so the primary action still reads as
+   the solid one on a dark ground. */
+.contact-section .button-solid {
+  background: var(--ivory);
+  color: var(--espresso);
+}
+
+.contact-section .button-solid:hover {
+  background: var(--rule);
+  color: var(--espresso);
+}
+
+/* The drawn underline is bronze-ink elsewhere, which disappears here. */
+.contact-section .email-link {
+  color: var(--ivory);
+  background-image: linear-gradient(var(--ivory), var(--ivory));
+}
+
+.contact-section .email-link:hover {
+  color: var(--ivory);
 }
 
 .contact-actions {
@@ -797,7 +840,7 @@ h3 {
 .contact-copy small {
   display: block;
   margin-top: 28px;
-  color: var(--espresso-2);
+  color: var(--rule);
   font-size: 13px;
 }
 
@@ -806,7 +849,10 @@ h3 {
 }
 
 .site-footer {
-  border-top: 1px solid var(--rule);
+  /* Contact is espresso now, so a --rule hairline here cut the dark block in
+     two. This is the same divider the scrolled nav and the sticky bar already
+     use on espresso, so the three dark surfaces still read as one family. */
+  border-top: 1px solid rgb(247 243 235 / 0.18);
   padding-block: 24px;
   background: var(--espresso);
   color: var(--ivory);
@@ -906,6 +952,19 @@ h3 {
 .reveal.is-visible > * {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ---------- section intros ---------- */
+
+/* The paragraph that opens a section, not body copy. Cormorant italic at the
+   size it already had, so the intro reads as a lead-in rather than as the
+   first line of the section's prose. The 16px body elsewhere is untouched. */
+.work-intro p:last-child,
+.offer-intro,
+.about-copy p:not(.eyebrow) {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
 }
 
 /* ---------- drawn underlines ---------- */

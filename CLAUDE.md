@@ -7,7 +7,8 @@ This file tracks the live site at www.242consulting.com. Where the two disagree,
 
 ## Stack
 Next.js 16 App Router, TypeScript, Tailwind v4, next/image, next/font (Cormorant Garamond 300 and
-400 display, Inter body). No component library. No CMS. No forms. Vercel Analytics. Deploy on Vercel.
+400, normal and italic, for display; Inter variable for body). No component library. No CMS.
+No forms. Vercel Analytics. Deploy on Vercel.
 
 ## Hard rules
 - Never output an em dash or en dash in any file. Use period, comma, or "to". Lint for U+2014 and U+2013 before every commit.
@@ -46,9 +47,9 @@ espresso #2a211b (ink), espresso-2 #574a3f (muted body), rule #b9a888.
 One rule colour across all three grounds. The former rule-deep is gone: #b9a888 is already darker
 than it was, so a second "deeper" token would have inverted its own purpose.
 
-Sections alternate: hero and #venues on ivory, #choose and #operators on ivory-2, #owners and
-#contact on ivory-3. Footer is espresso with ivory text. The nav takes the same espresso at 96
-percent once the page scrolls, driven by a data-scrolled flag that ScrollState sets on the root, so
+Sections alternate: hero and #venues on ivory, #choose and #operators on ivory-2, #owners on
+ivory-3. #contact is espresso with ivory type, so the page ends on one dark block with the footer,
+which is espresso with ivory text. The nav takes the same espresso at 96 percent once it scrolls, driven by a data-scrolled flag that ScrollState sets on the root, so
 Nav can stay a server component and keep reading the logotype off disk.
 
 Two doors cards sit on ivory-3, one step darker than their ivory-2 section, 1px rule border, no
@@ -62,11 +63,28 @@ Bronze is split by job: #9c7c4f for rules, borders and hovers, #7a5e32 for small
 uppercase eyebrows fail contrast on ivory at the lighter bronze, so text always takes the darker one.
 No grain overlay.
 
+On the espresso ground the accent inverts. bronze-ink is 2.61:1 there and bronze is 4.06:1, so
+neither can carry text: the brass on dark is --rule at 6.77:1, which is the eyebrow, the small print
+and the LinkedIn link. Headings and the email link take --ivory at 14.25:1, the sub paragraph takes
+--ivory-3 at 12.70:1, and the solid button inverts to an ivory fill with espresso ink, also 14.25:1.
+No colour was added for the dark section; every one of those is an existing token. The footer's top
+rule drops to rgb(247 243 235 / 0.18), the divider the scrolled nav and the sticky bar already use,
+because a --rule hairline between two espresso blocks cut the dark block in two.
+
 ## Type scale
 h1 clamp(46px, 6vw, 88px) lh 1.02; section h2 clamp(30px, 3.6vw, 52px) lh 1.08; offer title
 clamp(30px, 3.4vw, 46px); circle price clamp(48px, 6vw, 72px); advisory h3 24px;
 stats 46px, which is the ceiling: "$45M+" fills the middle cell's 118px at that size;
 body Inter 16px/1.65; eyebrow 11px 0.2em bronze-ink.
+Two weights carry emphasis. Inter 500 on .eyebrow, .choice-label and .work-label against the body's
+400; Cormorant 400 on .offer-title against the 300 every other display line takes. Both cost nothing
+to download: Inter is served as one variable face and Cormorant's 300 and 400 point at the same file.
+The section intro paragraphs are Cormorant italic at the size they already had: the #venues intro,
+.offer-intro and the #about body. Not 16px body copy anywhere else. That italic is a real face, not
+a synthesised slant, which means next/font has to request style ["normal","italic"] and a first
+visit preloads one more woff2, 39,304B. Cormorant's x-height is 7px against Inter's 9px at the same
+16px, so those paragraphs read smaller than the copy they replaced. That is the tradeoff; the size
+was deliberately not changed.
 Headings take text-wrap: balance, body copy takes text-wrap: pretty off the body element.
 Cormorant Garamond renders OLDSTYLE figures by default, which is why the stats read 20+ with the 2
 at x-height and $45M+ with the 4 and 5 descending. That is the intended register. The lnum feature

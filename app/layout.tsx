@@ -5,10 +5,13 @@ import { Analytics } from "@vercel/analytics/react";
 import { site } from "@/content/copy";
 import "./globals.css";
 
+// italic is not a synthesised slant here: the section intros use the real
+// Cormorant italic, which has to be requested or next/font never serves it.
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   variable: "--font-cormorant",
   weight: ["300", "400"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
