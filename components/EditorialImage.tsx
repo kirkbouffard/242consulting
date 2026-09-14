@@ -9,6 +9,7 @@ type EditorialImageProps = {
   alt: string;
   priority?: boolean;
   sizes?: string;
+  loading?: "eager" | "lazy";
 };
 
 export default function EditorialImage({
@@ -16,6 +17,7 @@ export default function EditorialImage({
   alt,
   priority = false,
   sizes = SIZES,
+  loading,
 }: EditorialImageProps) {
   const blur = (blurData as Record<string, string>)[file];
 
@@ -28,6 +30,7 @@ export default function EditorialImage({
         sizes={sizes}
         quality={82}
         priority={priority}
+        {...(loading && !priority ? { loading } : {})}
         {...(blur ? { placeholder: "blur" as const, blurDataURL: blur } : {})}
         className="editorial-image"
       />

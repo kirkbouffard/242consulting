@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { terms } from "@/content/copy";
 
@@ -25,9 +26,9 @@ export default function TermsPage() {
           ))}
         </dl>
 
-        <a className="text-link" href="/">
+        <Link className="text-link" href="/">
           {terms.back}
-        </a>
+        </Link>
       </div>
     </main>
   );

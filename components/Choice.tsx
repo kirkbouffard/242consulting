@@ -18,7 +18,8 @@ export default function Choice() {
               <EditorialImage
                 file={choice.portrait.file}
                 alt={choice.portrait.alt}
-                sizes="(max-width: 960px) 70vw, 30vw"
+                sizes="(max-width: 960px) 260px, 380px"
+                loading="eager"
               />
               <figcaption>{choice.portrait.caption}</figcaption>
             </figure>

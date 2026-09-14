@@ -226,6 +226,8 @@ export const sticky = {
   links: [
     { label: "Owners", href: "#owners", event: "sticky_owners_click" },
     { label: "Operators", href: "#operators", event: "sticky_operators_click" },
+    { label: "Venues", href: "#venues", event: "sticky_venues_click" },
+    { label: "Contact", href: "#contact", event: "sticky_contact_click" },
   ],
 };
 

@@ -35,7 +35,9 @@ export default function Advisory() {
               <p>{entry.body}</p>
             </article>
           ))}
-          <p className="offer-note">{advisory.note}</p>
+          <p className="offer-note">
+            <span>{advisory.note}</span>
+          </p>
 
           <Accordion items={advisory.faq} />
           <Testimonial />

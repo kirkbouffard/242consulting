@@ -23,7 +23,9 @@ Next.js 16 App Router, TypeScript, Tailwind v4, next/image, next/font (Cormorant
 
 ## Palette
 Warm ivory ground, not the former dark ink. ivory #f7f3eb, ivory-2 #efe9dd, ivory-3 #ede6d8,
-espresso #2a211b (ink), espresso-2 #574a3f (muted body), rule #cfc2ab, rule-deep #c2b393 on ivory-3.
+espresso #2a211b (ink), espresso-2 #574a3f (muted body), rule #b9a888.
+One rule colour across all three grounds. The former rule-deep is gone: #b9a888 is already darker
+than it was, so a second "deeper" token would have inverted its own purpose.
 
 Sections alternate: hero and #venues on ivory, #choose and #operators on ivory-2, #owners and
 #contact on ivory-3. Footer is espresso with ivory text. The nav takes the same espresso at 96
@@ -34,21 +36,22 @@ Two doors cards sit on ivory-3, one step darker than their ivory-2 section, 1px 
 shadow. The buyable side is now marked by its solid button and the price, not by a bronze border.
 
 Every text pair clears 4.5:1, the tightest being bronze-ink on ivory-3 at 4.87:1. The section rules
-do NOT clear 3:1 and are not meant to: they are decorative dividers, not UI boundaries. Reaching
-3:1 would need roughly #9c8767, dark enough to band the page.
+do NOT clear 3:1 and are not meant to: they are decorative dividers, not UI boundaries. #b9a888
+lands at 2.10:1 on ivory and 1.87:1 on ivory-3. Reaching 3:1 would need roughly #9c8767, dark enough
+to band the page.
 Bronze is split by job: #9c7c4f for rules, borders and hovers, #7a5e32 for small text. The 11px
 uppercase eyebrows fail contrast on ivory at the lighter bronze, so text always takes the darker one.
 No grain overlay.
 
 ## Type scale
-h1 clamp(42px, 6vw, 88px) lh 1.02; section h2 clamp(30px, 3.6vw, 52px) lh 1.08; offer title
+h1 clamp(46px, 6vw, 88px) lh 1.02; section h2 clamp(30px, 3.6vw, 52px) lh 1.08; offer title
 clamp(30px, 3.4vw, 46px); circle price clamp(48px, 6vw, 72px); advisory h3 24px; stats 46px;
 body Inter 16px/1.65; eyebrow 11px 0.2em bronze-ink.
 
 ## Layout and motion
-Max content 1160px. Section padding 112px desktop, 80px mobile, separated by 1px rules with the
-three alternating grounds set out under Palette. Fixed ivory nav 76px, espresso once scrolled,
-scroll-margin-top 88px on sections.
+Max content 1160px, inline gutter 24px at every width. Section padding 112px desktop, 80px mobile,
+separated by 1px rules with the three alternating grounds set out under Palette. Fixed ivory nav
+76px, espresso once scrolled, scroll-margin-top 88px on sections.
 Hero and contact are sized to their content, not 100svh. Offer sections are a 5fr 7fr grid that
 collapses to one column under 960px. Fade-up on scroll 350ms 10px at threshold 0.12, disabled under
 prefers-reduced-motion. Rounded corners: 4px images and cards, 999px pills.
@@ -99,20 +102,23 @@ intent rather than something the checkout enforces. Do not "fix" this in code. S
 to close it on the Stripe side once members approach 15.
 
 ## Accordion and sticky bar
-One accordion per door, after the list and before the CTA. The trigger is a real button inside an h4,
-so Enter, Space and tab order come from the platform. aria-expanded and aria-controls are set, one
-panel open at a time, no chevron. Serif question 20px, Inter answer 15px secondary, 1px rules.
+One accordion per door, after the list and before the CTA. The trigger is a real button inside an h3,
+one level under the section h2, so the heading order has no gap and Enter, Space and tab order come
+from the platform. aria-expanded and aria-controls are set, one panel open at a time, no chevron. Serif question 20px, Inter answer 15px secondary, 1px rules.
 
 Under 768px a 52px bar is fixed to the bottom: espresso at 96 percent with blur, 1px top rule, Inter
-14px ivory, "Owners" and "Operators" centred either side of a vertical rule. It appears once the hero
-leaves the viewport and hides again while contact is in view, where both routes are already on
-screen. It shares its treatment with the scrolled nav and the footer, so the dark surfaces on the
-page read as one family rather than three accidents.
+14px ivory, "Owners", "Operators", "Venues" and "Contact" separated by vertical rules. The mobile nav
+drops its links entirely, so the bar is the only in-page navigation under 768px and has to carry all
+four. main takes 52px of bottom padding at that width so the bar never covers content. It appears
+once the hero leaves the viewport and hides again while contact is in view, where the routes are
+already on screen. It shares its treatment with the scrolled nav and the footer, so the dark
+surfaces on the page read as one family rather than three accidents.
 
 ## Analytics
 Vercel Analytics. track() fires door_owners_click, door_operators_click, cta_retained_email,
-cta_circle_email, cta_contact_email, sticky_owners_click, sticky_operators_click. Clicks are wired
-through components/TrackedLink.tsx so the offer sections stay server rendered. Note cta_circle_email
+cta_circle_email, cta_contact_email, sticky_owners_click, sticky_operators_click,
+sticky_venues_click, sticky_contact_click. Clicks are wired through components/TrackedLink.tsx so
+the offer sections stay server rendered. Note cta_circle_email
 is the name for the Circle purchase button, which goes to Stripe rather than to email.
 
 ## Metadata

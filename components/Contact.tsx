@@ -19,7 +19,7 @@ export default function Contact() {
           >
             {contact.cta}
           </a>
-          <TrackedLink className="email-link" href={mailto()} event="cta_contact_email">
+          <TrackedLink className="email-link" href={mailto("Intro call")} event="cta_contact_email">
             {site.email}
           </TrackedLink>
         </div>

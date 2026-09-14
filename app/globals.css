@@ -7,11 +7,16 @@
   --ivory-3: #ede6d8;
   --espresso: #2a211b;
   --espresso-2: #574a3f;
+  /* bronze is split by job and the two are not interchangeable:
+     --bronze draws lines, borders and hover states, --bronze-ink sets text.
+     The 11px uppercase eyebrow fails 4.5:1 on ivory at --bronze, so any type
+     that takes the accent takes --bronze-ink. */
   --bronze: #9c7c4f;
   --bronze-ink: #7a5e32;
-  --rule: #cfc2ab;
-  /* the section rule has to keep reading once the ground darkens */
-  --rule-deep: #c2b393;
+  /* one rule colour, dark enough to keep reading on ivory-3, the deepest of
+     the three grounds. It is a divider, not a UI boundary, so it does not
+     chase 3:1. */
+  --rule: #b9a888;
 }
 
 @layer base {
@@ -217,7 +222,7 @@ h3 {
 
 .hero-section {
   background: var(--ivory);
-  padding-block: 168px 108px;
+  padding-block: 168px 112px;
 }
 
 .hero-grid {
@@ -236,7 +241,7 @@ h3 {
 .hero-copy h1 {
   max-width: 14ch;
   margin: 20px 0 24px;
-  font-size: clamp(42px, 6vw, 88px);
+  font-size: clamp(46px, 6vw, 88px);
   line-height: 1.02;
 }
 
@@ -331,7 +336,6 @@ h3 {
 
 .section-ivory-3 {
   background: var(--ivory-3);
-  border-top-color: var(--rule-deep);
 }
 
 /* ---------- owners / operators fork ---------- */
@@ -444,13 +448,19 @@ h3 {
   color: var(--espresso-2);
 }
 
+/* The rule runs the full column, so it lines up with the entry rules above and
+   the accordion rule below. The measure is held by the inner span. */
 .offer-note {
   margin: 28px 0 0;
   border-top: 1px solid var(--rule);
   padding-top: 20px;
-  max-width: 62ch;
   color: var(--espresso-2);
   font-size: 14px;
+}
+
+.offer-note span {
+  display: block;
+  max-width: 62ch;
 }
 
 .offer-cta {
@@ -843,10 +853,6 @@ h3 {
 }
 
 @media (max-width: 760px) {
-  .content-width {
-    width: min(100% - 32px, 1160px);
-  }
-
   .site-nav {
     height: 64px;
   }
@@ -1122,7 +1128,7 @@ h3 {
 }
 
 .sticky-bar a {
-  padding: 0 22px;
+  padding: 0 14px;
   color: var(--ivory);
 }
 
@@ -1142,7 +1148,11 @@ h3 {
     opacity: 1;
   }
 
-  /* keep the footer clear of the bar */
+  /* keep the last section and the footer clear of the bar */
+  main {
+    padding-bottom: 52px;
+  }
+
   .site-footer {
     padding-bottom: 76px;
   }

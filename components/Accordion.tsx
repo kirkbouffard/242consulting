@@ -19,7 +19,7 @@ export default function Accordion({ items }: { items: Item[] }) {
 
         return (
           <div className="accordion-item" key={item.q}>
-            <h4 className="accordion-heading">
+            <h3 className="accordion-heading">
               <button
                 type="button"
                 id={buttonId}
@@ -30,7 +30,7 @@ export default function Accordion({ items }: { items: Item[] }) {
               >
                 {item.q}
               </button>
-            </h4>
+            </h3>
             <div
               id={panelId}
               role="region"

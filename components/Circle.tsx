@@ -46,7 +46,9 @@ export default function Circle() {
 
           <Accordion items={circle.faq} />
 
-          <p className="offer-note circle-seats-note">{circle.note}</p>
+          <p className="offer-note circle-seats-note">
+            <span>{circle.note}</span>
+          </p>
 
           <div className="offer-cta offer-cta-stacked">
             <TrackedLink
