@@ -1,33 +1,17 @@
-import EditorialImage from "@/components/EditorialImage";
 import Reveal from "@/components/Reveal";
 import TrackedLink from "@/components/TrackedLink";
 import { choice } from "@/content/copy";
-import { assetExists } from "@/lib/assets";
 
 // The fork. Two routes, side by side, so the visitor self-selects before
-// reading either door in full.
+// reading either door in full. Nothing else belongs in this section: the
+// founder portrait sits in #about, where the copy is about him.
 export default function Choice() {
-  const hasPortrait = assetExists(`/images/${choice.portrait.file}`);
-
   return (
     <section id={choice.id} className="section section-ivory-2">
       <div className="content-width">
         <Reveal className="doors-head">
-          {hasPortrait ? (
-            <figure className="doors-portrait">
-              <EditorialImage
-                file={choice.portrait.file}
-                alt={choice.portrait.alt}
-                sizes="(max-width: 960px) 260px, 380px"
-                loading="eager"
-              />
-              <figcaption>{choice.portrait.caption}</figcaption>
-            </figure>
-          ) : null}
-          <div className="doors-title">
-            <p className="eyebrow">{choice.eyebrow}</p>
-            <h2>{choice.heading}</h2>
-          </div>
+          <p className="eyebrow">{choice.eyebrow}</p>
+          <h2>{choice.heading}</h2>
         </Reveal>
 
         <div className="choice-grid">

@@ -555,14 +555,18 @@ h3 {
 
 .about-grid {
   display: grid;
-  grid-template-columns: 5fr 7fr;
+  grid-template-columns: 4fr 8fr;
   gap: 8%;
   align-items: start;
 }
 
+.about-portrait {
+  max-width: 360px;
+}
+
 .about-grid h2 {
-  margin: 16px 0 0;
-  max-width: 14ch;
+  margin: 16px 0 24px;
+  max-width: 18ch;
   font-size: clamp(30px, 3.6vw, 52px);
   line-height: 1.08;
 }
@@ -930,48 +934,16 @@ h3 {
   }
 }
 
-/* ---------- founder portrait ---------- */
-
-.advisory-portrait {
-  margin: 32px 0 0;
-  max-width: 320px;
-}
-
-.advisory-portrait .image-placeholder {
-  aspect-ratio: 4 / 5;
-}
-
-.advisory-portrait figcaption {
-  margin-top: 12px;
-  color: var(--espresso-2);
-  font-size: 13px;
-}
-
 /* ---------- two doors head ---------- */
 
+/* Eyebrow and heading only. The section's one job is making a reader pick a
+   door, so it opens at the normal section start across the full content width
+   rather than bottom-aligning a heading to the base of a portrait. */
 .doors-head {
-  display: grid;
-  grid-template-columns: 4fr 8fr;
-  gap: 40px;
-  align-items: end;
   margin-bottom: 40px;
 }
 
-.doors-portrait {
-  margin: 0;
-}
-
-.doors-portrait .image-placeholder {
-  aspect-ratio: 4 / 5;
-}
-
-.doors-portrait figcaption {
-  margin-top: 12px;
-  color: var(--espresso-2);
-  font-size: 13px;
-}
-
-.doors-title h2 {
+.doors-head h2 {
   margin: 16px 0 0;
   font-size: clamp(30px, 3.6vw, 52px);
   line-height: 1.08;
@@ -1162,13 +1134,7 @@ h3 {
     gap: 28px;
   }
 
-  .doors-head {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    align-items: start;
-  }
-
-  .doors-portrait {
+  .about-portrait {
     max-width: 260px;
   }
 }

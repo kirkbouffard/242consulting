@@ -27,7 +27,7 @@ export const nav = {
 export const hero = {
   eyebrow: "Hospitality · Wellness · Development",
   heading: "Turn ambitious venues into businesses that perform.",
-  sub: "Hands-on operating leadership for founders and owners building hospitality, wellness, and destination businesses. Clearer decisions, stronger teams, better guest experiences.",
+  sub: "Hands-on operating leadership for the owners building hospitality, wellness and destination businesses, and the operators running them day to day.",
   cta: "Book a Call",
   secondary: { label: "View the work", href: "#venues" },
   // Right column. Renders when the file lands; until then the column carries
@@ -54,7 +54,6 @@ export const choice = {
   id: "choose",
   eyebrow: "Two ways to work together",
   heading: "Two doors.",
-  portrait: { file: "kirk.webp", alt: "Kirk Bouffard", caption: "Kirk Bouffard" },
   cards: [
     {
       id: "owners",
@@ -235,8 +234,9 @@ export const about = {
   id: "about",
   eyebrow: "About 242 Consulting",
   heading: "An operator in the room when it matters.",
+  portrait: { file: "kirk.webp", alt: "Kirk Bouffard" },
   paragraphs: [
-    "Kirk Bouffard has spent more than two decades turning ambitious hospitality and wellness concepts into operating businesses across the Bahamas, Singapore, Indonesia, and beyond.",
+    "Kirk Bouffard turns ambitious hospitality and wellness concepts into operating businesses across the Bahamas, Singapore, Indonesia, and beyond.",
     "242 Consulting works with owners at the point where strategy needs to become standards, teams, reporting, and a guest experience people return for.",
   ],
   link: "Start a conversation",
@@ -296,7 +296,7 @@ export const work = {
   stats: [
     { value: "20+", label: "Years operating" },
     { value: "$45M+", label: "P&L responsibility" },
-    { value: "5", label: "Markets shaped across hospitality, wellness, and development" },
+    { value: "3", label: "Markets" },
   ],
 };
 
