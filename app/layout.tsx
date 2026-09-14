@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 
 import { site } from "@/content/copy";
+import { jsonLd } from "@/content/schema";
 import "./globals.css";
 
 // italic is not a synthesised slant here: the section intros use the real
@@ -42,21 +43,6 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: "#f7f3eb",
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: site.name,
-  url: `${site.url}/`,
-  description: site.description,
-  image: `${site.url}/opengraph-image`,
-  email: site.email,
-  areaServed: "Worldwide",
-  founder: {
-    "@type": "Person",
-    name: site.founder,
-  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
