@@ -18,7 +18,7 @@ const imagesDir = path.join(root, "public", "images");
 const sources = {
   "hero.webp": "savaya-official.jpg",
   "atlantis.webp": "atlantis-source.jpg",
-  "aura.webp": "aura-source.jpg",
+  "bahamas-venue.webp": "bahamas-venue-source.jpg",
   "celavi.webp": "celavi-source.jpg",
   "savaya.webp": "savaya-official.jpg",
   "kitsune.webp": "kitsune-source.jpg",
