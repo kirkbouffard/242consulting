@@ -51,9 +51,8 @@ export default function EditorialImage({
 
   // Uncropped: explicit width and height, so the browser reserves the right
   // box before the bytes arrive and CLS stays at zero without a CSS ratio.
-  // maxWidth pins it to its own pixel count, so it is never scaled up.
   return (
-    <div className="image-placeholder" style={{ maxWidth: asset.width }}>
+    <div className="image-placeholder">
       <Image
         {...common}
         alt={alt}

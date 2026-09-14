@@ -676,11 +676,9 @@ h3 {
   object-fit: cover;
 }
 
-/* Aspect boxes are what keep CLS at zero once photography lands. */
-.wide {
-  aspect-ratio: 16 / 10;
-}
-
+/* The one box that still carries a ratio: the founder portrait slot is 4:5 by
+   rule, and prepare-images renders kirk.webp at exactly 1000x1250, so this
+   holds the slot rather than cropping anything. */
 .portrait {
   aspect-ratio: 4 / 5;
 }

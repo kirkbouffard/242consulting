@@ -46,7 +46,6 @@ function WorkEntry({ entry }: { entry: Entry }) {
                   key={file}
                   file={file}
                   alt={entry.entity}
-                  shape="portrait"
                   sizes="(max-width: 760px) 50vw, 380px"
                 />
               ))}

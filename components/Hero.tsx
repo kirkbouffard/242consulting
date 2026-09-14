@@ -36,7 +36,6 @@ export default function Hero() {
             <EditorialImage
               file={hero.portrait.file}
               alt={hero.portrait.alt}
-              shape="wide"
               priority
               sizes="(max-width: 960px) 100vw, 560px"
             />

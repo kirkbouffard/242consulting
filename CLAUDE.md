@@ -15,11 +15,17 @@ Next.js 16 App Router, TypeScript, Tailwind v4, next/image, next/font (Cormorant
 - No AI-generated images for named venues. If a real photo is missing, the tile falls back to a typographic entry.
 - Venue logos render only where a normalized mark exists and the working relationship is verifiable. Until then the strip carries venue names.
 - Rendered images live in /public/images as WebP, under 350KB, 3:2. Source photography sits alongside them and is ignored by the gate. Enforced by /scripts/check-images.ts in prebuild.
-- Track record photographs render uncropped at their own ratio. EditorialImage takes no shape for
-  them, so it reads the dimensions scripts/prepare-images.mjs records in image-blur-data.json,
-  passes them to next/image as explicit width and height, and caps the box at the file's own pixel
-  width. CLS stays 0 with no CSS aspect-ratio and nothing is ever scaled past its own resolution.
-  Pass a shape only where a crop is wanted.
+- Photographs render uncropped at their own ratio. That is the default and it applies to the hero
+  image and every track record entry. EditorialImage takes no shape for them: it reads the
+  dimensions scripts/prepare-images.mjs records in image-blur-data.json and passes them to
+  next/image as explicit width and height, so CLS stays 0 with no CSS aspect-ratio and the box
+  sizes to the photograph. There is no max-width: the container is narrower than any rendered
+  asset, so a cap never engaged.
+  Pass a shape ONLY where a crop is genuinely wanted AND the source ratio is known. One caller
+  qualifies: the founder portrait, shape="portrait", because 4:5 is a hard rule for that slot and
+  prepare-images renders kirk.webp at exactly 1000x1250, so the box holds the slot and crops
+  nothing. Everything in the sources map is rendered 2400x1600, so any shape over one of those
+  files is a crop by accident.
 - The founder portrait and the door anchors are the exceptions to 3:2. Portrait is 4:5, anchors 16:9.
   The portrait takes the same treatment as the venue tiles, which is none. Crop only.
   Drop the untouched headshot at /public/images/kirk-source.jpg; the build crops it and generates its
