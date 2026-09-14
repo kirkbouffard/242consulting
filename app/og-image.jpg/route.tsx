@@ -13,7 +13,7 @@ const HEIGHT = 630;
 const MARK_WIDTH = 420;
 
 async function heroDataUri(): Promise<string | null> {
-  const file = path.join(process.cwd(), "public", hero.image.replace(/^\//, ""));
+  const file = path.join(process.cwd(), "public", "images", hero.portrait.file);
   try {
     const source = await fs.readFile(file);
     const jpeg = await sharp(source)

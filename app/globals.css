@@ -220,8 +220,21 @@ h3 {
   padding-block: 168px 108px;
 }
 
+.hero-grid {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: 7%;
+  align-items: end;
+}
+
+.hero-media {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
 .hero-copy h1 {
-  max-width: 15ch;
+  max-width: 14ch;
   margin: 20px 0 24px;
   font-size: clamp(42px, 6vw, 88px);
   line-height: 1.02;
@@ -390,19 +403,22 @@ h3 {
 
 .offer-title {
   margin: 14px 0 0;
+  letter-spacing: -0.01em;
   font-family: var(--font-cormorant), Georgia, serif;
   font-size: clamp(30px, 3.4vw, 46px);
   font-weight: 300;
   line-height: 1.1;
 }
 
-.offer-heading h2 {
+/* The display line is the h2 and carries offer-title. The supporting line
+   below it is a paragraph, which is what it always was typographically. */
+.offer-lede {
   margin: 18px 0 0;
   font-size: 21px;
   font-family: var(--font-inter), sans-serif;
   font-weight: 400;
-  letter-spacing: 0;
   line-height: 1.35;
+  color: var(--espresso);
 }
 
 .offer-intro {
@@ -506,6 +522,31 @@ h3 {
   margin: 0;
   color: var(--espresso-2);
   font-size: 13px;
+}
+
+/* ---------- about ---------- */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 8%;
+  align-items: start;
+}
+
+.about-grid h2 {
+  margin: 16px 0 0;
+  max-width: 14ch;
+  font-size: clamp(30px, 3.6vw, 52px);
+  line-height: 1.08;
+}
+
+.about-copy {
+  max-width: 62ch;
+  color: var(--espresso-2);
+}
+
+.about-copy p {
+  margin: 0 0 18px;
 }
 
 /* ---------- venues ---------- */
@@ -626,15 +667,15 @@ h3 {
 .stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 88px;
+  margin-top: 0;
   border-top: 1px solid var(--rule);
 }
 
 .stats > div {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 30px 28px 0;
+  gap: 6px;
+  padding: 22px 16px 0;
   border-right: 1px solid var(--rule);
 }
 
@@ -648,7 +689,7 @@ h3 {
 
 .stats strong {
   font-family: var(--font-cormorant), Georgia, serif;
-  font-size: 46px;
+  font-size: 38px;
   font-weight: 300;
   line-height: 1;
 }
@@ -762,6 +803,15 @@ h3 {
 
 /* ---------- responsive ---------- */
 
+/* The left column dies after the intro while the right runs on for hundreds of
+   pixels. Pinning it keeps the offer named while its detail scrolls past. */
+@media (min-width: 1024px) {
+  .offer-heading {
+    position: sticky;
+    top: 108px;
+  }
+}
+
 @media (max-width: 960px) {
   .offer-grid {
     grid-template-columns: 1fr;
@@ -825,7 +875,7 @@ h3 {
 
   .stats {
     display: block;
-    margin-top: 56px;
+    margin-top: 0;
   }
 
   .stats > div {
@@ -1088,6 +1138,17 @@ h3 {
 }
 
 @media (max-width: 960px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
   .doors-head {
     grid-template-columns: 1fr;
     gap: 24px;

@@ -30,10 +30,9 @@ export const hero = {
   sub: "Hands-on operating leadership for founders and owners building hospitality, wellness, and destination businesses. Clearer decisions, stronger teams, better guest experiences.",
   cta: "Book a Call",
   secondary: { label: "View the work", href: "#venues" },
-  image: "/images/hero.webp",
-  poster: "/images/hero-poster.jpg",
-  video: "/videos/hero.mp4",
-  alt: "Savaya Bali hospitality venue",
+  // Right column. Renders when the file lands; until then the column carries
+  // the stats alone rather than a reserved hole.
+  portrait: { file: "hero.webp", alt: "Savaya Bali hospitality venue" },
 };
 
 // Marks render only where a normalized mark exists. Until then the strip
@@ -224,6 +223,17 @@ export const sticky = {
     { label: "Owners", href: "#owners", event: "sticky_owners_click" },
     { label: "Operators", href: "#operators", event: "sticky_operators_click" },
   ],
+};
+
+export const about = {
+  id: "about",
+  eyebrow: "About 242 Consulting",
+  heading: "An operator in the room when it matters.",
+  paragraphs: [
+    "Kirk Bouffard has spent more than two decades turning ambitious hospitality and wellness concepts into operating businesses across the Bahamas, Singapore, Indonesia, and beyond.",
+    "242 Consulting works with owners at the point where strategy needs to become standards, teams, reporting, and a guest experience people return for.",
+  ],
+  link: "Start a conversation",
 };
 
 export const work = {

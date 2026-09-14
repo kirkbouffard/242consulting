@@ -24,8 +24,8 @@ export default function Circle() {
             </div>
           ) : null}
           <p className="eyebrow">{circle.label}</p>
-          <p className="offer-title">{circle.eyebrow}</p>
-          <h2>{circle.heading}</h2>
+          <h2 className="offer-title">{circle.eyebrow}</h2>
+          <p className="offer-lede">{circle.heading}</p>
           <p className="offer-intro">{circle.intro}</p>
         </Reveal>
 

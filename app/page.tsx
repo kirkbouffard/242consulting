@@ -1,3 +1,4 @@
+import About from "@/components/About";
 import Advisory from "@/components/Advisory";
 import Choice from "@/components/Choice";
 import Circle from "@/components/Circle";
@@ -20,6 +21,7 @@ export default function Page() {
         <Choice />
         <Advisory />
         <Circle />
+        <About />
         <Work />
         <Contact />
       </main>

@@ -23,8 +23,8 @@ export default function Advisory() {
             </div>
           ) : null}
           <p className="eyebrow">{advisory.label}</p>
-          <p className="offer-title">{advisory.eyebrow}</p>
-          <h2>{advisory.heading}</h2>
+          <h2 className="offer-title">{advisory.eyebrow}</h2>
+          <p className="offer-lede">{advisory.heading}</p>
           <p className="offer-intro">{advisory.intro}</p>
         </Reveal>
 
