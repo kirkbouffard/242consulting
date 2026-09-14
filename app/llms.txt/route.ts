@@ -48,7 +48,7 @@ Response time: within 24 hours.
 
 ## Notes
 ${contact.sub}
-This site is one page. /terms carries the 242 Circle terms and is not indexed.
+This site is one page. /terms carries the 242 Circle terms in full.
 `;
 
 export function GET() {

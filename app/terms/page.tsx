@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { terms } from "@/content/copy";
+import { site, terms } from "@/content/copy";
 
 // Linked from the Circle block and the footer, and indexed. This is not
 // boilerplate: cancel any time, no notice period, no exit fee is exactly what a
 // hesitant buyer searches for before paying. It is in the sitemap.
 export const metadata: Metadata = {
   title: "242 Circle terms",
+  // Its own canonical. Without this the route inherits the layout's, which
+  // points at the homepage, and an indexed page whose canonical names a
+  // different URL is a page that does not get indexed.
+  alternates: { canonical: `${site.url}/terms` },
 };
 
 export default function TermsPage() {

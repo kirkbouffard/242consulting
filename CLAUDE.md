@@ -235,6 +235,9 @@ Four artifacts, all generated, none hand written, none carrying anything a reade
   are kept out of search by their own noindex, and a Disallow would stop a crawler reading it.
 - app/sitemap.ts. Two entries, / and /terms. Both are indexable: app/terms/page.tsx no longer sets
   robots noindex, so the sitemap and the page agree. /welcome is absent and stays noindex.
+  /terms also sets its OWN canonical. A route with no alternates inherits the layout's, which names
+  the homepage, and an indexed page whose canonical points somewhere else is a page Google reads as
+  a duplicate and drops. Any route that becomes indexable needs its own canonical in the same edit.
 - content/schema.ts. One @graph in one script tag, built from content/copy.ts so it cannot drift.
   Five nodes: ProfessionalService (the org), Person Kirk Bouffard linked both ways via founder and
   worksFor, a Service for Retained with no price because it has none, a Service for 242 Circle
