@@ -10,6 +10,7 @@ type EditorialImageProps = {
   priority?: boolean;
   sizes?: string;
   loading?: "eager" | "lazy";
+  shape?: "wide" | "portrait";
 };
 
 export default function EditorialImage({
@@ -18,11 +19,12 @@ export default function EditorialImage({
   priority = false,
   sizes = SIZES,
   loading,
+  shape,
 }: EditorialImageProps) {
   const blur = (blurData as Record<string, string>)[file];
 
   return (
-    <div className="image-placeholder relative">
+    <div className={`image-placeholder relative${shape ? ` ${shape}` : ""}`}>
       <Image
         src={`/images/${file}`}
         alt={alt}

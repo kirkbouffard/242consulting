@@ -85,8 +85,17 @@ Copy is canonical in /content/copy.ts. Do not paraphrase it. Sections:
    note, accordion, testimonial slot (off by default, see below), mailto, cross link to #operators.
 5. 242 Circle (#operators): price, five focus points, what is included, "Cancel anytime. No
    contract.", accordion, Stripe button, cross link to #owners.
-6. Venues (#venues): 12 column grid, six tiles, each name linking to the venue's own site.
-   Stats: 20+ years, $45M+ P&L, 5 markets.
+6. Track record (#venues): eyebrow, heading, intro, then one flat list under a single label,
+   "OPERATED", set in the eyebrow treatment but in espresso-2 rather than bronze so it reads as a
+   label on the list and not as a second section opening. Four entries in a fixed order: Savaya
+   Group (featured, larger image treatment), 242 Consulting Nassau, Atlantis / Aura, CE LA VI. No
+   groups and no per-entry role or title lines: every entry was operated by Kirk, so there is
+   nothing to distinguish. The two entries carrying a supporting line lead; the two that are names
+   alone sit together at the end. Every entry keeps the same padding whether or not it carries a
+   line or an image. The label is "Operated", never "Venues operated": the Nassau entry is an
+   events engagement, not a venue, and it is the only entry where 242 Consulting delivered under
+   its own name. Entity names link to the venue's own site where one exists; the 242 Consulting
+   entry has no link by design, because its clients are not named. The stats live in the hero.
 7. Contact (#contact): Calendly pill and mailto, LinkedIn.
 8. Footer: line plus a Terms link.
 

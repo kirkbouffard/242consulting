@@ -6,7 +6,6 @@ import { assetExists } from "@/lib/assets";
 type Entry = {
   id: string;
   entity: string;
-  role: string;
   venues?: string;
   note?: string;
   url: string;
@@ -32,26 +31,25 @@ function WorkEntry({ entry }: { entry: Entry }) {
   const featured = entry.featured && images.length > 1;
 
   return (
-    <Reveal className={`work-entry${featured ? " work-entry-featured" : ""}${images.length ? "" : " no-image"}`}>
+    <Reveal className={`work-entry${featured ? " work-entry-featured" : ""}`}>
       {images.length ? (
         <div className={featured ? "work-media work-media-featured" : "work-media"}>
-          <div className="image-placeholder wide">
-            <EditorialImage
-              file={images[0]}
-              alt={entry.entity}
-              sizes={featured ? "(max-width: 760px) 100vw, 1160px" : "(max-width: 760px) 100vw, 760px"}
-            />
-          </div>
+          <EditorialImage
+            file={images[0]}
+            alt={entry.entity}
+            shape="wide"
+            sizes={featured ? "(max-width: 760px) 100vw, 1160px" : "(max-width: 760px) 100vw, 760px"}
+          />
           {images.length > 1 ? (
             <div className="work-media-row">
               {images.slice(1).map((file) => (
-                <div className="image-placeholder portrait" key={file}>
-                  <EditorialImage
-                    file={file}
-                    alt={entry.entity}
-                    sizes="(max-width: 760px) 50vw, 380px"
-                  />
-                </div>
+                <EditorialImage
+                  key={file}
+                  file={file}
+                  alt={entry.entity}
+                  shape="portrait"
+                  sizes="(max-width: 760px) 50vw, 380px"
+                />
               ))}
             </div>
           ) : null}
@@ -59,10 +57,9 @@ function WorkEntry({ entry }: { entry: Entry }) {
       ) : null}
 
       <div className="work-copy">
-        <h4 className="work-entity">
+        <h3 className="work-entity">
           <Entity entry={entry} />
-        </h4>
-        <p className="work-role">{entry.role}</p>
+        </h3>
         {entry.venues ? <p className="work-venues">Venues: {entry.venues}</p> : null}
         {entry.note ? <p className="work-note">{entry.note}</p> : null}
       </div>
@@ -80,15 +77,12 @@ export default function Work() {
           <p>{work.intro}</p>
         </Reveal>
 
-        {work.groups.map((group) => (
-          <div className="work-group" key={group.label}>
-            <Reveal>
-              <h3 className="work-group-label">{group.label}</h3>
-            </Reveal>
-            {group.entries.map((entry) => (
-              <WorkEntry entry={entry as Entry} key={entry.id} />
-            ))}
-          </div>
+        <Reveal>
+          <p className="work-label">{work.label}</p>
+        </Reveal>
+
+        {work.entries.map((entry) => (
+          <WorkEntry entry={entry as Entry} key={entry.id} />
         ))}
       </div>
     </section>

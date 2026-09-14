@@ -248,56 +248,49 @@ export const work = {
   heading: "Built by operating.",
   intro:
     "Two decades operating in difficult environments. The Bahamas and Bali run on the same constraints: thin supply, imported inputs, permits and weather on their own schedule.",
-  // Grouped because an owner reads for the distinction. An undifferentiated
-  // list of venues reads as a CV. Operated is what Kirk ran; Worked with is
-  // what he contributed to. Entries carry files, not tiles: assetExists
-  // decides which images render, so a missing file degrades the entry to
-  // typographic without touching this data.
-  groups: [
+  // One flat list, one label. Every entry here was operated by Kirk, so there
+  // is no distinction left to draw and no titles to list. The label is
+  // "Operated" rather than "Venues operated" because the Nassau entry is an
+  // events engagement, not a venue, and it is the only line on the page where
+  // 242 Consulting delivered under its own name.
+  label: "Operated",
+  // Order is deliberate. The two entries carrying substance lead, the two that
+  // are names alone sit together at the end, so the list does not alternate
+  // between dense and bare rows.
+  // Entries carry files, not tiles: assetExists decides which images render, so
+  // a missing file degrades the entry to typographic without touching this data.
+  entries: [
     {
-      label: "Operated",
-      entries: [
-        {
-          id: "savaya",
-          entity: "Savaya Group · Bali",
-          role: "Head of Operations across the portfolio.",
-          venues: "Savaya, Desa Kitsuné, Zumana",
-          note: "Zumana: commissioning and opening, August 2026. 35,000 sq ft beachfront destination.",
-          url: "https://www.savaya.com/",
-          files: ["zumana.webp", "savaya.webp", "kitsune.webp"],
-          featured: true,
-        },
-        {
-          // Kirk's own entity delivered this, so the name sits in the entity
-          // slot rather than reading as a job he held. The clients are never
-          // named: the entry is about the operating environment.
-          id: "242",
-          entity: "242 Consulting · Nassau, Bahamas",
-          role: "Large-format events, up to 3,000 guests, repeatedly. The constraint was never the show. It was crew, power, permits and weather converging on a fixed date that could not move.",
-          url: "",
-          files: ["bahamas-venue.webp"],
-        },
-        {
-          // One engagement, not two tiles.
-          id: "atlantis",
-          entity: "Atlantis Paradise Island / Aura Nightclub · Bahamas",
-          role: "General management and operating leadership",
-          url: "https://www.atlantisbahamas.com/",
-          files: ["atlantis.webp"],
-        },
-      ],
+      id: "savaya",
+      entity: "Savaya Group · Bali",
+      venues: "Savaya, Desa Kitsuné, Zumana",
+      note: "Zumana: commissioning and opening, August 2026. 35,000 sq ft beachfront destination.",
+      url: "https://www.savaya.com/",
+      files: ["zumana.webp", "savaya.webp", "kitsune.webp"],
+      featured: true,
     },
     {
-      label: "Worked with",
-      entries: [
-        {
-          id: "celavi",
-          entity: "CÉ LA VI · Singapore",
-          role: "Venue development and guest experience",
-          url: "https://celavi.com/",
-          files: ["celavi.webp"],
-        },
-      ],
+      // Kirk's own entity delivered this, so the name sits in the entity slot
+      // rather than reading as a job he held. The clients are never named: the
+      // entry is about the operating environment.
+      id: "242",
+      entity: "242 Consulting · Nassau, Bahamas",
+      note: "Large-format events, up to 3,000 guests, repeatedly. The constraint was never the show. It was crew, power, permits and weather converging on a fixed date that could not move.",
+      url: "",
+      files: ["bahamas-venue.webp"],
+    },
+    {
+      // One engagement, not two tiles.
+      id: "atlantis",
+      entity: "Atlantis Paradise Island / Aura Nightclub · Bahamas",
+      url: "https://www.atlantisbahamas.com/",
+      files: ["atlantis.webp"],
+    },
+    {
+      id: "celavi",
+      entity: "CÉ LA VI · Singapore",
+      url: "https://celavi.com/",
+      files: ["celavi.webp"],
     },
   ],
   stats: [

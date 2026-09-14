@@ -33,14 +33,13 @@ export default function Hero() {
 
         <div className="hero-media">
           {hasImage ? (
-            <div className="image-placeholder wide">
-              <EditorialImage
-                file={hero.portrait.file}
-                alt={hero.portrait.alt}
-                priority
-                sizes="(max-width: 960px) 100vw, 560px"
-              />
-            </div>
+            <EditorialImage
+              file={hero.portrait.file}
+              alt={hero.portrait.alt}
+              shape="wide"
+              priority
+              sizes="(max-width: 960px) 100vw, 560px"
+            />
           ) : null}
           <Reveal className="stats">
             {work.stats.map((stat) => (
